@@ -9,3 +9,4 @@
 - Evaluaciones por periodo y exportación PDF mediante impresión; exportación JSON del progreso.
 - Comprobaciones unitarias de lógica y recorrido funcional en navegador.
 - Plan curricular ampliable para japonés; mandarín permanece para una fase posterior.
+- Cierre del piloto: 25 audios estáticos Open JTalk/Mei con atribución, contenido JSON marcado no revisado, React Router, comandos de formato y tipos, documentación del sistema visual y corrección de revisión independiente.

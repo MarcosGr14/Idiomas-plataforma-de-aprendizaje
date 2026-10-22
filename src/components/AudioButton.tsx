@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Volume2 } from "lucide-react";
+import { words } from "../data/course";
+let current: HTMLAudioElement | null = null;
 export default function AudioButton({
   text,
   slow = false,
@@ -9,39 +11,41 @@ export default function AudioButton({
 }) {
   const [error, setError] = useState("");
   const [playing, setPlaying] = useState(false);
+  const own = useRef<HTMLAudioElement | null>(null);
   useEffect(
     () => () => {
-      window.speechSynthesis?.cancel();
+      own.current?.pause();
+      if (current === own.current) current = null;
     },
     [],
   );
-  function play() {
+  async function play() {
     setError("");
-    if (!("speechSynthesis" in window)) {
-      setError("Este navegador no ofrece audio de voz. Prueba otro navegador.");
+    const word = words.find((w) => w.jp === text);
+    if (!word) {
+      setError("Este audio aún no está disponible.");
       return;
     }
-    const voice = window.speechSynthesis
-      .getVoices()
-      .find((v) => v.lang.startsWith("ja"));
-    if (!voice) {
-      setError(
-        "No hay una voz japonesa disponible en este dispositivo. Instala una voz japonesa o prueba otro navegador.",
-      );
-      return;
-    }
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "ja-JP";
-    utterance.voice = voice;
-    utterance.rate = slow ? 0.65 : 0.85;
-    utterance.onend = () => setPlaying(false);
-    utterance.onerror = () => {
+    current?.pause();
+    const audio = new Audio(`/audio/${word.id}.mp3`);
+    own.current = audio;
+    current = audio;
+    audio.playbackRate = slow ? 0.75 : 1;
+    audio.onended = () => setPlaying(false);
+    audio.onpause = () => setPlaying(false);
+    audio.onerror = () => {
       setPlaying(false);
-      setError("No se pudo reproducir. Inténtalo de nuevo.");
+      setError(
+        "No se pudo cargar el audio. Comprueba tu conexión e inténtalo otra vez.",
+      );
     };
-    setPlaying(true);
-    window.speechSynthesis.speak(utterance);
+    try {
+      await audio.play();
+      setPlaying(true);
+    } catch {
+      setPlaying(false);
+      setError("No se pudo reproducir el audio. Vuelve a pulsar Escuchar.");
+    }
   }
   return (
     <span className="audio-wrap">

@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import { lazy, Suspense, useEffect, useState } from "react";
 import {
   ArrowRight,
@@ -7,7 +8,6 @@ import {
   ChevronRight,
   Flame,
   GraduationCap,
-  Headphones,
   Home,
   Library,
   LogOut,
@@ -15,7 +15,6 @@ import {
   Pause,
   Play,
   Settings,
-  Volume2,
   X,
   Download,
   Lock,
@@ -44,13 +43,7 @@ const go = (route: string) => {
   window.scrollTo({ top: 0, behavior: "instant" });
 };
 function useRoute() {
-  const [route, setRoute] = useState(location.hash.slice(1) || "/");
-  useEffect(() => {
-    const fn = () => setRoute(location.hash.slice(1) || "/");
-    window.addEventListener("hashchange", fn);
-    return () => window.removeEventListener("hashchange", fn);
-  }, []);
-  return route;
+  return useLocation().pathname;
 }
 function Brand() {
   return (
@@ -250,8 +243,8 @@ function App() {
       >
         {!online && (
           <div className="connection-notice" role="status">
-            Estás sin conexión. Puedes usar el contenido descargado; el audio
-            depende de la voz instalada en tu dispositivo.
+            Estás sin conexión. Puedes usar el contenido y los audios ya
+            descargados.
           </div>
         )}
         {isHome ? (
@@ -396,11 +389,6 @@ function App() {
             <section className="study-grid">
               <div className="next-lesson">
                 <div className="lesson-copy">
-                  <p>
-                    {nextIndex < 0
-                      ? "Unidad piloto completada"
-                      : "Tu siguiente lección"}
-                  </p>
                   <h2>
                     {nextIndex < 0
                       ? "Lo aprendido se queda contigo."
@@ -720,9 +708,9 @@ function App() {
               </button>
             </section>
             <p className="small">
-              El audio de esta versión usa la voz japonesa de tu dispositivo. La
-              calidad y la disponibilidad dependen de tu navegador. No se usa el
-              micrófono.
+              Los audios del piloto están incluidos en la aplicación. Son
+              sintetizados y están pendientes de revisión lingüística. No se usa
+              el micrófono.
             </p>
             <Footer />
           </>
@@ -864,7 +852,7 @@ function LessonScreen({
         </div>
         <h2>Escucha y reconoce</h2>
         <p className="small">
-          Audio de tu dispositivo. Necesitas una voz japonesa instalada.
+          Audio sintetizado para el piloto. Escucha a velocidad normal o lenta.
         </p>
         <div className="word-examples">
           {vocab.map((w) => (
@@ -1385,9 +1373,19 @@ function InfoPage({ credits }: { credits: boolean }) {
             </p>
             <h2>Audio</h2>
             <p>
-              Se utiliza la síntesis de voz disponible en el navegador, con voz
-              japonesa. No son grabaciones revisadas por un docente y no se
-              solicita el micrófono.
+              Audios sintetizados con Open JTalk y la voz Mei del MMDAgent
+              Project Team, Nagoya Institute of Technology (2009–2013), bajo CC
+              BY 3.0. Convertidos a MP3 para este piloto; pendientes de revisión
+              lingüística externa. No se solicita el micrófono.{" "}
+              <a href="/audio/LICENSE-Mei.txt">Licencia y atribución</a> ·{" "}
+              <a
+                href="https://creativecommons.org/licenses/by/3.0/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                CC BY 3.0
+              </a>
+              .
             </p>
           </>
         ) : (
@@ -1408,8 +1406,9 @@ function InfoPage({ credits }: { credits: boolean }) {
             </p>
             <h2>Audio y conexión</h2>
             <p>
-              No se graba tu voz. Según el dispositivo, la síntesis de voz puede
-              usar un servicio remoto del proveedor del navegador o del sistema.
+              No se graba tu voz. Los audios se sirven como archivos estáticos
+              de esta aplicación, sin enviar el texto a un servicio externo
+              durante el uso.
             </p>
             <h2>Antes del lanzamiento público</h2>
             <p>

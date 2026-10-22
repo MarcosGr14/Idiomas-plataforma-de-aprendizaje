@@ -103,3 +103,9 @@ El proyecto no contiene todavía implementación, currículo, audios, imágenes,
 - Los cambios exclusivamente estéticos no requieren suites de pruebas extensas: documentar el cambio y revisar visualmente el resultado.
 - Las comprobaciones de comportamiento se ajustarán a los cambios de lógica, especialmente cuentas, progreso, evaluaciones y recompensas.
 - Esta etapa define y audita el proyecto; no autoriza a dar por aceptadas todas las propuestas de la conversación ni inicia por sí sola la implementación.
+
+## Estado de implementación · 2026-10-22
+
+Marcos autorizó comenzar y continuar el desarrollo. Se implementó el piloto de japonés con React, TypeScript, Vite, React Router y PWA; cinco lecciones, audio estático sintetizado, diagnóstico, prácticas, repaso, progreso local e integración Supabase pendiente de conexión real. El resto del curso está planificado, no publicado. Nombre provisional: Idiomas. Explicaciones en español.
+
+El nuevo brief de `docs/10-hero-escena-3d.md`, incorporado durante el cierre, exige reemplazar el diorama actual por un callejón atmosférico. Esa sustitución y los requisitos ampliados de `AGENTS.md` quedan pendientes; no se consideran completados por este piloto.

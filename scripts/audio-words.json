@@ -1,0 +1,102 @@
+[
+  {
+    "id": "a",
+    "text": "あ"
+  },
+  {
+    "id": "i",
+    "text": "い"
+  },
+  {
+    "id": "u",
+    "text": "う"
+  },
+  {
+    "id": "e",
+    "text": "え"
+  },
+  {
+    "id": "o",
+    "text": "お"
+  },
+  {
+    "id": "ai",
+    "text": "あい"
+  },
+  {
+    "id": "ie",
+    "text": "いえ"
+  },
+  {
+    "id": "ue",
+    "text": "うえ"
+  },
+  {
+    "id": "ao",
+    "text": "あお"
+  },
+  {
+    "id": "iie",
+    "text": "いいえ"
+  },
+  {
+    "id": "ka",
+    "text": "か"
+  },
+  {
+    "id": "ki",
+    "text": "き"
+  },
+  {
+    "id": "ku",
+    "text": "く"
+  },
+  {
+    "id": "ke",
+    "text": "け"
+  },
+  {
+    "id": "ko",
+    "text": "こ"
+  },
+  {
+    "id": "konnichiwa",
+    "text": "こんにちは"
+  },
+  {
+    "id": "ohayou",
+    "text": "おはようございます"
+  },
+  {
+    "id": "konbanwa",
+    "text": "こんばんは"
+  },
+  {
+    "id": "arigatou",
+    "text": "ありがとうございます"
+  },
+  {
+    "id": "sumimasen",
+    "text": "すみません"
+  },
+  {
+    "id": "hajimemashite",
+    "text": "はじめまして"
+  },
+  {
+    "id": "watashi",
+    "text": "わたし"
+  },
+  {
+    "id": "desu",
+    "text": "です"
+  },
+  {
+    "id": "yoroshiku",
+    "text": "よろしくおねがいします"
+  },
+  {
+    "id": "marukosu",
+    "text": "マルコスです"
+  }
+]
