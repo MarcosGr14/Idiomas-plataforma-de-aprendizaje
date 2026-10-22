@@ -37,6 +37,7 @@ Ofrecer aprendizaje progresivo y estructurado de mandarín y japonés, con cuent
 
 - Registro de cuentas y guardado de progreso.
 - Mandarín y japonés como primeros idiomas del producto.
+- Orden de lanzamiento confirmado: primero japonés; después mandarín, reutilizando la estructura desarrollada para japonés y adaptando el currículo y los contenidos a las particularidades del mandarín.
 - Evaluación inicial, asignación de nivel y clases adaptadas al tiempo disponible.
 - Rachas diarias por clases completadas y recompensas semanales.
 - Imágenes explicativas, audio de pronunciación, talleres y prácticas.
@@ -58,13 +59,12 @@ Ofrecer aprendizaje progresivo y estructurado de mandarín y japonés, con cuent
 - Lecciones descargables y funcionamiento offline; definir sincronización y alcance.
 - Audio pregenerado a velocidad normal y lenta. Proveedor, licencias, revisión lingüística y almacenamiento pendientes.
 - Trazado guiado con orden de trazos; bibliotecas y cobertura por idioma pendientes.
-- Empezar con japonés y añadir mandarín posteriormente. No es una decisión del usuario todavía.
 - React + Vite, PWA, servicios concretos de Cloudflare y estructura técnica detallada.
 
 ### Decisiones pendientes
 
 - Nombre público del producto, repositorio remoto, URL GitHub y datos públicos del autor.
-- Alcance de la primera versión y orden de implementación de los idiomas.
+- Alcance curricular y funcional de la primera versión de japonés.
 - Sistemas de referencia curricular, método de diagnóstico y criterios de dominio.
 - Reglas exactas de XP, rachas, recompensas y desbloqueos.
 - Estrategia de contenido, revisión lingüística y licencias de imágenes, fuentes, audio y datos.
