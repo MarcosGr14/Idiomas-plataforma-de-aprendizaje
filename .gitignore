@@ -7,3 +7,5 @@ dist/
 .impeccable/mocks/
 .taste-skill/
 *.tsbuildinfo
+.AGENTS.md
+.CHANGELOG.md
