@@ -1,3 +1,5 @@
+import { captureEnabled } from "./capture";
+import { createDemoProgress } from "./demo";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "./supabase";
@@ -8,20 +10,35 @@ import {
   type Progress,
 } from "./progress";
 export function useProgress() {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(
+    captureEnabled
+      ? {
+          id: "demo-capture",
+          email: "demo@idiomas.example",
+          app_metadata: {},
+          user_metadata: { name: "Estudiante demo" },
+          aud: "demo",
+          created_at: "2026-10-23T17:00:00Z",
+        }
+      : null,
+  );
   const [progress, setProgress] = useState<Progress>(() =>
-    readProgress("idiomas:guest"),
+    captureEnabled ? createDemoProgress() : readProgress("idiomas:guest"),
   );
   const [ready, setReady] = useState(!supabase);
   const [status, setStatus] = useState(
-    supabase ? "Cargando cuenta…" : "Guardado en este dispositivo",
+    captureEnabled
+      ? "Demostración · datos de ejemplo"
+      : supabase
+        ? "Cargando cuenta…"
+        : "Guardado en este dispositivo",
   );
   const key = useRef("idiomas:guest");
   const currentUser = useRef<string | null>(null);
   const changed = useRef(false);
   const [revision, setRevision] = useState(0);
   useEffect(() => {
-    if (!supabase) return;
+    if (captureEnabled || !supabase) return;
     const { data } = supabase.auth.onAuthStateChange((_event, session) => {
       if ((session?.user?.id ?? null) !== currentUser.current) setReady(false);
       setUser(session?.user ?? null);
@@ -29,6 +46,7 @@ export function useProgress() {
     return () => data.subscription.unsubscribe();
   }, []);
   useEffect(() => {
+    if (captureEnabled) return;
     let cancelled = false;
     const id = user?.id ?? null;
     currentUser.current = id;
@@ -75,7 +93,7 @@ export function useProgress() {
     [ready],
   );
   useEffect(() => {
-    if (!ready || !changed.current) return;
+    if (captureEnabled || !ready || !changed.current) return;
     const saved = saveProgress(key.current, progress);
     if (!saved) {
       setStatus(

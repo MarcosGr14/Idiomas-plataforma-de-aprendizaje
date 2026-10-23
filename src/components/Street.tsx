@@ -1,3 +1,4 @@
+import { captureEnabled, registerCaptureRenderer } from "../lib/capture";
 import { useEffect, useRef } from "react";
 import * as T from "three";
 import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
@@ -35,7 +36,7 @@ export default function Street({
       renderer = new T.WebGLRenderer({
         antialias: mode === "full",
         alpha: false,
-        preserveDrawingBuffer: false,
+        preserveDrawingBuffer: captureEnabled,
       });
     } catch {
       live.current.onDegrade("off");
@@ -680,6 +681,7 @@ export default function Street({
     const observer = new ResizeObserver(resize);
     observer.observe(el);
     function start() {
+      if (captureEnabled) return;
       last = 0;
       deadline = 0;
       measurement = 0;
@@ -702,9 +704,10 @@ export default function Street({
     document.addEventListener("visibilitychange", visibility);
     function draw(now: number) {
       frame = 0;
-      if (disposed || document.hidden || !visible) return;
+      if (disposed || (!captureEnabled && (document.hidden || !visible)))
+        return;
       const delta = last ? Math.min((now - last) / 1000, 0.2) : 0;
-      if (mode === "reduced") {
+      if (!captureEnabled && mode === "reduced") {
         const next = nextFrameDeadline(now, deadline);
         if (next === null) {
           frame = requestAnimationFrame(draw);
@@ -713,7 +716,7 @@ export default function Street({
         deadline = next;
       }
       last = now;
-      if (!live.current.paused) {
+      if (!captureEnabled && !live.current.paused) {
         time += delta;
         needsRender = true;
       }
@@ -722,7 +725,7 @@ export default function Street({
         previousSelected = live.current.selected;
       }
       if (needsRender) {
-        if (!live.current.paused) {
+        if (!captureEnabled && !live.current.paused) {
           currentX += (px - currentX) * 0.035;
           currentY += (py - currentY) * 0.035;
         }
@@ -744,7 +747,7 @@ export default function Street({
         else renderer.render(scene, camera);
         needsRender = false;
       }
-      if (!live.current.paused && delta > 0) {
+      if (!captureEnabled && !live.current.paused && delta > 0) {
         warmup += delta;
         if (warmup > 4) {
           measurement += delta;
@@ -760,11 +763,24 @@ export default function Street({
           }
         }
       }
-      frame = requestAnimationFrame(draw);
+      if (!captureEnabled) frame = requestAnimationFrame(draw);
     }
     resize();
     start();
+    const unregisterCapture = registerCaptureRenderer((capture) => {
+      if (!live.current.paused)
+        time =
+          mode === "reduced"
+            ? Math.floor(capture.time * 30) / 30
+            : capture.time;
+      currentX = capture.pointerX;
+      currentY = capture.pointerY;
+      scroll = capture.scroll;
+      needsRender = true;
+      draw(capture.time * 1000);
+    });
     return () => {
+      unregisterCapture();
       disposed = true;
       cancelAnimationFrame(frame);
       observer.disconnect();

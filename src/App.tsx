@@ -1,3 +1,4 @@
+import { appNow } from "./lib/capture";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
@@ -411,7 +412,7 @@ function App() {
                 </div>
                 <div className="week-strip">
                   {Array.from({ length: 7 }, (_, i) => {
-                    const date = new Date();
+                    const date = appNow();
                     date.setDate(date.getDate() - 6 + i);
                     const active =
                       progress.studied.includes(dayKey(date)) ||
@@ -749,7 +750,7 @@ function Footer({
         systemReduced={systemReduced}
       />
       <small>
-        © {new Date().getFullYear()} Marcos · Idiomas. Versión piloto.
+        © {appNow().getFullYear()} Marcos · Idiomas. Versión piloto.
       </small>
     </footer>
   );
@@ -1036,7 +1037,7 @@ function Exams({
     mode === "semanal" ? questions.filter((_, i) => i % 2 === 0) : questions;
   const period =
     mode === "semanal"
-      ? `${new Date().getFullYear()}-w${Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 1).getTime()) / 604800000)}`
+      ? `${appNow().getFullYear()}-w${Math.floor((appNow().getTime() - new Date(appNow().getFullYear(), 0, 1).getTime()) / 604800000)}`
       : dayKey().slice(0, 7);
   return (
     <>

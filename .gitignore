@@ -9,3 +9,10 @@ dist/
 *.tsbuildinfo
 .AGENTS.md
 .CHANGELOG.md
+# Regenerable promo media and render caches
+promo/out/
+promo/public/captures/
+promo/public/fonts/
+promo/public/audio/
+promo/.cache/
+promo/.bundle/

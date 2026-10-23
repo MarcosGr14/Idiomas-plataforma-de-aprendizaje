@@ -1,3 +1,4 @@
+import { appNow } from "./capture";
 import { normalizeMotion, type MotionMode } from "./motion";
 export type Review = { due: string; interval: number; correct: number };
 export type Progress = {
@@ -13,7 +14,7 @@ export type Progress = {
   motion?: MotionMode;
   exams: Record<string, { score: number; total: number; date: string }>;
 };
-export const dayKey = (date = new Date()) =>
+export const dayKey = (date = appNow()) =>
   `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 export function freshProgress(): Progress {
   return {
@@ -54,7 +55,7 @@ export function completeLesson(
   id: string,
   score: number,
   wordIds: string[],
-  date = new Date(),
+  date = appNow(),
 ): Progress {
   const key = dayKey(date);
   const first = !p.completed[id];
@@ -82,7 +83,7 @@ export function reviewWord(
   p: Progress,
   id: string,
   remembered: boolean,
-  date = new Date(),
+  date = appNow(),
 ): Progress {
   const old = p.reviews[id] ?? { due: dayKey(date), interval: 0, correct: 0 };
   if (old.due > dayKey(date)) return p;
@@ -111,7 +112,7 @@ export function reviewWord(
 }
 export const xp = (p: Progress) =>
   Object.values(p.activity).reduce((a, b) => a + b, 0);
-export function streak(p: Progress, date = new Date()) {
+export function streak(p: Progress, date = appNow()) {
   const cursor = new Date(date);
   const days = new Set([
     ...p.studied,
