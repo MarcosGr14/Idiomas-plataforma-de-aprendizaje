@@ -15,3 +15,12 @@ Manrope, Noto Serif JP, paleta y el resto de las pantallas.
 Se añaden controles completo/reducido/apagado, pausa, pósteres propios y tarjeta
 accesible de letreros. Los modos tienen pruebas de lógica; no se añaden pruebas
 para estilos. El nuevo brief se aplica únicamente al alcance aprobado.
+
+## 2026-10-23 — Composición promocional
+
+Guion aprobado de 40 s. Se extiende la identidad Manrope/Noto Serif JP a video,
+con apertura oscura y callejón real, transición a papel claro, titulares amplios,
+revelados por palabras y entradas amortiguadas. Marcos de dispositivos originales.
+El vertical se recompone con el celular dominante. No se modifica la dirección
+visual de la web ni se anuncia mandarín como disponible. Previews por escena a
+480p antes de los másteres. No se agregan pruebas para composición puramente visual.

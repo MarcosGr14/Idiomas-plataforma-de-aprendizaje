@@ -24,3 +24,10 @@
 - Modo opt-in `?capture=1` con reloj de escena controlado por fotograma, sin bucle RAF libre ni degradación dependiente del tiempo de render.
 - Semilla demo reproducible en memoria: 7 días, 200 XP, 3 lecciones y vocabulario aprendido; Supabase y persistencia desactivados solo en captura.
 - Pipeline local de Playwright en `promo/`; medios regenerables excluidos de Git.
+
+## 2026-10-23 — Composición de la promo
+
+- Siete escenas Remotion, 40 segundos a 30 fps; horizontal y vertical con layouts independientes.
+- Captura con Playwright, fuentes locales, dispositivos genéricos y texto español.
+- Scripts para previsualizar cada escena a 480p, generar másteres/pósteres y regenerar con un comando.
+- Música opcional documentada; sin pistas de terceros incluidas.

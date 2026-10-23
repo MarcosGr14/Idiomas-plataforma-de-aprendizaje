@@ -1,0 +1,344 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+.scene {
+  background: #f7f7f2;
+  color: #202520;
+  font-family: Manrope, sans-serif;
+  overflow: hidden;
+}
+.heading {
+  position: absolute;
+  left: 110px;
+  top: 75px;
+  width: 1500px;
+  z-index: 3;
+}
+h1 {
+  font-size: 76px;
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+  font-weight: 550;
+  margin: 0;
+}
+p {
+  font-size: 27px;
+  line-height: 1.5;
+  margin: 24px 0 0;
+}
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.07em;
+  margin-bottom: -0.07em;
+}
+.word > span {
+  display: inline-block;
+}
+.main-device {
+  position: absolute;
+  left: 350px;
+  top: 285px;
+  width: 1220px;
+  height: 770px;
+}
+.device {
+  position: relative;
+  filter: drop-shadow(0 24px 28px #15201526);
+}
+.bezel {
+  padding: 16px;
+  background: #262a29;
+  border-radius: 22px;
+  position: relative;
+}
+.screen {
+  aspect-ratio: 1440/900;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #fff;
+}
+.camera {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #080b0a;
+  border-radius: 50%;
+  top: 5px;
+  left: calc(50% - 2px);
+}
+.base {
+  height: 18px;
+  background: #aab0ad;
+  width: 110%;
+  margin-left: -5%;
+  border-radius: 2px 2px 60% 60%;
+}
+.neck {
+  height: 65px;
+  width: 12%;
+  background: #b2b7b2;
+  margin: auto;
+  clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
+}
+.foot {
+  height: 13px;
+  width: 34%;
+  background: #989f9a;
+  margin: auto;
+  border-radius: 50%;
+}
+.desktop .bezel {
+  padding-bottom: 30px;
+}
+.phone .bezel {
+  padding: 11px;
+  border-radius: 42px;
+}
+.phone .screen {
+  aspect-ratio: 390/844;
+  border-radius: 32px;
+}
+.phone .camera {
+  width: 46px;
+  height: 7px;
+  top: 5px;
+  left: calc(50% - 23px);
+  border-radius: 8px;
+}
+.scene-0 {
+  background: #151715;
+  color: #f7f7f2;
+}
+.intro {
+  position: absolute;
+  left: 140px;
+  top: 170px;
+}
+.japanese {
+  font:
+    270px "Noto Serif JP",
+    serif;
+  letter-spacing: -0.07em;
+  margin-bottom: 30px;
+}
+.intro h1 {
+  font-size: 85px;
+}
+.intro p {
+  color: #b7b8ae;
+  margin-top: 40px;
+}
+.intro p span {
+  font-family: "Noto Serif JP", serif;
+}
+.brand-small {
+  position: absolute;
+  bottom: 70px;
+  right: 110px;
+  font-size: 30px;
+}
+.scene-1 {
+  color: white;
+  background: #151715;
+}
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #05080595, transparent 70%);
+}
+.scene-1 .heading {
+  top: 85px;
+}
+.hero-note {
+  position: absolute;
+  left: 110px;
+  bottom: 65px;
+}
+.scene-2 .main-device {
+  top: 270px;
+  left: 350px;
+  width: 1220px;
+  transform-origin: 50% 70%;
+}
+.scene-3 .heading,
+.scene-5 .heading {
+  width: 830px;
+  top: 170px;
+}
+.scene-3 .main-device {
+  left: 1210px;
+  top: 100px;
+  width: 390px;
+}
+.lesson-aside {
+  position: absolute;
+  left: 115px;
+  top: 400px;
+}
+.lesson-aside > span {
+  font:
+    240px "Noto Serif JP",
+    serif;
+  color: #b63226;
+}
+.lesson-aside p {
+  font-size: 30px;
+}
+.wave {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 80px;
+  margin-top: 20px;
+}
+.wave i {
+  display: block;
+  width: 7px;
+  border-radius: 5px;
+  background: #b63226;
+}
+.scene-4 .main-device {
+  top: 250px;
+  left: 375px;
+  width: 1170px;
+}
+.demo {
+  position: absolute;
+  bottom: 30px;
+  left: 110px;
+  font-size: 19px;
+  color: #62685f;
+}
+.scene-5 .main-device {
+  left: 1230px;
+  top: 110px;
+  width: 370px;
+}
+.mode-copy {
+  position: absolute;
+  left: 110px;
+  top: 430px;
+  font-size: 62px;
+  line-height: 1.7;
+  letter-spacing: -0.04em;
+}
+.closing {
+  position: absolute;
+  left: 110px;
+  top: 65px;
+  z-index: 4;
+}
+.brand {
+  font-size: 58px;
+  font-weight: 650;
+  letter-spacing: -0.05em;
+  margin-bottom: 20px;
+}
+.brand > span {
+  font-family: "Noto Serif JP", serif;
+  color: #b63226;
+}
+.closing h1 {
+  font-size: 68px;
+}
+.closing p {
+  font-size: 26px;
+}
+.trio {
+  position: absolute;
+  left: 130px;
+  top: 380px;
+  width: 1650px;
+  height: 650px;
+}
+.vertical .heading {
+  left: 80px;
+  top: 110px;
+  width: 920px;
+}
+.vertical h1 {
+  font-size: 90px;
+  line-height: 1.06;
+}
+.vertical p {
+  font-size: 32px;
+  max-width: 870px;
+}
+.vertical .intro {
+  left: 80px;
+  top: 410px;
+}
+.vertical .japanese {
+  font-size: 235px;
+  margin-bottom: 85px;
+}
+.vertical .intro h1 {
+  font-size: 88px;
+}
+.vertical .intro p {
+  font-size: 30px;
+  margin-top: 60px;
+}
+.vertical .brand-small {
+  right: 80px;
+  bottom: 120px;
+  font-size: 35px;
+}
+.vertical.scene-1 .heading {
+  top: 130px;
+}
+.vertical .hero-note {
+  left: 80px;
+  bottom: 140px;
+  width: 760px;
+  font-size: 36px;
+}
+.vertical .main-device {
+  left: 215px;
+  top: 420px;
+  width: 650px;
+  height: 1450px;
+}
+.vertical.scene-3 .main-device {
+  left: 235px;
+  top: 440px;
+  width: 610px;
+}
+.vertical.scene-4 .main-device {
+  left: 230px;
+  top: 430px;
+  width: 620px;
+}
+.vertical.scene-5 .main-device {
+  left: 240px;
+  top: 450px;
+  width: 600px;
+}
+.vertical .demo {
+  left: 80px;
+  bottom: 65px;
+  font-size: 24px;
+}
+.vertical .closing {
+  left: 80px;
+  top: 120px;
+  width: 920px;
+}
+.vertical .brand {
+  font-size: 78px;
+  margin-bottom: 40px;
+}
+.vertical .closing h1 {
+  font-size: 92px;
+}
+.vertical .trio {
+  left: 55px;
+  top: 680px;
+  width: 970px;
+  height: 1170px;
+}

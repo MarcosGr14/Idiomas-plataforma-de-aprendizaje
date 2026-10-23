@@ -16,3 +16,14 @@ fotografías de referencia ni modelos descargados. Los pósteres
 escena, convertidas a WebP. Registro estructurado: `content/assets-licenses.json`.
 Letreros: `content/street-signs.json`, marcados `reviewed: false`; no representan
 contenido lingüístico revisado ni disponibilidad del curso de mandarín.
+
+## Video promocional — 2026-10-23
+
+- Capturas originales de esta plataforma, con datos sintéticos y sin cuentas reales.
+- Marcos genéricos de dispositivos: CSS original en `promo/src/style.css`, sin marcas.
+- Manrope y Noto Serif JP: mismas fuentes OFL registradas arriba; copias locales para el render.
+- Música: ninguna. No se distribuye pista ni se asume que una canción disponible en Internet es libre.
+  El README permite añadir después una pista autorizada, previa inscripción de autor, origen y licencia.
+- Remotion 4.0.404: herramienta de render, bajo [Remotion License](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md), no MIT.
+  Uso local por creador individual; revisar condiciones antes de ampliar a una organización.
+- Playwright: Apache-2.0. ffmpeg: herramienta local de codificación; no se redistribuyen sus binarios.
