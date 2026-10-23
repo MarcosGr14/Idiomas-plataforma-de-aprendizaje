@@ -1,3 +1,4 @@
+import { normalizeMotion, type MotionMode } from "./motion";
 export type Review = { due: string; interval: number; correct: number };
 export type Progress = {
   version: 1;
@@ -9,6 +10,7 @@ export type Progress = {
   placement: number | null;
   romanization: boolean;
   reducedMotion: boolean;
+  motion?: MotionMode;
   exams: Record<string, { score: number; total: number; date: string }>;
 };
 export const dayKey = (date = new Date()) =>
@@ -35,6 +37,7 @@ export function normalizeProgress(raw: unknown): Progress {
     ...base,
     ...p,
     version: 1,
+    motion: normalizeMotion(p.motion, p.reducedMotion),
     studied: Array.isArray(p.studied)
       ? p.studied.filter((d) => typeof d === "string")
       : Object.keys(p.activity ?? {}),

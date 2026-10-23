@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -12,8 +12,6 @@ import {
   Library,
   LogOut,
   Menu,
-  Pause,
-  Play,
   Settings,
   X,
   Download,
@@ -37,7 +35,9 @@ import { supabase } from "./lib/supabase";
 import AudioButton from "./components/AudioButton";
 import Quiz from "./components/Quiz";
 import WritingPad from "./components/WritingPad";
-const Street = lazy(() => import("./components/Street"));
+import KyotoHero from "./components/KyotoHero";
+import MotionSelect from "./components/MotionSelect";
+import { resolveMotion, type MotionMode } from "./lib/motion";
 const go = (route: string) => {
   window.location.hash = route;
   window.scrollTo({ top: 0, behavior: "instant" });
@@ -114,10 +114,21 @@ function App() {
       window.removeEventListener("keydown", esc);
     };
   }, [menu]);
-  const reduced = progress.reducedMotion || systemReduced;
+  const device = navigator as Navigator & {
+    deviceMemory?: number;
+    connection?: { saveData?: boolean };
+  };
+  const motion = resolveMotion(progress.motion, {
+    reduce: systemReduced,
+    memory: device.deviceMemory,
+    cores: navigator.hardwareConcurrency,
+    saveData: device.connection?.saveData,
+  });
+  const setMotion = (mode: MotionMode) =>
+    update((p) => ({ ...p, motion: mode, reducedMotion: mode !== "full" }));
   useEffect(() => {
-    document.documentElement.dataset.motion = reduced ? "reduced" : "full";
-  }, [reduced]);
+    document.documentElement.dataset.motion = motion;
+  }, [motion]);
   const installApp = async () => {
     if (install) {
       await install.prompt();
@@ -249,69 +260,12 @@ function App() {
         )}
         {isHome ? (
           <>
-            <section className="hero">
-              <div className="hero-heading">
-                <h1>
-                  Tu viaje empieza
-                  <br />
-                  en japonés.
-                </h1>
-                <div className="hero-intro">
-                  <p>
-                    De tu primer <span lang="ja">こんにちは</span>
-                    <br />a entender un mundo nuevo.
-                    <br />
-                    Un pequeño paso cada día.
-                  </p>
-                  <button className="primary" onClick={() => go("/aula")}>
-                    Empezar a aprender <ArrowRight size={19} />
-                  </button>
-                  <span className="small">
-                    A tu ritmo. Desde cero. Sin registro para probar.
-                  </span>
-                </div>
-              </div>
-              <div className="street">
-                <Suspense
-                  fallback={
-                    <div className="street-loading">
-                      Preparando tu primera parada…
-                    </div>
-                  }
-                >
-                  <Street reduced={reduced} />
-                </Suspense>
-                <div className="street-caption">
-                  <button
-                    className="street-translation"
-                    onClick={() =>
-                      setNotice(
-                        "本屋 · hon’ya · librería. En la calle, los caracteres cuentan historias. Pronto podrás leerlas.",
-                      )
-                    }
-                  >
-                    <span lang="ja">本屋</span>
-                    <span>¿Qué dice este letrero?</span>
-                    <ArrowUpRight size={16} />
-                  </button>
-                  <button
-                    className="motion-button"
-                    disabled={systemReduced}
-                    onClick={() =>
-                      update((p) => ({ ...p, reducedMotion: !p.reducedMotion }))
-                    }
-                    aria-pressed={reduced}
-                  >
-                    {reduced ? <Play size={15} /> : <Pause size={15} />}{" "}
-                    {systemReduced
-                      ? "Movimiento reducido del sistema"
-                      : reduced
-                        ? "Activar movimiento"
-                        : "Pausar movimiento"}
-                  </button>
-                </div>
-              </div>
-            </section>
+            <KyotoHero
+              mode={motion}
+              onChange={setMotion}
+              systemReduced={systemReduced}
+              notify={setNotice}
+            />
             <section className="intro-section">
               <div>
                 <span className="large-jp" lang="ja">
@@ -368,7 +322,11 @@ function App() {
                 Entrar al aula <ArrowRight size={18} />
               </button>
             </section>
-            <Footer />
+            <Footer
+              motion={motion}
+              onMotion={setMotion}
+              systemReduced={systemReduced}
+            />
           </>
         ) : !ready ? (
           <div className="loading-state" role="status">
@@ -637,25 +595,18 @@ function App() {
             </section>
             <section className="settings-section">
               <div>
-                <h2>Movimiento reducido</h2>
+                <h2>Animación</h2>
                 <p>
                   {systemReduced
-                    ? "Tu sistema ya solicita movimiento reducido."
-                    : "Detiene la animación de la calle y los desplazamientos decorativos."}
+                    ? "Tu sistema solicita movimiento reducido: mostramos la escena estática."
+                    : "Elige la calidad de la calle o apaga las animaciones."}
                 </p>
               </div>
-              <button
-                role="switch"
-                aria-checked={reduced}
-                disabled={systemReduced}
-                className={`switch ${reduced ? "on" : ""}`}
-                onClick={() =>
-                  update((p) => ({ ...p, reducedMotion: !p.reducedMotion }))
-                }
-              >
-                <span />
-                <span className="sr-only">Reducir movimiento</span>
-              </button>
+              <MotionSelect
+                value={motion}
+                onChange={setMotion}
+                systemReduced={systemReduced}
+              />
             </section>
             <section className="settings-section">
               <div>
@@ -712,7 +663,11 @@ function App() {
               sintetizados y están pendientes de revisión lingüística. No se usa
               el micrófono.
             </p>
-            <Footer />
+            <Footer
+              motion={motion}
+              onMotion={setMotion}
+              systemReduced={systemReduced}
+            />
           </>
         ) : route === "/cuenta" ? (
           <Account userEmail={user?.email} notify={setNotice} />
@@ -759,7 +714,15 @@ function PageTitle({
     </header>
   );
 }
-function Footer() {
+function Footer({
+  motion,
+  onMotion,
+  systemReduced,
+}: {
+  motion: MotionMode;
+  onMotion: (m: MotionMode) => void;
+  systemReduced: boolean;
+}) {
   const github = import.meta.env.VITE_AUTHOR_GITHUB_URL;
   return (
     <footer className="footer">
@@ -775,6 +738,11 @@ function Footer() {
           </a>
         )}
       </nav>
+      <MotionSelect
+        value={motion}
+        onChange={onMotion}
+        systemReduced={systemReduced}
+      />
       <small>
         © {new Date().getFullYear()} Marcos · Idiomas. Versión piloto.
       </small>
@@ -1420,7 +1388,11 @@ function InfoPage({ credits }: { credits: boolean }) {
           </>
         )}
       </article>
-      <Footer />
+      <Footer
+        motion={motion}
+        onMotion={setMotion}
+        systemReduced={systemReduced}
+      />
     </>
   );
 }
