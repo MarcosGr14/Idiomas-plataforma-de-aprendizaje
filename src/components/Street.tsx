@@ -1,3 +1,4 @@
+import { maplePoints } from "../design/maple";
 import { captureEnabled, registerCaptureRenderer } from "../lib/capture";
 import { useEffect, useRef } from "react";
 import * as T from "three";
@@ -91,26 +92,7 @@ export default function Street({
       c.translate(s / 2, s / 2);
       c.fillStyle = "#ffffff";
       c.beginPath();
-      const pts = [
-        [0, -59],
-        [9, -27],
-        [30, -48],
-        [27, -18],
-        [55, -26],
-        [41, -4],
-        [59, 4],
-        [24, 21],
-        [7, 23],
-        [0, 52],
-        [-4, 25],
-        [-30, 23],
-        [-56, 5],
-        [-41, -4],
-        [-55, -28],
-        [-25, -18],
-        [-30, -48],
-        [-8, -27],
-      ];
+      const pts = maplePoints;
       pts.forEach(([x, y], i) => (i ? c.lineTo(x, y) : c.moveTo(x, y)));
       c.closePath();
       c.fill();

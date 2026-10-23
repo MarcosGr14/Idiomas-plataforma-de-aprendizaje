@@ -31,3 +31,10 @@
 - Captura con Playwright, fuentes locales, dispositivos genéricos y texto español.
 - Scripts para previsualizar cada escena a 480p, generar másteres/pósteres y regenerar con un comando.
 - Música opcional documentada; sin pistas de terceros incluidas.
+
+## 2026-10-23 — Firma de tinta, sistema compartido
+
+- Tokens de marca y movimiento compartidos desde `src/design`; papel #FBF8F3, tinta #14110F y rojo #C8102E aprobados por Marcos.
+- Sello 文 y carga de fuentes compartidos entre la web y la promo; Yuji Boku limitado a un subconjunto de 2 KiB para la apertura.
+- InkBrush SVG determinista con presión, contorno irregular, cola seca, gotas y chorreones acotados; InkCharacter conserva orden y dirección KanjiVG.
+- Fuentes/datos con licencias locales y atribución en Créditos. Sin cambios en la política de modos ni en el aprendizaje.

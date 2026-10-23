@@ -1,3 +1,4 @@
+import { BrandSeal } from "./components/brand/BrandStyles";
 import { appNow } from "./lib/capture";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -49,8 +50,8 @@ function useRoute() {
 function Brand() {
   return (
     <a className="brand" href="#/" aria-label="Idiomas, inicio">
-      <span className="brand-mark" lang="ja">
-        文
+      <span className="brand-mark">
+        <BrandSeal size={29} />
       </span>
       <span>
         idiomas<span className="brand-dot">.</span>
@@ -1338,6 +1339,19 @@ function InfoPage({
               React, Vite, Three.js, Lucide y Supabase. Manrope y Noto Serif JP
               se distribuyen bajo SIL Open Font License; sus licencias acompañan
               los paquetes del proyecto.
+            </p>
+            <h2>Tinta y orden de trazos</h2>
+            <p>
+              KanjiVG, Ulrich Apel y colaboradores,{" "}
+              <a href="https://creativecommons.org/licenses/by-sa/3.0/">
+                CC BY-SA 3.0
+              </a>
+              . Datos de trazos y muestras geométricas adaptadas bajo la misma
+              licencia.{" "}
+              <a href="/licenses/KanjiVG-CC-BY-SA-3.0.txt">Licencia</a>. Fuente
+              de apertura Yuji Boku, Yuji Project Authors,{" "}
+              <a href="/fonts/OFL-Yuji-Boku.txt">SIL OFL 1.1</a>. Tinta y hojas
+              procedurales del proyecto.
             </p>
             <h2>Aprendizaje</h2>
             <p>

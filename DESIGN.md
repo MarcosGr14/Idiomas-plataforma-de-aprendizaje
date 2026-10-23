@@ -2,10 +2,10 @@
 name: Idiomas
 description: Japonés en contexto y un espacio claro para estudiar.
 colors:
-  paper: "#f9f9f6"
-  ink: "#252923"
+  paper: "#FBF8F3"
+  ink: "#14110F"
   muted: "#64685e"
-  red: "#c82f27"
+  red: "#C8102E"
   red-hover: "#a92620"
   surface: "#efefea"
   line: "#dcded4"

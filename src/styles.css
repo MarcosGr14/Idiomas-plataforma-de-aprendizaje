@@ -1,12 +1,9 @@
 :root {
   font-family: "Manrope Variable", sans-serif;
-  color: #252923;
-  background: #f9f9f6;
+  color: var(--ink);
+  background: var(--paper);
   font-synthesis: none;
-  --paper: #f9f9f6;
-  --ink: #252923;
   --muted: #64685e;
-  --red: #c82f27;
   --surface: #efefea;
   --line: #dcded4;
   --ease: cubic-bezier(0.23, 1, 0.32, 1);
@@ -98,7 +95,7 @@ select:focus-visible {
 }
 ::selection {
   background: #f1c2aa;
-  color: #252923;
+  color: var(--ink);
 }
 input {
   caret-color: var(--red);
@@ -1313,7 +1310,7 @@ input::placeholder {
   bottom: 24px;
   right: 24px;
   max-width: 480px;
-  background: #252923;
+  background: var(--ink);
   color: white;
   padding: 16px 15px 16px 22px;
   display: flex;
@@ -2115,7 +2112,7 @@ html[data-motion="reduced"] * {
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  background: #c82f27;
+  background: var(--red);
   color: white;
   min-height: 52px;
 }

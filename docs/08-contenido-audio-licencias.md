@@ -27,3 +27,10 @@ contenido lingüístico revisado ni disponibilidad del curso de mandarín.
 - Remotion 4.0.404: herramienta de render, bajo [Remotion License](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md), no MIT.
   Uso local por creador individual; revisar condiciones antes de ampliar a una organización.
 - Playwright: Apache-2.0. ffmpeg: herramienta local de codificación; no se redistribuyen sus binarios.
+
+## Sistema de tinta compartida — 2026-10-23
+
+- KanjiVG, Ulrich Apel y colaboradores, CC BY-SA 3.0: SVG originales de 日, 本, 語 e い en `content/kanjivg/`, obtenidos de https://github.com/KanjiVG/kanjivg/tree/master/kanji. Orden y dirección conservados; muestras geométricas derivadas en `src/design/kanjivg.json`, bajo la misma CC BY-SA 3.0. Copia de licencia en `public/licenses/KanjiVG-CC-BY-SA-3.0.txt`. Regeneración: `node promo/scripts/prepare-ink.mjs` desde la raíz.
+- Yuji Boku: copyright 2021 The Yuji Project Authors, SIL OFL 1.1. Origen https://github.com/google/fonts/tree/main/ofl/yujiboku. Subconjunto WOFF2 de 日本語 para la apertura; licencia en `public/fonts/OFL-Yuji-Boku.txt`. La fuente no se usa como guía de orden de trazos.
+- Contornos de presión, cola seca, salpicaduras y máscaras: código procedural original; no texturas de stock. El contorno de arce comparte los puntos de la escena Three original.
+- Sin SFX o música de terceros. Atribución de los datos KanjiVG también debe acompañar los videos al redistribuirlos; véase `promo/ATTRIBUTION.txt`.

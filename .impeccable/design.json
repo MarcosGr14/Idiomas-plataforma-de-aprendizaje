@@ -313,7 +313,7 @@
       "refersTo": "button-primary",
       "description": "Acción con verbo y foco visible.",
       "html": "<button class=\"ds-button-primary\">Empezar a aprender</button>",
-      "css": ".ds-button-primary{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:48px;padding:13px 23px;border:0;border-radius:5px;font:650 13px \"Manrope Variable\",sans-serif;cursor:pointer;transition:transform 140ms cubic-bezier(.23,1,.32,1),background-color 140ms ease;background:var(--red, #c82f27);color:#fff}.ds-button-primary:focus-visible{outline:3px solid #a94416;outline-offset:4px}.ds-button-primary:active{transform:scale(.98)}@media(hover:hover) and (pointer:fine){.ds-button-primary:hover{background:#a92620}}@media(prefers-reduced-motion:reduce){.ds-button-primary{transition:none}}"
+      "css": ".ds-button-primary{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:48px;padding:13px 23px;border:0;border-radius:5px;font:650 13px \"Manrope Variable\",sans-serif;cursor:pointer;transition:transform 140ms cubic-bezier(.23,1,.32,1),background-color 140ms ease;background:var(--red, #C8102E);color:#fff}.ds-button-primary:focus-visible{outline:3px solid #a94416;outline-offset:4px}.ds-button-primary:active{transform:scale(.98)}@media(hover:hover) and (pointer:fine){.ds-button-primary:hover{background:#a92620}}@media(prefers-reduced-motion:reduce){.ds-button-primary{transition:none}}"
     },
     {
       "name": "Botón secondary",
@@ -321,7 +321,7 @@
       "refersTo": "button-secondary",
       "description": "Acción con verbo y foco visible.",
       "html": "<button class=\"ds-button-secondary\">Volver a las lecciones</button>",
-      "css": ".ds-button-secondary{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:48px;padding:13px 23px;border:0;border-radius:5px;font:650 13px \"Manrope Variable\",sans-serif;cursor:pointer;transition:transform 140ms cubic-bezier(.23,1,.32,1),background-color 140ms ease;background:#e7e8e1;color:var(--ink, #252923)}.ds-button-secondary:focus-visible{outline:3px solid #a94416;outline-offset:4px}.ds-button-secondary:active{transform:scale(.98)}@media(hover:hover) and (pointer:fine){.ds-button-secondary:hover{background:#dadcd1}}@media(prefers-reduced-motion:reduce){.ds-button-secondary{transition:none}}"
+      "css": ".ds-button-secondary{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:48px;padding:13px 23px;border:0;border-radius:5px;font:650 13px \"Manrope Variable\",sans-serif;cursor:pointer;transition:transform 140ms cubic-bezier(.23,1,.32,1),background-color 140ms ease;background:#e7e8e1;color:var(--ink, #14110F)}.ds-button-secondary:focus-visible{outline:3px solid #a94416;outline-offset:4px}.ds-button-secondary:active{transform:scale(.98)}@media(hover:hover) and (pointer:fine){.ds-button-secondary:hover{background:#dadcd1}}@media(prefers-reduced-motion:reduce){.ds-button-secondary{transition:none}}"
     },
     {
       "name": "Campo de búsqueda",
@@ -329,14 +329,14 @@
       "refersTo": "input",
       "description": "Campo claro para buscar vocabulario.",
       "html": "<label class=\"ds-field\">Buscar vocabulario<input type=\"search\" placeholder=\"Español, japonés o rōmaji\"></label>",
-      "css": ".ds-field{display:grid;gap:8px;color:var(--ink,#252923);font:13px \"Manrope Variable\",sans-serif}.ds-field input{background:white;border:1px solid #cbd0c1;border-radius:5px;padding:12px 14px;min-height:46px;color:var(--ink,#252923);font:inherit}.ds-field input:focus-visible{outline:3px solid #a94416;outline-offset:4px}"
+      "css": ".ds-field{display:grid;gap:8px;color:var(--ink,#14110F);font:13px \"Manrope Variable\",sans-serif}.ds-field input{background:white;border:1px solid #cbd0c1;border-radius:5px;padding:12px 14px;min-height:46px;color:var(--ink,#14110F);font:inherit}.ds-field input:focus-visible{outline:3px solid #a94416;outline-offset:4px}"
     },
     {
       "name": "Navegación de aula",
       "kind": "nav",
       "description": "Destino activo sobre relleno neutro.",
       "html": "<nav class=\"ds-nav\"><a href=\"#aula\" aria-current=\"page\">Mi aprendizaje</a><a href=\"#biblioteca\">Vocabulario</a></nav>",
-      "css": ".ds-nav{display:grid;gap:6px;font:12px \"Manrope Variable\",sans-serif;color:var(--ink,#252923)}.ds-nav a{display:flex;align-items:center;min-height:44px;padding:10px 12px;border-radius:5px;color:inherit;text-decoration:none}.ds-nav a[aria-current]{background:#e7e8e0;font-weight:700}.ds-nav a:hover{background:#e9eae3}.ds-nav a:focus-visible{outline:3px solid #a94416;outline-offset:4px}"
+      "css": ".ds-nav{display:grid;gap:6px;font:12px \"Manrope Variable\",sans-serif;color:var(--ink,#14110F)}.ds-nav a{display:flex;align-items:center;min-height:44px;padding:10px 12px;border-radius:5px;color:inherit;text-decoration:none}.ds-nav a[aria-current]{background:#e7e8e0;font-weight:700}.ds-nav a:hover{background:#e9eae3}.ds-nav a:focus-visible{outline:3px solid #a94416;outline-offset:4px}"
     },
     {
       "name": "Panel de repaso",
@@ -344,7 +344,7 @@
       "refersTo": "review-panel",
       "description": "Superficie plana con carácter protagonista.",
       "html": "<section class=\"ds-review\"><span lang=\"ja\">あ</span><h2>Recuerda antes de mirar</h2><p>¿Qué sonido recuerdas?</p></section>",
-      "css": ".ds-review{background:var(--surface,#efefea);color:var(--ink,#252923);padding:32px;text-align:center;font:14px \"Manrope Variable\",sans-serif}.ds-review span{display:block;margin:24px 0;font:65px \"Noto Serif JP\",serif}.ds-review h2{font-size:25px;font-weight:600;letter-spacing:-.035em}.ds-review p{line-height:1.75}"
+      "css": ".ds-review{background:var(--surface,#efefea);color:var(--ink,#14110F);padding:32px;text-align:center;font:14px \"Manrope Variable\",sans-serif}.ds-review span{display:block;margin:24px 0;font:65px \"Noto Serif JP\",serif}.ds-review h2{font-size:25px;font-weight:600;letter-spacing:-.035em}.ds-review p{line-height:1.75}"
     },
     {
       "name": "Respuesta seleccionable",
@@ -352,7 +352,7 @@
       "refersTo": "answer",
       "description": "Respuesta de cuestionario con estados diferenciados.",
       "html": "<button class=\"ds-answer\" aria-pressed=\"false\">あ · a</button>",
-      "css": ".ds-answer{display:flex;align-items:center;min-height:64px;padding:16px 20px;border:2px solid transparent;border-radius:5px;background:var(--paper,#f9f9f6);color:var(--ink,#252923);font:17px \"Manrope Variable\",\"Noto Serif JP\",sans-serif;cursor:pointer}.ds-answer:hover{background:#e3e5db}.ds-answer[aria-pressed=true]{border-color:var(--ink,#252923);background:#e1e3d9}.ds-answer:focus-visible{outline:3px solid #a94416;outline-offset:4px}"
+      "css": ".ds-answer{display:flex;align-items:center;min-height:64px;padding:16px 20px;border:2px solid transparent;border-radius:5px;background:var(--paper,#FBF8F3);color:var(--ink,#14110F);font:17px \"Manrope Variable\",\"Noto Serif JP\",sans-serif;cursor:pointer}.ds-answer:hover{background:#e3e5db}.ds-answer[aria-pressed=true]{border-color:var(--ink,#14110F);background:#e1e3d9}.ds-answer:focus-visible{outline:3px solid #a94416;outline-offset:4px}"
     },
     {
       "name": "Selector de movimiento del hero",
