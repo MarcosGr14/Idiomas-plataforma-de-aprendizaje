@@ -28,3 +28,11 @@ visual de la web ni se anuncia mandarín como disponible. Previews por escena a
 ## 2026-10-23 — Sistema de tinta aprobado
 
 Marcos aprobó el moodboard: papel #FBF8F3, tinta #14110F, rojo #C8102E y mayor energía comercial. Tokens, fuentes y sello se extraen a la app como fuente de verdad para Remotion. InkBrush recibe progreso y semilla; no programa animaciones ni altera la política completo/reducido/apagado. KanjiVG guía la escritura; Yuji Boku queda solo en la apertura. Sin textura global ni recursos stock. Cambio visual, sin nuevas pruebas funcionales; comprobación de tipos para integración.
+
+## 2026-10-23 — Intro y continuidad de tinta
+
+- Intro de 3,5 s sobre papel plano: 日本語 con recorridos KanjiVG, Yuji Boku y sello 文 compartido.
+- Barridos SVG de InkBrush entre los siete capítulos, hojas del hero, titulares por palabras y subrayados rojos de punta seca.
+- Mensaje unificado «Un mundo nuevo. Empieza en japonés.»; cierre con el mismo sello.
+- Dos composiciones independientes y tokens de movimiento importados de la app; sin grano ni viñeta.
+- Ajustes estéticos: sin nuevas pruebas de lógica ni cambios en la política de movimiento. Capturas y renders de revisión en curso.

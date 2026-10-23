@@ -16,6 +16,8 @@ export const brand = {
     camera: "#080b0a",
     shadow: "#14110F26",
     introMuted: "#b7b8ae",
+    heroScrim: "#05080595",
+    reflection: "#ffffff0a",
   },
   fonts: {
     body: "Manrope Variable",
@@ -33,9 +35,13 @@ export const motion = {
   enter: { damping: 21, stiffness: 155, mass: 0.85 },
   seal: { damping: 11, stiffness: 190, mass: 0.8 },
   ease: [0.16, 1, 0.3, 1],
+  wipeEase: [0.65, 0, 0.35, 1],
   heading: {
     landscape: { x: 110, y: 75, width: 1500 },
     vertical: { x: 80, y: 110, width: 920 },
+    aside: { x: 110, y: 170, width: 830 },
+    heroLandscape: { x: 110, y: 100, width: 1350 },
+    heroVertical: { x: 80, y: 150, width: 920 },
   },
   sceneDurations: [105, 165, 180, 240, 180, 150, 180],
 } as const;

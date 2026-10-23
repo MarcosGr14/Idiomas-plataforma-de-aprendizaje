@@ -1,5 +1,14 @@
+import { browserPath } from "./browser.mjs";
 import { chromium } from "playwright";
-import { mkdir, readFile, writeFile, cp, rm, access } from "node:fs/promises";
+import {
+  mkdir,
+  readFile,
+  writeFile,
+  cp,
+  rm,
+  access,
+  rename,
+} from "node:fs/promises";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
@@ -8,7 +17,7 @@ const base = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const root = resolve(base, "..");
 const url = process.env.PROMO_SITE || "http://localhost:5173";
 const out = resolve(base, "public/captures");
-const executablePath = process.env.CHROME_PATH || "/opt/brave.com/brave/brave";
+const executablePath = await browserPath();
 const FPS = 30;
 const only = process.env.PROMO_ONLY?.split(",");
 await mkdir(out, { recursive: true });
@@ -22,12 +31,6 @@ await cp(
     "node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2",
   ),
   resolve(base, "public/fonts/manrope.woff2"),
-);
-await writeFile(
-  resolve(base, "src/fontFaces.ts"),
-  "export const fontFaces=" +
-    JSON.stringify(await readFile(resolve(root, "src/fonts.css"), "utf8")) +
-    ";\n",
 );
 const course = JSON.parse(
   await readFile(resolve(root, "content/japanese-pilot.json"), "utf8"),
@@ -148,13 +151,19 @@ async function clip(
     const t = frame / FPS,
       p = frame / Math.max(1, n - 1);
     await step(page, frame, t, p);
+    const file = resolve(folder, `${String(frame).padStart(5, "0")}.png`);
+    if (process.env.PROMO_RESUME) {
+      try {
+        await access(file);
+        continue;
+      } catch {}
+    }
     await clock(page, t, {
       pointerX: Math.sin(p * Math.PI * 2) * 0.65,
       pointerY: Math.sin(p * Math.PI) * 0.15,
       scroll: p * 0.65,
     });
     const shot = selector ? page.locator(selector) : page;
-    const file = resolve(folder, `${String(frame).padStart(5, "0")}.png`);
     if (selector) {
       const data = await page
         .locator(selector + " canvas")
@@ -176,6 +185,8 @@ async function clip(
       String(FPS),
       "-i",
       resolve(folder, "%05d.png"),
+      "-vf",
+      "pad=ceil(iw/2)*2:ceil(ih/2)*2",
       "-c:v",
       "libx264",
       "-crf",
@@ -186,10 +197,11 @@ async function clip(
       "yuv420p",
       "-movflags",
       "+faststart",
-      target,
+      target + ".part.mp4",
     ],
     { stdio: "inherit" },
   );
+  await rename(target + ".part.mp4", target);
   await rm(folder, { recursive: true, force: true });
 }
 try {
@@ -275,6 +287,7 @@ try {
     async (p) => {
       await p.locator("#kana").selectOption("い");
       await p.locator(".writing-square").scrollIntoViewIfNeeded();
+      await p.evaluate(() => window.scrollBy(0, -35));
       box = await p.locator(".writing-square canvas").boundingBox();
       points = [
         [

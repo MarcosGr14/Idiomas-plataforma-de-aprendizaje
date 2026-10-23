@@ -82,10 +82,18 @@ export function InkBrush({
         <mask
           id={id}
           maskUnits="userSpaceOnUse"
-          x="-10000"
-          y="-10000"
-          width="20000"
-          height="20000"
+          x={Math.min(...visible.map((p) => p[0])) - width}
+          y={Math.min(...visible.map((p) => p[1])) - width}
+          width={
+            Math.max(...visible.map((p) => p[0])) -
+            Math.min(...visible.map((p) => p[0])) +
+            width * 2
+          }
+          height={
+            Math.max(...visible.map((p) => p[1])) -
+            Math.min(...visible.map((p) => p[1])) +
+            width * 2
+          }
         >
           <polygon points={polygon} fill="white" />
           {dryPaths.map((d, i) => (
@@ -165,6 +173,71 @@ export function InkCharacter({
           dry={0.6}
         />
       ))}
+    </svg>
+  );
+}
+
+/** Typeface contour, revealed in the source stroke sequence, with a final ink settle. */
+export function InkCalligraphy({
+  character,
+  progress,
+  seed = 300,
+}: {
+  character: keyof typeof glyphs;
+  progress: number;
+  seed?: number;
+}) {
+  const id = `calligraphy-${seed}`;
+  const strokes = glyphs[character];
+  return (
+    <svg
+      viewBox="0 0 109 109"
+      role="img"
+      aria-label={character}
+      lang="ja"
+      style={{ width: "100%", height: "100%", overflow: "visible" }}
+    >
+      <defs>
+        <mask
+          id={id}
+          maskUnits="userSpaceOnUse"
+          x="-10"
+          y="-10"
+          width="129"
+          height="129"
+        >
+          <rect
+            x="-10"
+            y="-10"
+            width="129"
+            height="129"
+            fill="white"
+            opacity={clamp((progress - 0.96) / 0.04)}
+          />
+          {strokes.map((s, i) => (
+            <InkBrush
+              key={i}
+              points={s.points as [number, number][]}
+              width={24}
+              progress={clamp(progress * strokes.length - i)}
+              color="white"
+              seed={seed + i}
+              dry={0.3}
+            />
+          ))}
+        </mask>
+      </defs>
+      <text
+        x="54.5"
+        y="94"
+        textAnchor="middle"
+        fontFamily={brand.fonts.calligraphy}
+        fontSize="108"
+        fill={brand.colors.ink}
+        mask={`url(#${id})`}
+      >
+        {character}
+      </text>
     </svg>
   );
 }

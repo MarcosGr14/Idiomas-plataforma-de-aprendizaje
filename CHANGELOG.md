@@ -38,3 +38,11 @@
 - Sello 文 y carga de fuentes compartidos entre la web y la promo; Yuji Boku limitado a un subconjunto de 2 KiB para la apertura.
 - InkBrush SVG determinista con presión, contorno irregular, cola seca, gotas y chorreones acotados; InkCharacter conserva orden y dirección KanjiVG.
 - Fuentes/datos con licencias locales y atribución en Créditos. Sin cambios en la política de modos ni en el aprendizaje.
+
+## 2026-10-23 — Intro y continuidad de tinta
+
+- Intro de 3,5 s sobre papel plano: 日本語 con recorridos KanjiVG, Yuji Boku y sello 文 compartido.
+- Barridos SVG de InkBrush entre los siete capítulos, hojas del hero, titulares por palabras y subrayados rojos de punta seca.
+- Mensaje unificado «Un mundo nuevo. Empieza en japonés.»; cierre con el mismo sello.
+- Dos composiciones independientes y tokens de movimiento importados de la app; sin grano ni viñeta.
+- Ajustes estéticos: sin nuevas pruebas de lógica ni cambios en la política de movimiento. Capturas y renders de revisión en curso.

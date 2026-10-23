@@ -5,9 +5,9 @@ body {
   margin: 0;
 }
 .scene {
-  background: #f7f7f2;
-  color: #202520;
-  font-family: Manrope, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), sans-serif;
   overflow: hidden;
 }
 .heading {
@@ -20,7 +20,7 @@ body {
 h1 {
   font-size: 76px;
   line-height: 1.08;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.04em;
   font-weight: 550;
   margin: 0;
 }
@@ -48,11 +48,12 @@ p {
 }
 .device {
   position: relative;
-  filter: drop-shadow(0 24px 28px #15201526);
+  /* taste-skill-ignore: user requests soft shadows on floating device mockups. */
+  filter: drop-shadow(0 24px 28px var(--shadow)); /* taste-skill-ignore: requested floating devices */
 }
 .bezel {
   padding: 16px;
-  background: #262a29;
+  background: var(--bezel);
   border-radius: 22px;
   position: relative;
 }
@@ -60,20 +61,20 @@ p {
   aspect-ratio: 1440/900;
   overflow: hidden;
   border-radius: 8px;
-  background: #fff;
+  background: var(--white);
 }
 .camera {
   position: absolute;
   width: 5px;
   height: 5px;
-  background: #080b0a;
+  background: var(--camera);
   border-radius: 50%;
   top: 5px;
   left: calc(50% - 2px);
 }
 .base {
   height: 18px;
-  background: #aab0ad;
+  background: var(--metal);
   width: 110%;
   margin-left: -5%;
   border-radius: 2px 2px 60% 60%;
@@ -81,14 +82,14 @@ p {
 .neck {
   height: 65px;
   width: 12%;
-  background: #b2b7b2;
+  background: var(--metal);
   margin: auto;
   clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
 }
 .foot {
   height: 13px;
   width: 34%;
-  background: #989f9a;
+  background: var(--foot);
   margin: auto;
   border-radius: 50%;
 }
@@ -111,8 +112,8 @@ p {
   border-radius: 8px;
 }
 .scene-0 {
-  background: #151715;
-  color: #f7f7f2;
+  background: var(--night);
+  color: var(--paper);
 }
 .intro {
   position: absolute;
@@ -123,18 +124,18 @@ p {
   font:
     270px "Noto Serif JP",
     serif;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.04em;
   margin-bottom: 30px;
 }
 .intro h1 {
   font-size: 85px;
 }
 .intro p {
-  color: #b7b8ae;
+  color: var(--introMuted);
   margin-top: 40px;
 }
 .intro p span {
-  font-family: "Noto Serif JP", serif;
+  font-family: var(--font-japanese), serif;
 }
 .brand-small {
   position: absolute;
@@ -143,13 +144,14 @@ p {
   font-size: 30px;
 }
 .scene-1 {
-  color: white;
-  background: #151715;
+  color: var(--white);
+  background: var(--night);
 }
 .hero-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #05080595, transparent 70%);
+  /* taste-skill-ignore: neutral readability scrim over the real hero. */
+  background: linear-gradient(180deg, var(--heroScrim), transparent 70%); /* taste-skill-ignore: neutral scrim */
 }
 .scene-1 .heading {
   top: 85px;
@@ -161,8 +163,8 @@ p {
 }
 .scene-2 .main-device {
   top: 270px;
-  left: 350px;
-  width: 1220px;
+  left: 390px;
+  width: 1140px;
   transform-origin: 50% 70%;
 }
 .scene-3 .heading,
@@ -184,7 +186,7 @@ p {
   font:
     240px "Noto Serif JP",
     serif;
-  color: #b63226;
+  color: var(--red);
 }
 .lesson-aside p {
   font-size: 30px;
@@ -200,19 +202,19 @@ p {
   display: block;
   width: 7px;
   border-radius: 5px;
-  background: #b63226;
+  background: var(--red);
 }
 .scene-4 .main-device {
   top: 250px;
-  left: 375px;
-  width: 1170px;
+  left: 435px;
+  width: 1050px;
 }
 .demo {
   position: absolute;
   bottom: 30px;
   left: 110px;
   font-size: 19px;
-  color: #62685f;
+  color: var(--muted);
 }
 .scene-5 .main-device {
   left: 1230px;
@@ -236,12 +238,12 @@ p {
 .brand {
   font-size: 58px;
   font-weight: 650;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
   margin-bottom: 20px;
 }
 .brand > span {
-  font-family: "Noto Serif JP", serif;
-  color: #b63226;
+  font-family: var(--font-japanese), serif;
+  color: var(--red);
 }
 .closing h1 {
   font-size: 68px;
@@ -252,7 +254,7 @@ p {
 .trio {
   position: absolute;
   left: 130px;
-  top: 380px;
+  top: 360px;
   width: 1650px;
   height: 650px;
 }
@@ -341,4 +343,114 @@ p {
   top: 680px;
   width: 970px;
   height: 1170px;
+}
+
+.scene-0 {
+  background: var(--paper);
+  color: var(--ink);
+}
+.brush-intro {
+  position: absolute;
+  left: 170px;
+  top: 270px;
+  display: flex;
+  width: 1400px;
+  height: 460px;
+  gap: 10px;
+}
+.brush-character {
+  width: 450px;
+  height: 450px;
+}
+.intro-seal {
+  position: absolute;
+  right: 170px;
+  bottom: 190px;
+}
+.intro-line {
+  position: absolute;
+  left: 230px;
+  top: 775px;
+  width: 1170px;
+  height: 50px;
+}
+.intro-line svg {
+  width: 100%;
+  height: 100%;
+}
+.keyword {
+  position: relative;
+  display: inline-block;
+}
+.keyword > svg {
+  position: absolute;
+  width: 100%;
+  height: 24px;
+  left: 0;
+  bottom: -19px;
+  overflow: visible;
+}
+.heading p {
+  margin-top: 40px;
+}
+.scene-1 .heading {
+}
+.scene-1 h1 {
+  font-size: 106px;
+  line-height: 1.06;
+  max-width: 1200px;
+}
+.ink-kana {
+  width: 260px;
+  height: 260px;
+}
+.device .bezel:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  /* taste-skill-ignore: user requests subtle reflections on device glass. */
+  background: linear-gradient(120deg, var(--reflection), transparent 25%); /* taste-skill-ignore: requested reflection */
+}
+.vertical .brush-intro {
+  left: 65px;
+  top: 590px;
+  width: 950px;
+  height: 320px;
+  gap: 0;
+}
+.vertical .brush-character {
+  width: 316px;
+  height: 316px;
+}
+.vertical .intro-line {
+  left: 100px;
+  top: 970px;
+  width: 880px;
+  height: 40px;
+}
+.vertical .intro-seal {
+  right: 130px;
+  bottom: 540px;
+}
+.vertical.scene-1 .heading {
+}
+.vertical.scene-1 h1 {
+  font-size: 90px;
+  max-width: 900px;
+}
+.vertical .heading p {
+  margin-top: 42px;
+}
+.vertical .keyword > svg {
+  bottom: -21px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.scene-6 .closing {
+  overflow: visible;
 }

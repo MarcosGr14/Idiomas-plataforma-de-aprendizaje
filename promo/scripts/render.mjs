@@ -1,3 +1,5 @@
+import { motion } from "../../src/design/tokens.ts";
+import { browserPath } from "./browser.mjs";
 import { bundle } from "@remotion/bundler";
 import {
   selectComposition,
@@ -6,12 +8,11 @@ import {
 } from "@remotion/renderer";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { mkdir, writeFile, access } from "node:fs/promises";
+import { mkdir, writeFile, access, rename } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 const base = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const mode = process.argv[2] || "preview";
-const browserExecutable =
-  process.env.CHROME_PATH || "/opt/brave.com/brave/brave";
+const browserExecutable = await browserPath();
 const out = resolve(base, "out");
 await mkdir(out, { recursive: true });
 const serveUrl = await bundle({
@@ -26,8 +27,12 @@ const common = {
   inputProps,
   chromiumOptions: { gl: "swangle" },
   timeoutInMilliseconds: 120000,
+  onBrowserLog: (log) => {
+    if (log.type === "error") console.error(log.text);
+  },
 };
-const durations = [120, 150, 180, 240, 180, 150, 180];
+const selected = process.env.PROMO_SCENES?.split(",").map(Number);
+const durations = motion.sceneDurations;
 const exists = async (p) => {
   try {
     await access(p);
@@ -47,10 +52,10 @@ async function video(id, file, frameRange, scale = 1) {
     ...common,
     composition,
     codec: "h264",
-    outputLocation: file,
+    outputLocation: file + ".part.mp4",
     frameRange,
     scale,
-    concurrency: 2,
+    concurrency: mode === "preview" ? 4 : 2,
     offthreadVideoThreads: 2,
     crf: mode === "preview" ? 25 : 18,
     x264Preset: mode === "preview" ? "veryfast" : "fast",
@@ -62,6 +67,7 @@ async function video(id, file, frameRange, scale = 1) {
       }
     },
   });
+  await rename(file + ".part.mp4", file);
 }
 if (mode === "preview") {
   const dir = resolve(out, "previews");
@@ -70,6 +76,10 @@ if (mode === "preview") {
     let from = 0;
     const clips = [];
     for (let i = 0; i < durations.length; i++) {
+      if (selected && !selected.includes(i + 1)) {
+        from += durations[i];
+        continue;
+      }
       const file = resolve(dir, `${orientation.toLowerCase()}-${i + 1}.mp4`);
       await video(`Preview${orientation}`, file, [
         from,
@@ -78,6 +88,7 @@ if (mode === "preview") {
       clips.push(file);
       from += durations[i];
     }
+    if (selected) continue;
     const list = resolve(base, ".cache", `${orientation}.txt`);
     await writeFile(
       list,
@@ -116,26 +127,31 @@ if (mode === "preview") {
 } else if (mode !== "stills") {
   throw new Error("Use preview, final or stills");
 }
-for (const orientation of ["Landscape", "Vertical"]) {
-  const composition = await selectComposition({
-    ...common,
-    id: `Promo${orientation}`,
-  });
-  const frames =
-    mode === "stills" ? [70, 210, 390, 570, 780, 960, 1130] : [1130];
-  for (let i = 0; i < frames.length; i++)
-    await renderStill({
+if (!selected)
+  for (const orientation of ["Landscape", "Vertical"]) {
+    const composition = await selectComposition({
       ...common,
-      composition,
-      frame: frames[i],
-      output: resolve(
-        out,
-        mode === "stills"
-          ? `${orientation.toLowerCase()}-${i + 1}.png`
-          : orientation === "Landscape"
-            ? "poster.png"
-            : "poster-vertical.png",
-      ),
+      id: `Promo${orientation}`,
     });
-}
+    const frames =
+      mode === "stills"
+        ? process.env.PROMO_FRAMES?.split(",").map(Number) || [
+            80, 210, 390, 570, 780, 960, 1130,
+          ]
+        : [1130];
+    for (let i = 0; i < frames.length; i++)
+      await renderStill({
+        ...common,
+        composition,
+        frame: frames[i],
+        output: resolve(
+          out,
+          mode === "stills"
+            ? `${orientation.toLowerCase()}-${process.env.PROMO_FRAMES ? `frame-${frames[i]}` : i + 1}.png`
+            : orientation === "Landscape"
+              ? "poster.png"
+              : "poster-vertical.png",
+        ),
+      });
+  }
 console.log(`Completed ${mode}`);

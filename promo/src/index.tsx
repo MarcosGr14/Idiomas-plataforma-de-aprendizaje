@@ -1,3 +1,4 @@
+import { motion } from "../../src/design/tokens";
 import React from "react";
 import { Composition, registerRoot } from "remotion";
 import { Promo } from "./Promo";
@@ -13,8 +14,8 @@ const Root = () => (
         key={String(id)}
         id={String(id)}
         component={Promo}
-        durationInFrames={1200}
-        fps={30}
+        durationInFrames={motion.sceneDurations.reduce((a, b) => a + b, 0)}
+        fps={motion.fps}
         width={Number(width)}
         height={Number(height)}
         defaultProps={{ vertical: Boolean(vertical), publicUrl: "" }}

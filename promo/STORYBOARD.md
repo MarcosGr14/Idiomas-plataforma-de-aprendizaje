@@ -1,24 +1,40 @@
-# Un pequeño paso. Un mundo nuevo.
+# Tinta que abre un mundo
 
-Guion aprobado por Marcos. 40 segundos, 30 fps, español. Manrope y Noto Serif JP;
-negro cálido, papel claro, rojo de marca, ámbar del hero. Keynote sobria: dispositivos
-propios, sombras suaves, transiciones amortiguadas y revelado por palabras.
+Guion aprobado por Marcos el 23 de octubre de 2026. 40 segundos, 30 fps.
+Una pincelada compartida con la aplicación une la caligrafía, el callejón y las
+pantallas reales. Energía en entradas y barridos; pausas para leer el producto.
 
-| Tiempo | Escena | Texto |
+| Tiempo | Escena | Texto / gesto |
 |---|---|---|
-| 0–4 | Caracteres sobre oscuro; mandarín secundario | Japonés, primero. Mandarín, próximamente. |
-| 4–9 | Callejón real, parallax y partículas | Un mundo nuevo. |
-| 9–15 | Laptop, scroll y diagnóstico real | Encuentra tu punto de partida. |
-| 15–23 | Celular: lección, práctica libre de escritura, audio | Escucha. Lee. Escribe. |
-| 23–29 | Progreso demo y biblioteca disponible | Cada día cuenta. |
-| 29–34 | Selector completo/reducido/apagado | A tu ritmo. |
-| 34–40 | Tres dispositivos y logo | Idiomas. Tu viaje empieza en japonés. |
+| 0–3,5 s | Papel plano, 日本語 trazado en orden KanjiVG con máscara sobre Yuji Boku; sello 文 con rebote | Pincelada roja y barrido que revela Kioto |
+| 3,5–9 s | Callejón real en movimiento, hojas y parallax | Un mundo nuevo. Empieza en japonés. |
+| 9–15 s | Laptop o celular, inicio y diagnóstico real | Encuentra tu punto de partida. |
+| 15–23 s | Lección, práctica libre y audio; い con el mismo pincel | Escucha. Lee. Escribe. |
+| 23–29 s | Progreso demo y biblioteca existente | Cada día cuenta. |
+| 29–34 s | Selector completo/reducido/apagado | A tu ritmo. |
+| 34–40 s | Tres dispositivos, sello de apertura y marca | Idiomas. Tu viaje empieza en japonés. |
 
-Vertical: composición independiente; celular protagonista, textos arriba, laptop y
-monitor alternados, cierre escalonado. No se recorta el montaje horizontal.
-La escritura no valida trazos; no se anuncian unidades ni bibliotecas inexistentes.
-Datos demo identificados como demostración, sin cuentas reales. URL final pendiente:
-configurable con PROMO_URL, nunca se inventa un dominio.
-Primero previews por escena a 480p y montajes. Sin música por defecto; pista opcional
-solo si su licencia queda registrada. Salida final horizontal 1080p, vertical1080x1920,
-4K opcional tras revisar previews y comprobar capacidad local.
+Cada cambio empieza 22 fotogramas antes del límite de capítulo: el siguiente plano
+aparece bajo una máscara de InkBrush mientras el anterior sigue en movimiento.
+Hojas con la geometría del hero acompañan los barridos de las secciones claras.
+Los titulares llevan un subrayado rojo de punta seca. No hay grano ni viñeta.
+
+## Direction contract
+
+THESIS: la escritura abre el mundo que el alumno aprenderá a leer; la misma tinta
+recorre toda la pieza.
+OWN-WORLD: papel #FBF8F3, tinta #14110F, rojo #C8102E, Manrope y Noto Serif JP.
+Yuji Boku solo en la apertura. Fuente de verdad: src/design/tokens.ts.
+STORY: reconocer japonés, entrar en Kioto, ver el diagnóstico y una lección real,
+comprender progreso y preferencias, recordar Idiomas.
+FIRST VIEWPORT: 日本語 domina el papel; el sello rojo cae a la derecha y una
+pincelada revela la cámara del callejón sin corte seco.
+FORM: comercial de siete capítulos, lienzos independientes 16:9 y 9:16;
+dirección fijada por Marcos, seed: none (unavailable). Movimiento determinista.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
+
+No se anuncia mandarín disponible ni se muestran bibliotecas inexistentes.
+La escritura de la web sigue siendo práctica libre; la animación promocional
+no implica evaluación automática de trazos. La demo está aislada de cuentas reales.
+URL opcional mediante PROMO_URL; sin inventar dominio. Sin audio por defecto.
+Primero se revisan todas las escenas y ambos montajes completos de 480p.
