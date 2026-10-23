@@ -1,0 +1,15 @@
+{
+  "assets": [
+    {
+      "paths": [
+        "src/components/Street.tsx",
+        "public/images/kyoto-desktop.webp",
+        "public/images/kyoto-mobile.webp"
+      ],
+      "creator": "Proyecto Idiomas",
+      "origin": "Geometría y texturas procedurales propias; pósteres capturados de la escena Three.js mediante navegador integrado.",
+      "license": "Obra del proyecto; sin recursos visuales de terceros.",
+      "referenceImagesUsedInProduction": false
+    }
+  ]
+}

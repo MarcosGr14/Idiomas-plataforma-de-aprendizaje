@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-22T23:32:54.624604+00:00",
+  "generatedAt": "2026-10-23T05:01:54.311516+00:00",
   "title": "Design System: Idiomas",
   "extensions": {
     "colorMeta": {
@@ -232,7 +232,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Bienvenida",
-        "purpose": "Titular principal del home."
+        "purpose": "Escala global conservada; el hero Kioto usa la variante local documentada en DESIGN.md."
       },
       "japanese": {
         "displayName": "Japonés",
@@ -244,6 +244,11 @@
         "name": "toast",
         "value": "0 8px 30px #0002",
         "purpose": "Aviso flotante sobre la interfaz plana."
+      },
+      {
+        "name": "kyoto-sign-card",
+        "value": "0 16px 40px #0005",
+        "purpose": "Tarjeta de traducción flotante exclusiva del hero."
       }
     ],
     "motion": [
@@ -261,6 +266,21 @@
         "name": "switch",
         "value": "150ms",
         "purpose": "Desplazamiento del interruptor."
+      },
+      {
+        "name": "kyoto-full",
+        "value": "full",
+        "purpose": "Cámara suave, partículas, niebla y bloom; pausa disponible."
+      },
+      {
+        "name": "kyoto-reduced",
+        "value": "30fps target; pixel ratio 1",
+        "purpose": "Menos partículas, sin polvo ni bloom; conserva movimiento."
+      },
+      {
+        "name": "kyoto-off",
+        "value": "off",
+        "purpose": "Póster propio sin escena Three.js; forzado por prefers-reduced-motion. Traducciones y CTA disponibles."
       }
     ],
     "breakpoints": [
@@ -275,6 +295,14 @@
       {
         "name": "wide",
         "value": "1500px"
+      },
+      {
+        "name": "kyoto-mobile",
+        "value": "699px"
+      },
+      {
+        "name": "kyoto-tablet-max",
+        "value": "1050px"
       }
     ]
   },
@@ -325,11 +353,18 @@
       "description": "Respuesta de cuestionario con estados diferenciados.",
       "html": "<button class=\"ds-answer\" aria-pressed=\"false\">あ · a</button>",
       "css": ".ds-answer{display:flex;align-items:center;min-height:64px;padding:16px 20px;border:2px solid transparent;border-radius:5px;background:var(--paper,#f9f9f6);color:var(--ink,#252923);font:17px \"Manrope Variable\",\"Noto Serif JP\",sans-serif;cursor:pointer}.ds-answer:hover{background:#e3e5db}.ds-answer[aria-pressed=true]{border-color:var(--ink,#252923);background:#e1e3d9}.ds-answer:focus-visible{outline:3px solid #a94416;outline-offset:4px}"
+    },
+    {
+      "name": "Selector de movimiento del hero",
+      "kind": "custom",
+      "description": "Variante nocturna local; Completa, Reducida o Apagada. La preferencia del sistema fuerza Apagada y deshabilita el selector.",
+      "html": "<label class=\"ds-kyoto-motion\">Animación <select aria-label=\"Calidad de la animación\"><option>Completa</option><option>Reducida</option><option>Apagada</option></select></label>",
+      "css": ".ds-kyoto-motion{display:inline-flex;align-items:center;gap:8px;padding:12px;background:#171619;color:#fff5e7;font:12px \"Manrope Variable\",sans-serif}.ds-kyoto-motion select{width:auto;min-width:112px;min-height:44px;padding:8px 26px 8px 12px;border:1px solid #795441;border-radius:5px;color:#fff2e1;background:#30251f;font:14px \"Manrope Variable\",sans-serif}.ds-kyoto-motion select:focus-visible{outline:3px solid #a94416;outline-offset:4px}.ds-kyoto-motion select:disabled{opacity:1}"
     }
   ],
   "narrative": {
     "northStar": "Aprender a leer la calle que te da la bienvenida",
-    "overview": "La bienvenida conecta caracteres japoneses con una calle tridimensional hecha en código. El entorno de estudio usa papel claro, tinta y superficies discretas para sostener la lectura. La personalidad procede de los caracteres, la tipografía y la señalética; las métricas mantienen un tratamiento sobrio.\n\nEste documento describe la implementación de `src/styles.css`, `src/App.tsx` y sus componentes. Los valores iniciales del brief se han afinado en el código. El nombre sigue siendo provisional. La escena terminada tiene una base oscura localizada, mientras el resto de la interfaz conserva la base clara acordada.",
+    "overview": "La bienvenida conecta caracteres japoneses con una calle tridimensional hecha en código. El entorno de estudio usa papel claro, tinta y superficies discretas para sostener la lectura. La personalidad procede de los caracteres, la tipografía y la señalética; las métricas mantienen un tratamiento sobrio.\n\nEste documento describe la implementación de `src/styles.css`, `src/App.tsx` y sus componentes. Los valores iniciales del brief se han afinado en el código. El nombre sigue siendo provisional. El hero aprobado presenta un callejón nocturno de Kioto en otoño, con faroles cálidos, arces y una pagoda al fondo. Su base oscura queda localizada en la bienvenida; el aula, la navegación y el resto de la interfaz conservan su identidad. Los tokens globales de este documento se mantienen; las variantes del hero se describen como locales.",
     "keyCharacteristics": [
       "Blanco de papel, tinta y rojo de señalética.",
       "Manrope para español; Noto Serif JP para japonés.",

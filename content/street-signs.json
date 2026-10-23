@@ -1,0 +1,58 @@
+[
+  {
+    "text": "本屋",
+    "reading": "ほんや · hon’ya",
+    "meaning": "Librería",
+    "lang": "ja",
+    "reviewed": false
+  },
+  {
+    "text": "ラーメン",
+    "reading": "ラーメン · rāmen",
+    "meaning": "Ramen",
+    "lang": "ja",
+    "reviewed": false
+  },
+  {
+    "text": "日本語",
+    "reading": "にほんご · nihongo",
+    "meaning": "Idioma japonés",
+    "lang": "ja",
+    "reviewed": false
+  },
+  {
+    "text": "花",
+    "reading": "はな · hana",
+    "meaning": "Flor",
+    "lang": "ja",
+    "reviewed": false
+  },
+  {
+    "text": "茶",
+    "reading": "ちゃ · cha",
+    "meaning": "Té",
+    "lang": "ja",
+    "reviewed": false
+  },
+  {
+    "text": "学",
+    "reading": "がく · gaku",
+    "meaning": "Estudio (lectura en compuestos)",
+    "lang": "ja",
+    "reviewed": false
+  },
+  {
+    "text": "福",
+    "reading": "ふく · fuku",
+    "meaning": "Buena fortuna",
+    "lang": "ja",
+    "reviewed": false
+  },
+  {
+    "text": "中文",
+    "reading": "zhōngwén",
+    "meaning": "Idioma chino · próximamente",
+    "lang": "zh",
+    "reviewed": false
+  }
+]

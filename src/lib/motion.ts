@@ -36,3 +36,17 @@ export function downgradeMotion(
   if (samples < 90 || fps >= 28) return mode;
   return mode === "full" ? "reduced" : "off";
 }
+
+/** Fixed cadence: preserve the deadline remainder despite RAF timing jitter. */
+export function nextFrameDeadline(
+  now: number,
+  deadline: number,
+  fps = 30,
+): number | null {
+  const period = 1000 / fps;
+  if (deadline && now + 0.5 < deadline) return null;
+  if (!deadline) return now + period;
+  return (
+    deadline + Math.max(1, Math.floor((now - deadline) / period) + 1) * period
+  );
+}

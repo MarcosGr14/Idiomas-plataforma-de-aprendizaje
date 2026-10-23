@@ -109,3 +109,12 @@ El proyecto no contiene todavía implementación, currículo, audios, imágenes,
 Marcos autorizó comenzar y continuar el desarrollo. Se implementó el piloto de japonés con React, TypeScript, Vite, React Router y PWA; cinco lecciones, audio estático sintetizado, diagnóstico, prácticas, repaso, progreso local e integración Supabase pendiente de conexión real. El resto del curso está planificado, no publicado. Nombre provisional: Idiomas. Explicaciones en español.
 
 El nuevo brief de `docs/10-hero-escena-3d.md`, incorporado durante el cierre, exige reemplazar el diorama actual por un callejón atmosférico. Esa sustitución y los requisitos ampliados de `AGENTS.md` quedan pendientes; no se consideran completados por este piloto.
+
+## Actualización del hero — 2026-10-22
+Marcos aprobó conservar la dirección visual existente y rehacer únicamente el
+hero siguiendo el callejón nocturno de Kioto. Implementados escena procedural,
+composición responsive, pósteres propios, tres modos, pausa, degradación automática
+y letreros interactivos. La unidad piloto sigue siendo de japonés; mandarín es
+posterior. No se modifican el currículo ni las reglas de XP/racha/SRS.
+El remoto GitHub ya está configurado. No inferir un despliegue exitoso a partir
+de un push: comprobar Cloudflare por separado.

@@ -41,7 +41,7 @@ Marcos tiene instaladas las skills **`impeccable`** y **`taste skill`**.
 1. **Mobile-first, 100% responsive.** Probar a 360 px de ancho antes de dar algo por terminado.
 2. **Modos de animación** (completo / reducido / apagado) respetados en TODA animación nueva. Ver `docs/02-diseno-sistema.md`.
 3. **Accesibilidad mínima:** foco visible, contraste AA, `prefers-reduced-motion`, textos alternativos, `lang="ja"` / `lang="zh"` en texto CJK.
-4. **Git:** al terminar cada fase (y cada cambio completo relevante) → `git add`, commit con Conventional Commits y `git push`. No hay remoto configurado al aprobar este cambio; los commits locales no equivalen a un push. Si no hay remoto configurado, pide la URL a Marcos.
+4. **Git:** al terminar cada fase (y cada cambio completo relevante) → `git add`, commit con Conventional Commits y `git push`. Remoto actual: `origin` en GitHub (`MarcosGr14/Idiomas-plataforma-de-aprendizaje`). Verificarlo antes de publicar. Si no hay remoto configurado, pide la URL a Marcos.
 5. **Pruebas:**
    - Cambios SOLO estéticos (CSS, tipografía, colores, espaciado, copy visual): **sin pruebas**, solo documentar en `docs/bitacora-estetica.md` y `CHANGELOG.md`.
    - Cualquier cambio de **lógica** (XP, rachas, SRS, niveles, examen, auth, desbloqueos): pruebas con Vitest obligatorias.
@@ -56,4 +56,4 @@ Marcos tiene instaladas las skills **`impeccable`** y **`taste skill`**.
 `npm run dev` · `npm run build` · `npm run preview` · `npm run test` · `npm run lint` · `npm run typecheck`
 
 `lint` comprueba formato con Prettier; `typecheck` comprueba tipos con TypeScript.
-Supabase está preparado, pero la conexión real, el despliegue Cloudflare y el push siguen pendientes de configuración.
+Supabase está preparado; verificar la conexión real y el despliegue Cloudflare antes de declararlos operativos. GitHub ya tiene remoto configurado.

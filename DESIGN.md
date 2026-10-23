@@ -102,7 +102,7 @@ components:
 
 La bienvenida conecta caracteres japoneses con una calle tridimensional hecha en código. El entorno de estudio usa papel claro, tinta y superficies discretas para sostener la lectura. La personalidad procede de los caracteres, la tipografía y la señalética; las métricas mantienen un tratamiento sobrio.
 
-Este documento describe la implementación de `src/styles.css`, `src/App.tsx` y sus componentes. Los valores iniciales del brief se han afinado en el código. El nombre sigue siendo provisional. La escena terminada tiene una base oscura localizada, mientras el resto de la interfaz conserva la base clara acordada.
+Este documento describe la implementación de `src/styles.css`, `src/App.tsx` y sus componentes. Los valores iniciales del brief se han afinado en el código. El nombre sigue siendo provisional. El hero aprobado presenta un callejón nocturno de Kioto en otoño, con faroles cálidos, arces y una pagoda al fondo. Su base oscura queda localizada en la bienvenida; el aula, la navegación y el resto de la interfaz conservan su identidad. Los tokens globales de este documento se mantienen; las variantes del hero se describen como locales.
 
 **Key Characteristics:**
 - Blanco de papel, tinta y rojo de señalética.
@@ -123,7 +123,7 @@ El amarillo de escaparate y el naranja cálido pertenecen a los rótulos de la e
 
 ### Neutral
 
-Papel es el fondo global; tinta es el texto principal. Muted sostiene información secundaria. Surface agrupa ejercicios y paneles; line separa filas. Los campos blancos usan un borde propio. El fondo oscuro de la calle mantiene legibles los rótulos y el pie de escena.
+Papel es el fondo global; tinta es el texto principal. Muted sostiene información secundaria. Surface agrupa ejercicios y paneles; line separa filas. Los campos blancos usan un borde propio. El hero usa una base nocturna local (#171619), texto marfil (#fff5e7) y prosa cálida (#f2dfcd), con un velo oscuro detrás del texto. Estas variantes no sustituyen los neutros globales. Los controles de movimiento combinan fondo marrón oscuro (#30251f), texto claro (#fff2e1) y borde cálido (#795441).
 
 **The Acción Rule.** El rojo guía la acción y los caracteres destacados; las métricas de estudio permanecen en tinta.
 
@@ -137,10 +137,10 @@ La familia latina combina títulos abiertos de peso medio con controles compacto
 
 ### Hierarchy
 
-- **Display:** titular del home; se adapta a móvil y permite dos líneas.
+- **Display:** se conserva la escala global. El hero Kioto aplica una variante local en Manrope de peso 550, interletrado −0.04em y altura de línea 1.08: `clamp(44px, 4.9vw, 76px)` en escritorio, 52px entre 700 y 1050px, y `clamp(33px, 8.5vw, 52px)` por debajo de 700px. El titular ocupa dos líneas.
 - **Headline:** título de las pantallas del aula; en móvil usa 28px y altura de línea 1.2.
 - **Title:** títulos generales de sección; los paneles densos usan variantes de 16–23px.
-- **Body:** prosa de lección con medida máxima de 70ch. El texto operativo suele usar 12–13px; el hero de escritorio usa 16px.
+- **Body:** prosa de lección con medida máxima de 70ch. El texto operativo suele usar 12–13px; el hero usa 17px en escritorio y 15px en móvil, con medidas máximas de 350px y 320px respectivamente.
 - **Label:** acciones principales; metadatos existentes usan 11–12px y no sirven de referencia para párrafos largos.
 - **Japanese:** ejemplos de vocabulario; los caracteres de práctica y presentación amplían su tamaño según contexto.
 
@@ -148,15 +148,15 @@ La familia latina combina títulos abiertos de peso medio con controles compacto
 
 ## Layout
 
-El home alcanza 1600px y usa márgenes laterales del 6%; las secciones de contenido alcanzan 1300px. El titular y la invitación a empezar comparten fila sobre una calle horizontal. Las secciones alternan texto abierto, filas de lección y una despedida roja.
+El home conserva márgenes laterales del 6%; las secciones de contenido alcanzan 1300px y alternan texto abierto, filas de lección y una despedida roja. El hero Kioto es una superficie inmersiva de hasta 1800px, con altura mínima de 680px y altura preferida de `min(820px, calc(100svh - 88px))`. En escritorio, el texto y el CTA ocupan la izquierda; la perspectiva del callejón y la pagoda se desplazan a la derecha. El velo horizontal protege la lectura sin ocultar toda la escena. Entre 700 y 1050px el bloque de texto amplía su ancho al 76%.
 
 El aula tiene una barra lateral fija de 244px y contenido con padding horizontal fluido. La pantalla inicial combina una lección principal y un panel diario de 250px; las listas se apoyan en divisores, no en tarjetas independientes. A 1100px la barra pasa a 210px y el panel diario se coloca bajo la lección.
 
-A 760px la navegación lateral se convierte en menú desplegable bajo una barra de 72px; el aula usa márgenes de 20px y el home de 22px. Las composiciones se apilan. La calle usa un lienzo de 320px de alto. Las reglas de ancho muy pequeño apilan también respuestas y controles cuando hace falta; verificar siempre a 360px. La prosa conserva medidas acotadas incluso en pantallas grandes.
+A 760px la navegación lateral se convierte en menú desplegable bajo una barra de 72px; el aula usa márgenes de 20px y el home de 22px. Las composiciones se apilan. El hero tiene su propio corte a 699px: escena de fondo, texto en la zona inferior y controles apilados bajo el CTA, con márgenes de 22px. Su altura es `max(760px, calc(100svh - 72px))`; el velo pasa a vertical para proteger texto y controles. La composición no se reduce a una miniatura de la versión de escritorio. Las reglas de ancho muy pequeño apilan también respuestas y controles cuando hace falta; verificar siempre a 360px. La prosa conserva medidas acotadas incluso en pantallas grandes.
 
 ## Elevation & Depth
 
-La interfaz de estudio es plana: diferencia regiones mediante tonos claros, espaciado y bordes finos. La escena tiene profundidad real de Three.js; no es una textura decorativa aplicada a paneles. El aviso flotante es la excepción de elevación, con sombra `0 8px 30px #0002`.
+La interfaz de estudio es plana: diferencia regiones mediante tonos claros, espaciado y bordes finos. La escena tiene profundidad real de Three.js; no es una textura decorativa aplicada a paneles. El aviso flotante usa sombra `0 8px 30px #0002`. Dentro del hero, la tarjeta de traducción flota con sombra `0 16px 40px #0005`; no se traslada este tratamiento al aula. Niebla, luz cálida, reflejos simulados y partículas dan profundidad al callejón; el borde inferior se funde con el papel mediante un degradado de 62px, reducido a 30px en móvil.
 
 **The Superficie Rule.** Los paneles de estudio se separan mediante tono y espacio; la sombra corresponde al aviso que flota sobre ellos.
 
@@ -184,9 +184,21 @@ Paneles de repaso y cuestionario usan superficie tonal, padding de 32px en escri
 
 La navegación pública es horizontal. La navegación del aula combina SVG y texto, con destino activo sobre un relleno gris verdoso y peso 700. En móvil se accede desde el menú de la barra superior; el destino conserva el texto visible.
 
-### Calle japonesa
+### Hero Kioto y letreros
 
-La escena propia contiene rótulos legibles, farolillos, edificios y una traducción activable. Three.js se carga para el home. En movimiento completo hay una oscilación lenta de cámara; el modo reducido presenta un render estático. Los modos y el fallback pertenecen al componente; una escena fallida no debe impedir comenzar el aprendizaje.
+La escena procedural propia muestra un callejón a nivel de calle, fachadas de madera, faroles, arces, niebla y una pagoda al fondo. Three.js se carga de forma diferida solo para el home. El CTA «Hacer examen de nivel» conduce al diagnóstico de japonés y conserva el rojo de marca, con altura mínima de 52px. El texto no anuncia mandarín disponible.
+
+«¿Qué dice este letrero?» abre «Lee la calle», una tarjeta de papel con caracteres, lectura y significado. Los letreros del lienzo y los botones HTML comparten selección; la lectura sigue disponible con la escena apagada. El canvas es decorativo para tecnologías de asistencia; el contenido se ofrece mediante controles HTML, caracteres con `lang` y una definición con anuncio cortés. Escape cierra la tarjeta y devuelve el foco al activador.
+
+### Movimiento y pósteres del hero
+
+- **Completa:** cámara suave con respuesta al puntero y desplazamiento, hojas, brasas, polvo, niebla y bloom; permite pausar y reanudar.
+- **Reducida:** conserva movimiento con menos partículas, sin polvo ni bloom, resolución de píxel 1 y cadencia objetivo de 30 fps. No es una imagen estática.
+- **Apagada:** muestra el póster propio sin montar la escena Three.js. El selector ofrece «Completa / Reducida / Apagada» y el control de pausa indica «Escena estática».
+
+La preferencia de movimiento reducido del sistema fuerza la imagen estática y deshabilita el selector. La escena suspende el render al quedar fuera de pantalla o al ocultarse la pestaña; ante rendimiento insuficiente reduce calidad y puede pasar a póster, avisando del cambio. La falta o pérdida de WebGL también lleva al póster. El objetivo de cadencia no equivale a una garantía de rendimiento en dispositivos físicos.
+
+Los pósteres `public/images/kyoto-desktop.webp` y `public/images/kyoto-mobile.webp` proceden de la escena propia y conservan la composición durante la carga o en modo apagado. El corte de imagen móvil coincide con 699px. Se presentan como fondo decorativo con texto alternativo vacío; CTA, traducciones y controles permanecen en HTML. Las referencias de `docs/referencias/` no se usan en producción.
 
 ## Do's and Don'ts
 

@@ -2362,3 +2362,16 @@ html[data-motion="off"] * {
     height: 30px;
   }
 }
+
+/* Development-only scene capture, reproducible without including UI in the poster. */
+body:has(.kyoto-hero[data-capture]) .landing > :not(.kyoto-hero),
+body:has(.kyoto-hero[data-capture]) .landing-nav,
+body:has(.kyoto-hero[data-capture]) .kyoto-hero > :not(.kyoto-canvas),
+body:has(.kyoto-hero[data-capture]) .kyoto-hero::after {
+  display: none;
+}
+body:has(.kyoto-hero[data-capture]) .kyoto-hero {
+  height: 100svh;
+  min-height: 0;
+  max-width: none;
+}

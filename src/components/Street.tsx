@@ -4,7 +4,11 @@ import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
-import { downgradeMotion, type MotionMode } from "../lib/motion";
+import {
+  downgradeMotion,
+  nextFrameDeadline,
+  type MotionMode,
+} from "../lib/motion";
 
 import { signs } from "../data/street-signs";
 export default function Street({
@@ -31,7 +35,7 @@ export default function Street({
       renderer = new T.WebGLRenderer({
         antialias: mode === "full",
         alpha: false,
-        preserveDrawingBuffer: true,
+        preserveDrawingBuffer: false,
       });
     } catch {
       live.current.onDegrade("off");
@@ -602,6 +606,7 @@ export default function Street({
       visible = true,
       frame = 0,
       last = 0,
+      deadline = 0,
       time = 0,
       needsRender = true,
       previousSelected: number | null = null,
@@ -676,6 +681,7 @@ export default function Street({
     observer.observe(el);
     function start() {
       last = 0;
+      deadline = 0;
       measurement = 0;
       samples = 0;
       if (!frame && !document.hidden && visible)
@@ -698,9 +704,13 @@ export default function Street({
       frame = 0;
       if (disposed || document.hidden || !visible) return;
       const delta = last ? Math.min((now - last) / 1000, 0.2) : 0;
-      if (mode === "reduced" && last && delta < 1 / 30) {
-        frame = requestAnimationFrame(draw);
-        return;
+      if (mode === "reduced") {
+        const next = nextFrameDeadline(now, deadline);
+        if (next === null) {
+          frame = requestAnimationFrame(draw);
+          return;
+        }
+        deadline = next;
       }
       last = now;
       if (!live.current.paused) {

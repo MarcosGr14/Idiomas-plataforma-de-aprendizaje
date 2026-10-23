@@ -1,5 +1,13 @@
 # Cambios
 
+## 0.2.0 — 2026-10-22
+
+- Hero Kioto nocturno: calle en perspectiva, pagoda, farolillos, arces, niebla, reflejos simulados y partículas GPU.
+- Composición desktop/móvil conservando la identidad y el aula existentes.
+- Modos completo/reducido/apagado, pausa, adaptación al rendimiento y pósteres WebP propios; compatibilidad con preferencias anteriores.
+- Letreros seleccionables con lecturas y traducciones, acceso por teclado y CTA al diagnóstico.
+- AGENTS.md conciliado con archivos reales y el alcance aprobado; cuatro pruebas nuevas de movimiento.
+
 ## 0.1.0 — 2026-10-22
 
 - Fundación React/TypeScript/Vite y PWA instalable; Supabase Auth y migración RLS preparadas.

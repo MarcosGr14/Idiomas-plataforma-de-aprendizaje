@@ -672,7 +672,12 @@ function App() {
         ) : route === "/cuenta" ? (
           <Account userEmail={user?.email} notify={setNotice} />
         ) : route === "/privacidad" || route === "/creditos" ? (
-          <InfoPage credits={route === "/creditos"} />
+          <InfoPage
+            credits={route === "/creditos"}
+            motion={motion}
+            setMotion={setMotion}
+            systemReduced={systemReduced}
+          />
         ) : (
           <>
             <PageTitle
@@ -1297,7 +1302,17 @@ function Account({
     </>
   );
 }
-function InfoPage({ credits }: { credits: boolean }) {
+function InfoPage({
+  credits,
+  motion,
+  setMotion,
+  systemReduced,
+}: {
+  credits: boolean;
+  motion: MotionMode;
+  setMotion: (m: MotionMode) => void;
+  systemReduced: boolean;
+}) {
   return (
     <>
       <PageTitle

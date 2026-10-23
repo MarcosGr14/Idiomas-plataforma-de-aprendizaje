@@ -15,3 +15,13 @@ Inicio: Persuade. Aula, biblioteca y configuración: Operate. Lecciones: Read/Op
 
 ## Alcance entregable
 Unidad piloto funcional de cinco lecciones, diagnóstico limitado a ella, práctica y repaso, vocabulario, evaluación y exportación por impresión. Doce unidades planificadas visibles con estados honestos. Integración Supabase preparada, activación externa pendiente de credenciales públicas y aplicación de migración. No se inventan cuentas ni sincronizaciones exitosas.
+
+## Actualización aprobada — hero Kioto, 2026-10-22
+Marcos conserva la identidad actual y cambia únicamente el hero. Las decisiones
+FIRST VIEWPORT y calle horizontal de arriba describen la versión anterior.
+Ahora: callejón nocturno en perspectiva a nivel de calle, pagoda al fondo, arces,
+faroles cálidos, niebla y reflejos simulados. Texto a la izquierda en escritorio;
+escena de fondo y texto inferior en móvil. Manrope/Noto Serif JP se conservan.
+La interacción permite leer los letreros; los modos son completo, reducido y
+apagado, con póster propio. El CTA lleva al diagnóstico de japonés.
+Construcción directa en Three.js según el brief, sin cambiar las demás pantallas.

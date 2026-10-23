@@ -30,7 +30,15 @@ export default function KyotoHero({
     onChange(next);
   };
   return (
-    <section className="kyoto-hero" aria-labelledby="kyoto-title">
+    <section
+      className="kyoto-hero"
+      data-capture={
+        (import.meta.env.DEV &&
+          new URLSearchParams(location.search).has("scene-poster")) ||
+        undefined
+      }
+      aria-labelledby="kyoto-title"
+    >
       <picture className="kyoto-poster">
         <source media="(max-width: 699px)" srcSet="/images/kyoto-mobile.webp" />
         <img
