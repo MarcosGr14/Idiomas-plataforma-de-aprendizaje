@@ -118,3 +118,15 @@ y letreros interactivos. La unidad piloto sigue siendo de japonés; mandarín es
 posterior. No se modifican el currículo ni las reglas de XP/racha/SRS.
 El remoto GitHub ya está configurado. No inferir un despliegue exitoso a partir
 de un push: comprobar Cloudflare por separado.
+
+## Promoción y sistema de tinta — 2026-10-23
+
+Autorizado por Marcos: video de 40 s con composiciones horizontal y vertical,
+intro de 3,5 s, capturas reales aisladas y una firma de tinta compartida con la
+aplicación. Colores y fuentes se importan desde src/design; InkBrush e InkCharacter
+son componentes puros de la app. Yuji Boku se reserva al intro. El uso del pincel
+en las lecciones y logros sigue siendo una fase opcional aparte.
+
+El modo ?capture=1 controla la escena y usa progreso de demostración en memoria;
+no anuncia mandarín ni funciones inexistentes. La entrega de esta revisión es la
+previsualización completa de 480p en ambos formatos, previa a aprobar másteres.

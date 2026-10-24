@@ -61,7 +61,26 @@ export function InkBrush({
         y + (dx / length) * radius * side,
       ];
     });
-  const polygon = [...edge(1), ...edge(-1).reverse()]
+  const upper = edge(1),
+    lower = edge(-1);
+  const tipPoint = visible.at(-1)!,
+    previous = visible.at(-2)!;
+  const dx = tipPoint[0] - previous[0],
+    dy = tipPoint[1] - previous[1];
+  const distance = Math.hypot(dx, dy) || 1;
+  const top = upper.at(-1)!,
+    bottom = lower.at(-1)!;
+  const radius = Math.hypot(top[0] - bottom[0], top[1] - bottom[1]) * 0.32;
+  const bristleTip = Array.from({ length: 11 }, (_, i) => {
+    const t = (i + 1) / 12;
+    const extension =
+      Math.sin(t * Math.PI) * radius * (0.85 + noise(seed, i + 500) * 0.3);
+    return [
+      top[0] * (1 - t) + bottom[0] * t + (dx / distance) * extension,
+      top[1] * (1 - t) + bottom[1] * t + (dy / distance) * extension,
+    ];
+  });
+  const polygon = [...upper, ...bristleTip, ...lower.reverse()]
     .map((x) => x.map((n) => n.toFixed(3)).join(","))
     .join(" ");
   const tip = visible.at(-1)!;

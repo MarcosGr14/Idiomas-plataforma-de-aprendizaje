@@ -21,3 +21,12 @@
 - Detector impeccable: sin hallazgos. Revisión independiente: una corrección material (cadencia), resuelta; disposition `ship` limitada a esa corrección. Documentador actualizó DESIGN y sidecar conservando tokens globales.
 - Pósteres: captura de la escena propia, ~104 KiB escritorio y ~40 KiB móvil. No hay modelos o texturas descargados; las texturas se crean en canvas.
 - No se afirma medición de 60/30 fps en hardware físico. Pendientes: teléfono de gama media, instalación/offline en dispositivos físicos y comprobación independiente de despliegue Cloudflare. El movimiento móvil usa puntero/scroll, sin pedir acceso al giroscopio.
+
+## Integración del sistema de tinta — 2026-10-23
+
+- TypeScript de la app y de Remotion correcto; lint raíz aprobado. Build Vite/PWA aprobado (88 recursos precache, ~1,97 MiB).
+- Captura Playwright con Brave local, perfiles aislados y reloj explícito. Recapturadas las pantallas con la paleta compartida; manifiesto en promo/public/captures/manifest.json.
+- KanjiVG preserva el orden original de los recorridos. La máscara sobre Yuji Boku termina asentando los contornos de la fuente, que no coinciden exactamente con los del dataset.
+- Sin cambios de lógica en XP, rachas, SRS, cuentas o preferencias de movimiento; no se añadieron suites de pruebas para esta fase estética.
+- Taste lint: 0 FAIL / 0 WARN tras documentar sombras y reflejos pedidos por Marcos. Impeccable: solo avisos de escalas de tipografía y radios del documento promocional anterior, actualizado al sistema actual.
+- Renders completos 480p y revisión visual final: en ejecución; no equivalen a verificación de despliegue o hardware físico.

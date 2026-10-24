@@ -481,7 +481,7 @@ function Sweep({
             width={w}
             height={h}
           >
-            {Array.from({ length: 8 }, (_, row) => (
+            {Array.from({ length: 48 }, (_, row) => (
               <InkBrush
                 key={row}
                 points={Array.from(
@@ -489,15 +489,15 @@ function Sweep({
                   (_, i) =>
                     [
                       -w * 0.4 + (i / 39) * w * 1.9,
-                      (h * row) / 7 + Math.sin(i * 0.3 + row) * h * 0.025,
+                      (h * row) / 47 + Math.sin(i * 0.3 + row * 0.11) * h * 0.008,
                     ] as [number, number],
                 )}
                 progress={Math.min(
                   1,
-                  Math.max(0, p * 1.15 - (row % 3) * 0.035),
+                  Math.max(0, p * 1.15 - (Math.sin(row * 2.39) + 1) * 0.024),
                 )}
-                width={h * 0.3}
-                taper={0.25}
+                width={h * 0.045}
+                taper={0.7}
                 color="white"
                 seed={1100 + id * 10 + row}
                 dry={0}
