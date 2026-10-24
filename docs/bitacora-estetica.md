@@ -50,3 +50,19 @@ Completados ambos montajes de 480p, catorce clips por escena y pósteres horizon
 Terminado `promo/out/promo-16x9-1440p.mp4`: 2560×1440, H.264, 30 fps, 40 segundos exactos, 1.200 fotogramas decodificados y sin audio (18.603.650 bytes). Revisada hoja de contacto a 1 fps. Exportación directa desde Remotion, sin ampliar el preview de 480p. Diseño conservado; capturas interiores mantienen su resolución original.
 
 El comando `node promo/scripts/render.mjs qhd` guarda capítulos reanudables en `out/qhd-scenes/`. ANGLE acelerado por defecto, `PROMO_GL=swangle` como alternativa por software. Se observaron mensajes de cierre de navegador al finalizar algunos capítulos; los siete terminaron y el archivo unido pasó la decodificación completa. MP4 y cachés ignorados por Git.
+
+## Cuentas — cierre 2026-10-24
+
+Formularios de acceso, registro, recuperación y contraseña conservan Manrope,
+Noto Serif JP, sello 文, superficies y acciones de la aplicación. Se reutilizan
+`page-title`, `account-form`, botones y navegación; no hay rediseño global ni
+nuevas animaciones. Campos con etiquetas visibles, opción de mostrar contraseña,
+mensajes de estado/error y controles deshabilitados durante peticiones.
+
+Revisadas capturas locales de escritorio/tablet/móvil y formulario publicado en
+ancho móvil. Inspector taste local: 0 FAIL, 5 WARN; los avisos de paleta, logo,
+escala del título y espacio lateral se conservan por identidad aprobada y ancho
+limitado del formulario. Detector impeccable sobre Account: sin hallazgos.
+DESIGN.md y sus tokens se conservan: esta extensión no crea otro sistema visual.
+La revisión documental final se realizó en el agente principal tras fallar el
+agente documentador. Este cierre solo actualiza documentación, sin retoques visuales.

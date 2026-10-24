@@ -37,18 +37,25 @@ El progreso conserva cambios pendientes, usa revisiones para detectar conflictos
 permite elegir una versión con respaldo. Una pestaña por cuenta edita el progreso;
 las demás esperan para proteger la copia local. Invitados y cuentas están separados.
 
-**Pendiente de activación:** Marcos aún debe crear el proyecto Supabase. Las pruebas
-locales utilizan un proveedor simulado; no se han validado correo ni RLS reales.
+**Estado al 2026-10-24:** proyecto Supabase creado y registro confirmado por Marcos.
+Auth responde con registro y confirmación de correo habilitados; la API rechaza
+lecturas anónimas del progreso. Falta verificar políticas con sesiones de dos
+usuarios, recuperación por correo y sincronización real. Ver `docs/validation.md`.
 
-## Cloudflare Pages
+## Despliegue Cloudflare
 
 En un proyecto Pages conectado al repositorio: comando `npm run build`, directorio `dist`, Node 22 o superior. Añade las variables `VITE_*` de Supabase antes de construir; quedan incorporadas a la compilación. Las rutas internas usan hash y no requieren reescrituras del servidor. Comprueba registro, confirmación de correo, carga de fuentes/audio e instalación PWA en el dominio HTTPS final.
 
-El remoto GitHub ya está configurado. El despliegue de Cloudflare sigue sin verificarse. No se presupone un plan ilimitado ni se contratan servicios.
+Despliegue publicado por Marcos y comprobado en navegador:
+https://idiomas-plataforma-de-aprendizaje.marcos-gaitan.workers.dev/
+
+La URL actual corresponde a Workers, aunque el plan original proponía Pages.
+No se ha migrado infraestructura ni cambiado de plan; la facturación no está
+verificada. Las instrucciones de Pages anteriores se conservan como alternativa.
 
 ## Contenido y siguientes fases
 
-Las doce unidades del plan aparecen en el aula; **solo la primera está desarrollada**. Ver `docs/curriculum.md`. Antes de una apertura pública: revisión lingüística de lecciones/audio, contenido restante, trazos guiados validados, política legal final, recuperación/eliminación de cuenta, pruebas de RLS y sincronización con cuentas reales, y validación en teléfonos físicos.
+Las doce unidades del plan aparecen en el aula; **solo la primera está desarrollada**. Ver `docs/curriculum.md`. Antes de una apertura pública: revisión lingüística de lecciones/audio, contenido restante, trazos guiados validados, política legal final, eliminación de cuenta y verificación de recuperación, pruebas de RLS y sincronización con cuentas reales, y validación en teléfonos físicos.
 
 La interfaz muestra las limitaciones reales. No hay alumnos ficticios, testimonios, estadísticas de demostración ni botones de acceso a contenido inexistente.
 

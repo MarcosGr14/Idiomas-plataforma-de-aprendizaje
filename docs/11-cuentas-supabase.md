@@ -1,8 +1,14 @@
 # Cuentas: activar Supabase
 
-Estado al 2026-10-24: código y comprobaciones locales preparados. Marcos todavía
-no ha creado el proyecto Supabase. No se han enviado correos reales ni verificado
-RLS contra una instancia remota. No hay servicios de pago contratados.
+Estado al 2026-10-24: proyecto `btlazjgmtwmikgeqniqw` creado por Marcos, quien
+reporta registro correcto desde la web desplegada. El agente comprobó Auth
+habilitado con confirmación y rechazo de lecturas anónimas (401/42501).
+Aún no verificó las migraciones, políticas con sesiones autenticadas, entrega
+de correos ni sincronización entre dispositivos. No se han contratado servicios
+durante este trabajo; el plan de Cloudflare no se ha inspeccionado.
+
+URL publicada: https://idiomas-plataforma-de-aprendizaje.marcos-gaitan.workers.dev/
+Las instrucciones de creación siguientes sirven para instalaciones nuevas.
 
 ## 1. Crear el proyecto
 

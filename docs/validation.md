@@ -39,3 +39,18 @@
 Terminado `promo/out/promo-16x9-1440p.mp4`: 2560×1440, H.264, 30 fps, 40 segundos exactos, 1.200 fotogramas decodificados y sin audio (18.603.650 bytes). Revisada hoja de contacto a 1 fps. Exportación directa desde Remotion, sin ampliar el preview de 480p. Diseño conservado; capturas interiores mantienen su resolución original.
 
 El comando `node promo/scripts/render.mjs qhd` guarda capítulos reanudables en `out/qhd-scenes/`. ANGLE acelerado por defecto, `PROMO_GL=swangle` como alternativa por software. Se observaron mensajes de cierre de navegador al finalizar algunos capítulos; los siete terminaron y el archivo unido pasó la decodificación completa. MP4 y cachés ignorados por Git.
+
+## Fase 1 de cuentas y despliegue — 2026-10-24
+
+- Implementación de cuentas incluida en el commit existente `c153063`: no se rehízo ni sobrescribió el trabajo ya publicado por Marcos.
+- 30 pruebas Vitest aprobadas en 7 archivos; formato y build TypeScript/Vite/PWA aprobados. Persiste el aviso conocido de Three.js >500 kB; carga diferida. Sin cambios de lógica en este cierre.
+- Ronda local anterior con Supabase simulado: registro, acceso inválido/válido, recuperación, reenvío, contraseñas distintas, cambio de contraseña y salida. Capturas 1440/768/360 px, sin errores de página. Pruebas de lógica cubren pendientes offline, conflictos, serialización, callbacks y exclusión entre pestañas.
+- Revisor independiente confirmó las correcciones de concurrencia entre pestañas y errores del callback en fragmento; no encontró bloqueos adicionales. La documentación final se completó en el agente principal porque el documentador no pudo ejecutarse.
+- Marcos reporta creación del proyecto Supabase, despliegue en Cloudflare y registro de cuenta correcto. Ese registro es evidencia del usuario, no una prueba ejecutada por el agente.
+- Verificado en navegador integrado el dominio HTTPS publicado: portada, formulario de acceso, recuperación, aula como invitado y lección de vocales. Botón de audio activado sin error registrado; no certifica revisión auditiva. Callback con error de enlace vencido probado mediante carga completa: limpia el fragmento y muestra un mensaje seguro en Cuenta.
+- Comprobación móvil publicada: viewport solicitado de 360 px; el navegador integrado reportó ancho efectivo de 319 px y documento de 309 px, sin desbordamiento horizontal. Captura inspeccionada. Se restauró el viewport al terminar; esto no sustituye prueba en teléfono físico.
+- Configuración local apunta al proyecto indicado. Consulta real `/auth/v1/settings`: HTTP 200, proveedor email habilitado, `disable_signup=false`, `mailer_autoconfirm=false`. Sin imprimir claves.
+- Consulta real anónima `/rest/v1/learning_progress?select=revision&limit=0`: HTTP 401, código 42501. Confirma denegación al rol anónimo; NO demuestra por sí sola aislamiento entre usuarios ni presencia correcta de todas las migraciones.
+- El panel Supabase redirige a inicio de sesión en el navegador disponible. Pendientes: inspeccionar ambas migraciones, RLS y RPC con usuarios autenticados, correos de confirmación/recuperación, sincronización real y conflictos entre dispositivos.
+- Hosting observado: dominio `workers.dev`, distinto de la propuesta original Pages. No se han cambiado infraestructura, permisos ni plan; gratuidad/facturación no verificadas.
+- El acceso HTTP automatizado al dominio devolvió 403; la navegación interactiva sí funcionó. No se atribuye ese 403 a un fallo de la aplicación.
