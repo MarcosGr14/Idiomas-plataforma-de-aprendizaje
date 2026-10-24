@@ -18,3 +18,4 @@ promo/.cache/
 promo/.bundle/
 .codex-project-reporter-state.json
 .codex-project-reporter.log
+.supabase/

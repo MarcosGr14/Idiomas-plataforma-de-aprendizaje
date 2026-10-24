@@ -1,5 +1,15 @@
 # Cambios
 
+## 2026-10-24 — Fase 1: cuentas preparadas
+
+- Registro, inicio/cierre de sesión, reenvío de confirmación y recuperación/cambio de contraseña con errores en español.
+- Callback PKCE antes del router, limpieza de URL y manejo de enlaces vencidos.
+- Progreso por cuenta con pendientes persistentes, peticiones serializadas, revisión atómica en Supabase y resolución explícita de conflictos con respaldo.
+- Coordinación entre pestañas para proteger el almacenamiento pendiente; invitado y captura permanecen separados.
+- Formularios revisados a 360, 768 y 1440 px conservando identidad, con estados de espera, error y confirmación.
+- Guía de creación/configuración Supabase. Integración real pendiente: el proyecto aún no existe.
+
+
 ## 0.2.0 — 2026-10-22
 
 - Hero Kioto nocturno: calle en perspectiva, pagoda, farolillos, arces, niebla, reflejos simulados y partículas GPU.

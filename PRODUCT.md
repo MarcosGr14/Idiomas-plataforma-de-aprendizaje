@@ -1,5 +1,16 @@
 # Producto: plataforma de aprendizaje de idiomas
 
+## Estado actual de cuentas — 2026-10-24
+
+Fase 1 implementada en código: registro, acceso, reenvío de confirmación,
+recuperación/cambio de contraseña y sesión persistente con Supabase. Progreso
+separado por usuario, pendientes locales, control de revisiones y resolución
+explícita de conflictos con respaldo. Una pestaña editora por cuenta.
+**Activación pendiente:** Marcos debe crear Supabase y aplicar ambas migraciones;
+correo, RLS y sincronización entre cuentas reales aún no están verificados.
+Guía: `docs/11-cuentas-supabase.md`. Japonés sigue siendo el único idioma habilitado.
+
+
 <!-- impeccable:product-schema 1 -->
 
 ## Platform

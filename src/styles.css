@@ -2372,3 +2372,19 @@ body:has(.kyoto-hero[data-capture]) .kyoto-hero {
   min-height: 0;
   max-width: none;
 }
+
+.account-actions {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+.account-email {
+  overflow-wrap: anywhere;
+}
+.account-form .text-button {
+  min-height: 44px;
+}
+.account-form input {
+  min-width: 0;
+  width: 100%;
+}

@@ -1,3 +1,4 @@
+import { initializeAuth } from "./lib/authCallback";
 import { captureEnabled } from "./lib/capture";
 import { HashRouter } from "react-router-dom";
 import React from "react";
@@ -10,6 +11,7 @@ const brandStyle = document.createElement("style");
 brandStyle.textContent = brandCSS();
 document.head.append(brandStyle);
 async function startApp() {
+  await initializeAuth();
   if (captureEnabled) {
     await document.fonts.load(
       '30px "Noto Serif JP"',

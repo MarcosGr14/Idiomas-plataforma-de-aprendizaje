@@ -28,19 +28,23 @@ Abre la URL que imprime Vite. `npm run build` crea `dist/`; `npm run preview` pe
 
 ## Conectar Supabase
 
-1. Copia `.env.example` a `.env.local`.
-2. Define `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` con la URL y clave pública del proyecto. **Nunca** uses `service_role` en el frontend.
-3. Ejecuta `supabase/migrations/202610220001_progress.sql` una vez en SQL Editor.
-4. Activa correo/contraseña y confirmación de correo. Configura Site URL y las URL de retorno de desarrollo/producción en Auth.
-5. Reinicia Vite; crea dos cuentas de prueba y verifica que cada una solo acceda a su propio registro.
+La guía paso a paso está en [docs/11-cuentas-supabase.md](docs/11-cuentas-supabase.md).
+Incluye creación del proyecto Free, variables públicas, las **dos migraciones**,
+URL de confirmación/recuperación, configuración de correo y pruebas de aislamiento.
 
-El modo invitado y cada cuenta tienen almacenamiento separado. No se importa silenciosamente el progreso del invitado. La sincronización no es un sistema colaborativo: requiere validación de conflictos y concurrencia antes de permitir trabajo simultáneo intensivo en varios dispositivos. No se ha probado contra un proyecto real en esta entrega porque no se suministró su configuración.
+Registro, acceso, reenvío, recuperación y cambio de contraseña están implementados.
+El progreso conserva cambios pendientes, usa revisiones para detectar conflictos y
+permite elegir una versión con respaldo. Una pestaña por cuenta edita el progreso;
+las demás esperan para proteger la copia local. Invitados y cuentas están separados.
+
+**Pendiente de activación:** Marcos aún debe crear el proyecto Supabase. Las pruebas
+locales utilizan un proveedor simulado; no se han validado correo ni RLS reales.
 
 ## Cloudflare Pages
 
 En un proyecto Pages conectado al repositorio: comando `npm run build`, directorio `dist`, Node 22 o superior. Añade las variables `VITE_*` de Supabase antes de construir; quedan incorporadas a la compilación. Las rutas internas usan hash y no requieren reescrituras del servidor. Comprueba registro, confirmación de correo, carga de fuentes/audio e instalación PWA en el dominio HTTPS final.
 
-No se ha publicado: falta el proyecto de Cloudflare y el repositorio remoto. No se presupone un plan ilimitado ni se contratan servicios.
+El remoto GitHub ya está configurado. El despliegue de Cloudflare sigue sin verificarse. No se presupone un plan ilimitado ni se contratan servicios.
 
 ## Contenido y siguientes fases
 

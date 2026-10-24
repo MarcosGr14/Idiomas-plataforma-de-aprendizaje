@@ -1,3 +1,4 @@
+import { Account } from "./components/Account";
 import { BrandSeal } from "./components/brand/BrandStyles";
 import { appNow } from "./lib/capture";
 import { useLocation } from "react-router-dom";
@@ -61,7 +62,16 @@ function Brand() {
 }
 function App() {
   const route = useRoute();
-  const { user, progress, update, ready, status, retry } = useProgress();
+  const {
+    user,
+    progress,
+    update,
+    ready,
+    status,
+    retry,
+    conflict,
+    resolveSync,
+  } = useProgress();
   const [menu, setMenu] = useState(false);
   const [notice, setNotice] = useState("");
   const [systemReduced, setSystemReduced] = useState(
@@ -330,9 +340,9 @@ function App() {
               systemReduced={systemReduced}
             />
           </>
-        ) : !ready ? (
+        ) : !ready && route !== "/cuenta" ? (
           <div className="loading-state" role="status">
-            Preparando tu progreso…
+            {status}
           </div>
         ) : route === "/aula" ? (
           <>
@@ -630,6 +640,37 @@ function App() {
                 {user ? "Reintentar sincronización" : "Conectar una cuenta"}
               </button>
             </section>
+            {conflict && (
+              <section
+                className="settings-section"
+                aria-label="Versiones del progreso"
+              >
+                <div>
+                  <h2>Elige qué progreso conservar</h2>
+                  <p>
+                    Este dispositivo y tu cuenta tienen cambios distintos. La
+                    versión elegida reemplazará la otra; no se suman los XP.
+                    Antes de elegir, puedes descargar tu progreso con el botón
+                    de abajo. Guardaremos también una copia de ambas versiones
+                    en este navegador.
+                  </p>
+                </div>
+                <div className="account-actions">
+                  <button
+                    className="secondary"
+                    onClick={() => resolveSync("remote")}
+                  >
+                    Usar el progreso de mi cuenta
+                  </button>
+                  <button
+                    className="secondary"
+                    onClick={() => resolveSync("local")}
+                  >
+                    Usar el de este dispositivo
+                  </button>
+                </div>
+              </section>
+            )}
             <section className="settings-section">
               <div>
                 <h2>Lleva tus datos contigo</h2>
@@ -672,7 +713,7 @@ function App() {
             />
           </>
         ) : route === "/cuenta" ? (
-          <Account userEmail={user?.email} notify={setNotice} />
+          <Account userEmail={user?.email} />
         ) : route === "/privacidad" || route === "/creditos" ? (
           <InfoPage
             credits={route === "/creditos"}
@@ -1164,143 +1205,6 @@ function Exams({
           </section>
         ))}
       </div>
-    </>
-  );
-}
-function Account({
-  userEmail,
-  notify,
-}: {
-  userEmail?: string;
-  notify: (s: string) => void;
-}) {
-  const [signup, setSignup] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [pending, setPending] = useState(false);
-  const [message, setMessage] = useState("");
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!supabase) return;
-    setPending(true);
-    setMessage("");
-    try {
-      const { error } = signup
-        ? await supabase.auth.signUp({
-            email,
-            password,
-            options: { emailRedirectTo: location.origin },
-          })
-        : await supabase.auth.signInWithPassword({ email, password });
-      if (error) setMessage(error.message);
-      else if (signup)
-        setMessage(
-          "Revisa tu correo para confirmar la cuenta. Si ya existía, puedes iniciar sesión.",
-        );
-      else go("/aula");
-    } catch {
-      setMessage(
-        "No se pudo conectar. Comprueba tu conexión e inténtalo otra vez.",
-      );
-    } finally {
-      setPending(false);
-    }
-  };
-  return (
-    <>
-      <PageTitle
-        title={
-          userEmail
-            ? "Tu cuenta"
-            : signup
-              ? "Tu aprendizaje, contigo"
-              : "Qué bueno verte"
-        }
-        description={
-          userEmail
-            ? "Accede a tu progreso desde tus dispositivos."
-            : "Puedes explorar las lecciones sin registrarte."
-        }
-      />
-      {userEmail ? (
-        <section className="account-form">
-          <p>{userEmail}</p>
-          <p className="small">
-            El progreso del modo local se mantiene separado del de tu cuenta.
-          </p>
-          <button
-            className="secondary"
-            onClick={async () => {
-              const { error } = await supabase!.auth.signOut();
-              if (error)
-                notify("No se pudo cerrar sesión. Inténtalo de nuevo.");
-              else go("/");
-            }}
-          >
-            <LogOut size={17} /> Cerrar sesión
-          </button>
-        </section>
-      ) : !supabase ? (
-        <section className="account-form">
-          <h2>Las cuentas aún no están activadas</h2>
-          <p>
-            Esta instalación funciona en modo local. Puedes aprender y guardar
-            tu progreso en este navegador mientras se conecta Supabase.
-          </p>
-          <button className="primary" onClick={() => go("/aula")}>
-            Entrar sin cuenta <ArrowRight size={18} />
-          </button>
-        </section>
-      ) : (
-        <form className="account-form" onSubmit={submit}>
-          <label>
-            Correo electrónico
-            <input
-              type="email"
-              required
-              autoComplete="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-          <label>
-            Contraseña
-            <input
-              type="password"
-              required
-              minLength={8}
-              autoComplete={signup ? "new-password" : "current-password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-          {signup && (
-            <p className="small">
-              Usa al menos 8 caracteres.{" "}
-              <a href="#/privacidad">Consulta cómo se guardan tus datos.</a>
-            </p>
-          )}
-          <button className="primary" disabled={pending}>
-            {pending
-              ? "Conectando…"
-              : signup
-                ? "Crear cuenta"
-                : "Iniciar sesión"}
-            <ArrowRight size={18} />
-          </button>
-          {message && <p role="status">{message}</p>}
-          <button
-            className="text-button"
-            type="button"
-            onClick={() => {
-              setSignup(!signup);
-              setMessage("");
-            }}
-          >
-            {signup ? "Ya tengo cuenta" : "Quiero crear una cuenta"}
-          </button>
-        </form>
-      )}
     </>
   );
 }
