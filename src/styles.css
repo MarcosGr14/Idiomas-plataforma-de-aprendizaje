@@ -2388,3 +2388,157 @@ body:has(.kyoto-hero[data-capture]) .kyoto-hero {
   min-width: 0;
   width: 100%;
 }
+
+/* Account forms share the app palette with a compact, conventional reading order. */
+.auth-shell {
+  width: 100%;
+  max-width: 440px;
+  margin: clamp(12px, 5vh, 56px) auto 48px;
+}
+.auth-heading {
+  margin-bottom: 32px;
+}
+.auth-heading h1 {
+  font-size: clamp(28px, 3vw, 36px);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin: 0 0 12px;
+}
+.auth-heading p {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+.auth-shell .account-form {
+  background: none;
+  padding: 0;
+  gap: 24px;
+  max-width: none;
+}
+.auth-shell .account-form label {
+  font-size: 14px;
+  font-weight: 600;
+}
+.auth-shell input {
+  height: 50px;
+  font-size: 16px;
+  padding: 12px 14px;
+}
+.auth-shell input::placeholder {
+  color: #6c6965;
+}
+.auth-password-group {
+  display: grid;
+  gap: 8px;
+}
+.auth-password {
+  position: relative;
+}
+.auth-password input {
+  padding-right: 52px;
+}
+.auth-password > button {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: var(--ink);
+  border: 0;
+}
+.auth-shell .auth-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  min-height: 44px;
+}
+.auth-forgot {
+  justify-self: end;
+}
+.auth-shell .primary,
+.auth-shell .secondary {
+  width: 100%;
+  min-height: 50px;
+  justify-content: center;
+}
+.auth-shell .auth-help {
+  font-size: 13px;
+  line-height: 1.65;
+  margin: 0;
+  color: var(--ink);
+  font-weight: 400;
+}
+.auth-help a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.auth-secondary {
+  display: grid;
+  gap: 16px;
+  text-align: center;
+}
+.auth-shell .auth-secondary p {
+  margin: 0;
+  font-size: 14px;
+}
+.auth-confirmation {
+  text-align: left;
+  font-size: 13px;
+}
+.auth-confirmation summary {
+  cursor: pointer;
+  min-height: 44px;
+  align-content: center;
+}
+.auth-guest {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  font-size: 14px;
+}
+.auth-shell .auth-message {
+  padding: 16px;
+  background: var(--surface);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+.auth-message[role="alert"] {
+  color: var(--red);
+}
+.account-identity {
+  display: grid;
+  gap: 6px;
+}
+.account-identity > span {
+  font-size: 13px;
+}
+.auth-shell .account-email {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+.auth-shell .account-logout {
+  color: var(--red);
+}
+@media (max-width: 600px) {
+  .auth-shell {
+    margin: 12px auto 32px;
+  }
+  .auth-heading {
+    margin-bottom: 28px;
+  }
+}
+.auth-secondary p > .auth-link {
+  margin-inline-start: 6px;
+}

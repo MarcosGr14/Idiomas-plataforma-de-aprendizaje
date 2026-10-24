@@ -192,10 +192,7 @@ function App() {
             <a href="#/aula">El recorrido</a>
             <a href="#/biblioteca">Explorar japonés</a>
           </nav>
-          <button
-            className="nav-login"
-            onClick={() => go(user ? "/ajustes" : "/cuenta")}
-          >
+          <button className="nav-login" onClick={() => go("/cuenta")}>
             {user ? "Mi cuenta" : "Iniciar sesión"}
             <ArrowUpRight size={17} />
           </button>
@@ -567,6 +564,19 @@ function App() {
               title="A tu manera"
               description="Haz espacio para el japonés en tu día."
             />
+            {user && (
+              <section className="settings-section">
+                <div>
+                  <h2>Cuenta y sesión</h2>
+                  <p>
+                    Cambia tu contraseña o cierra sesión en este dispositivo.
+                  </p>
+                </div>
+                <a className="secondary" href="#/cuenta">
+                  Gestionar mi cuenta <ArrowRight size={18} />
+                </a>
+              </section>
+            )}
             <section className="settings-section">
               <div>
                 <h2>Tu tiempo diario</h2>

@@ -65,3 +65,11 @@ El comando `node promo/scripts/render.mjs qhd` guarda capítulos reanudables en 
 - Transacción de solo lectura: sujeto del propietario + rol authenticated ve una fila; otro sujeto simulado ve cero filas. Ambas aserciones aprobadas, ROLLBACK. No es una prueba con dos cuentas reales ni de sincronización en dispositivos.
 - Site URL y los dos callbacks exactos `?auth=confirm` / `?auth=recovery` apuntan al dominio publicado. No se alteró su configuración.
 - Pendientes acotados: SMTP/entrega de correos, recuperación completa por email y sincronización real entre dispositivos. Estado general de Supabase mostraba aviso de incidencia, pero las consultas anteriores terminaron correctamente.
+
+### Refinamiento de cuenta — 2026-10-24
+
+Build y 30 pruebas existentes aprobados. Revisión visual de acceso en escritorio
+y registro en viewport 360 px (documento 350 px, sin overflow). Registro/acceso,
+ayuda de contraseña y reenvío siguen usando los manejadores existentes. No se
+modificaron cuentas reales ni se cerró la sesión de Marcos. Enlace de portada
+corregido para apuntar a Cuenta; salida existente ahora claramente identificada.

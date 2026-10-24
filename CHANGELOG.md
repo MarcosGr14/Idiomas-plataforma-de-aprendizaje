@@ -83,3 +83,9 @@ El comando `node promo/scripts/render.mjs qhd` guarda capítulos reanudables en 
 - Inspeccionados esquema, función y políticas reales de Supabase; callbacks de producción correctos.
 - Retirados permisos TRUNCATE/REFERENCES/TRIGGER heredados del rol authenticated. Solo lectura por RLS y guardado por RPC; sin cambios en filas.
 - Nueva migración idempotente y script SQL de comprobación de permisos/aislamiento. Verificación real de lectura por propietario y sujeto ajeno aprobada.
+
+## 2026-10-24 — Acceso más claro y cierre de sesión visible
+
+- Formularios de acceso/registro más compactos, centrados y con espaciado consistente; control de contraseña integrado y ayudas secundarias agrupadas.
+- Corregido «Mi cuenta» de la portada, que llevaba a Ajustes. Acceso a cuenta desde Ajustes y botón «Cerrar sesión» destacado dentro de Cuenta.
+- Conservados los flujos de autenticación existentes; build y 30 pruebas aprobados, revisión móvil a 360 px sin desbordamiento.

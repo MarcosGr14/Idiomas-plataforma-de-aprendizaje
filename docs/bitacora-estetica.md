@@ -66,3 +66,15 @@ limitado del formulario. Detector impeccable sobre Account: sin hallazgos.
 DESIGN.md y sus tokens se conservan: esta extensión no crea otro sistema visual.
 La revisión documental final se realizó en el agente principal tras fallar el
 agente documentador. Este cierre solo actualiza documentación, sin retoques visuales.
+
+## 2026-10-24 — Formularios de cuenta simplificados
+
+Acceso y registro centrados en una columna de 440 px, sin la caja gris ni la lista
+plana de acciones anterior. Jerarquía convencional: título, campos, recuperación,
+acción principal y cambio entre acceso/registro. Visibilidad de contraseña dentro
+del campo; reenvío de confirmación en disclosure. Etiquetas de 14 px, campos de
+16 px y controles de al menos 44 px. Identidad, fuentes y modos de movimiento
+conservados; no se añadieron animaciones. Cuenta muestra salida explícita y Ajustes
+incluye acceso a su gestión. Revisado en navegador a 360 px y escritorio, sin
+desbordamiento móvil. Revisión/documentación realizadas en el agente principal
+para limitar coste tras la indisponibilidad previa del documentador.

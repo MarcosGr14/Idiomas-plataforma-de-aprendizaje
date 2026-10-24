@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { ArrowRight, LogOut } from "lucide-react";
+import { ArrowRight, LogOut, Eye, EyeOff } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import { authError, authRedirect } from "../lib/auth";
 import { authFeedback } from "../lib/authCallback";
@@ -118,26 +118,26 @@ export function Account({ userEmail }: { userEmail?: string }) {
             ? "Crea tu cuenta"
             : "Inicia sesión";
   return (
-    <>
-      <div className="page-title">
-        <h1>{title}</h1>
+    <section className="auth-shell" aria-labelledby="account-title">
+      <header className="auth-heading">
+        <h1 id="account-title">{title}</h1>
         <p>
           {userEmail
-            ? "Tu aprendizaje, guardado en tu cuenta."
-            : "Continúa tu japonés desde tus dispositivos."}
+            ? "Gestiona tu acceso y continúa aprendiendo."
+            : mode === "reset"
+              ? "Te enviaremos un enlace para recuperar el acceso."
+              : mode === "signup"
+                ? "Guarda tu progreso y aprende a tu ritmo."
+                : "Retoma tu japonés donde lo dejaste."}
         </p>
-      </div>
+      </header>
       {!supabase ? (
-        <section className="account-form">
-          <h2>Las cuentas aún no están activadas</h2>
-          <p>
-            Puedes aprender y guardar tu progreso en este navegador mientras se
-            conecta Supabase.
-          </p>
+        <div className="account-form">
+          <p>Las cuentas aún no están activadas en esta instalación.</p>
           <a className="primary" href="#/aula">
             Entrar sin cuenta <ArrowRight size={18} />
           </a>
-        </section>
+        </div>
       ) : (
         <form
           className="account-form"
@@ -149,11 +149,13 @@ export function Account({ userEmail }: { userEmail?: string }) {
         >
           {userEmail && mode !== "password" ? (
             <>
-              <p className="account-email">{userEmail}</p>
-              <p className="small">
-                El progreso de invitado se mantiene separado del de tu cuenta.
-                Cerrar sesión conserva los cambios pendientes en este navegador.
-              </p>
+              <div className="account-identity">
+                <span>Sesión iniciada como</span>
+                <p className="account-email">{userEmail}</p>
+              </div>
+              <a className="primary" href="#/aula">
+                Volver a mi recorrido <ArrowRight size={18} />
+              </a>
               <button
                 type="button"
                 className="secondary"
@@ -164,27 +166,31 @@ export function Account({ userEmail }: { userEmail?: string }) {
               </button>
               <button
                 type="button"
-                className="text-button"
+                className="secondary account-logout"
                 disabled={pending}
                 onClick={() => void run("logout")}
               >
-                <LogOut size={17} />{" "}
-                {pending
-                  ? "Cerrando sesión…"
-                  : "Cerrar sesión en este dispositivo"}
+                <LogOut size={18} />
+                {pending ? "Cerrando sesión…" : "Cerrar sesión"}
               </button>
+              <p className="auth-help">
+                Se cerrará solo en este dispositivo. Los cambios pendientes se
+                conservan en este navegador.
+              </p>
             </>
           ) : (
             <>
               {mode !== "password" && (
-                <label>
+                <label htmlFor="account-email">
                   Correo electrónico
                   <input
+                    id="account-email"
                     type="email"
                     required
                     autoComplete="email"
                     autoCapitalize="none"
                     spellCheck={false}
+                    placeholder="tu@correo.com"
                     value={email}
                     disabled={pending}
                     onChange={(e) => setEmail(e.target.value)}
@@ -192,10 +198,13 @@ export function Account({ userEmail }: { userEmail?: string }) {
                 </label>
               )}
               {mode !== "reset" && (
-                <>
-                  <label>
+                <div className="auth-password-group">
+                  <label htmlFor="account-password">
                     {mode === "password" ? "Nueva contraseña" : "Contraseña"}
+                  </label>
+                  <div className="auth-password">
                     <input
+                      id="account-password"
                       type={showPassword ? "text" : "password"}
                       required
                       minLength={mode === "signin" ? undefined : 8}
@@ -206,19 +215,36 @@ export function Account({ userEmail }: { userEmail?: string }) {
                       disabled={pending}
                       onChange={(e) => setPassword(e.target.value)}
                     />
-                  </label>
-                  <button
-                    type="button"
-                    className="text-button"
-                    aria-pressed={showPassword}
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
-                  </button>
+                    <button
+                      type="button"
+                      aria-label={
+                        showPassword
+                          ? "Ocultar contraseña"
+                          : "Mostrar contraseña"
+                      }
+                      aria-pressed={showPassword}
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <EyeOff size={19} /> : <Eye size={19} />}
+                    </button>
+                  </div>
+                  {mode === "signin" ? (
+                    <button
+                      type="button"
+                      className="auth-link auth-forgot"
+                      disabled={pending}
+                      onClick={() => changeMode("reset")}
+                    >
+                      ¿Olvidaste tu contraseña?
+                    </button>
+                  ) : (
+                    <p className="auth-help">Al menos 8 caracteres.</p>
+                  )}
                   {mode === "password" && (
-                    <label>
+                    <label htmlFor="account-confirm">
                       Repite la contraseña
                       <input
+                        id="account-confirm"
                         type={showPassword ? "text" : "password"}
                         required
                         minLength={8}
@@ -229,18 +255,11 @@ export function Account({ userEmail }: { userEmail?: string }) {
                       />
                     </label>
                   )}
-                </>
+                </div>
               )}
-              {(mode === "signup" || mode === "password") && (
-                <p className="small">
-                  Usa al menos 8 caracteres.{" "}
-                  <a href="#/privacidad">Cómo se guardan tus datos.</a>
-                </p>
-              )}
-              {mode === "signup" && (
-                <p className="small">
-                  Tu cuenta comienza con su propio progreso. El modo invitado se
-                  conserva en este navegador.
+              {message && (
+                <p className="auth-message" role={failed ? "alert" : "status"}>
+                  {message}
                 </p>
               )}
               <button
@@ -252,66 +271,77 @@ export function Account({ userEmail }: { userEmail?: string }) {
                   : mode === "signup"
                     ? "Crear cuenta"
                     : mode === "reset"
-                      ? "Enviar enlace de recuperación"
+                      ? "Enviar enlace"
                       : mode === "password"
                         ? "Guardar contraseña"
                         : "Iniciar sesión"}
                 <ArrowRight size={18} />
               </button>
+              {mode === "signup" && (
+                <p className="auth-help">
+                  Tu cuenta tendrá su propio progreso; el de invitado se
+                  conserva aquí.{" "}
+                  <a href="#/privacidad">Consulta la privacidad.</a>
+                </p>
+              )}
             </>
           )}
-          {message && <p role={failed ? "alert" : "status"}>{message}</p>}
+          {userEmail && mode !== "password" && message && (
+            <p className="auth-message" role={failed ? "alert" : "status"}>
+              {message}
+            </p>
+          )}
           {!userEmail && (
-            <div className="account-actions">
-              <button
-                type="button"
-                className="text-button"
-                disabled={pending}
-                onClick={() =>
-                  changeMode(
-                    mode === "signup" || mode === "reset" || mode === "password"
-                      ? "signin"
-                      : "signup",
-                  )
-                }
-              >
+            <div className="auth-secondary">
+              <p>
                 {mode === "signin"
-                  ? "Crear una cuenta"
-                  : "Volver a iniciar sesión"}
-              </button>
-              {mode === "signin" && (
+                  ? "¿Aún no tienes cuenta?"
+                  : mode === "signup"
+                    ? "¿Ya tienes cuenta?"
+                    : "¿Recordaste tu contraseña?"}{" "}
                 <button
                   type="button"
-                  className="text-button"
+                  className="auth-link"
                   disabled={pending}
-                  onClick={() => changeMode("reset")}
+                  onClick={() =>
+                    changeMode(mode === "signin" ? "signup" : "signin")
+                  }
                 >
-                  Olvidé mi contraseña
+                  {mode === "signin" ? "Crear cuenta" : "Iniciar sesión"}
                 </button>
-              )}
+              </p>
               {(mode === "signin" || mode === "signup") && (
-                <button
-                  type="button"
-                  className="text-button"
-                  disabled={pending}
-                  onClick={(e) => {
-                    const input =
-                      e.currentTarget.form?.querySelector<HTMLInputElement>(
-                        'input[type="email"]',
-                      );
-                    if (input?.reportValidity()) void run("resend");
-                  }}
-                >
-                  Reenviar confirmación
-                </button>
+                <details className="auth-confirmation">
+                  <summary>¿No recibiste la confirmación?</summary>
+                  <p className="auth-help">
+                    Escribe tu correo arriba y revisa también la carpeta de
+                    correo no deseado.
+                  </p>
+                  <button
+                    type="button"
+                    className="auth-link"
+                    disabled={pending}
+                    onClick={(e) => {
+                      const input =
+                        e.currentTarget.form?.querySelector<HTMLInputElement>(
+                          'input[type="email"]',
+                        );
+                      if (input?.reportValidity()) void run("resend");
+                    }}
+                  >
+                    Reenviar enlace
+                  </button>
+                </details>
               )}
-              <a href="#/aula">Seguir sin cuenta</a>
+              <a className="auth-guest" href="#/aula">
+                Continuar sin cuenta <ArrowRight size={16} />
+              </a>
             </div>
           )}
           {userEmail && mode === "password" && (
             <button
               type="button"
-              className="text-button"
+              className="auth-link"
               disabled={pending}
               onClick={() => {
                 authFeedback.recovery = false;
@@ -323,6 +353,6 @@ export function Account({ userEmail }: { userEmail?: string }) {
           )}
         </form>
       )}
-    </>
+    </section>
   );
 }
