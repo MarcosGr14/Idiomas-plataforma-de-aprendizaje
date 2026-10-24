@@ -84,9 +84,12 @@ sigue documentado en `../DESIGN.md`.
 - Capturas reales del piloto de japonés y progreso señalado como demostración.
 - Composición independiente para horizontal y vertical.
 
-Este documento describe el código actual. Las capturas y los montajes completos
-están en proceso de renderizado y revisión; no se declara aquí una aprobación
-visual o temporal de los renders finales.
+Este documento describe el código final. Ambos MP4 están renderizados y
+verificados: 40 segundos, 1200 fotogramas, 30 fps y sin pista de audio. La revisión
+visual independiente emitió SHIP para el sistema, las composiciones y las muestras
+de transición; también se comprobaron hojas de contacto de un fotograma por
+segundo. Este alcance no incluye reproducción temporal íntegra ni aprobación de
+Marcos.
 
 ## Colors
 
@@ -151,8 +154,8 @@ capturada; no se añaden sombras a los paneles de estudio.
 Las carcasas usan los radios del frontmatter. La pantalla de escritorio conserva
 la relación 1440/900; la móvil, 390/844. La base de laptop y el cuello trapezoidal
 con pie ovalado del monitor distinguen dispositivos propios sin marcas ajenas.
-Las pinceladas tienen bordes irregulares, punta afinada y zonas secas; las hojas
-reutilizan `maplePoints` de la aplicación.
+Las pinceladas tienen bordes irregulares, puntas orgánicas incorporadas al polígono
+y zonas secas; las hojas reutilizan `maplePoints` de la aplicación.
 
 ## Components
 
@@ -166,8 +169,8 @@ añade caída, rotación y rebote con `motion.seal`. Los titulares entran palabr
 a palabra en 14 fotogramas, con separación de dos; la última palabra recibe un
 subrayado de 11 fotogramas. `motion.ease` gobierna la entrada del texto.
 
-`Sweep` revela cada capítulo con una máscara de 48 pinceladas durante
-`motion.wipe` (22 fotogramas), usando `motion.wipeEase`. Las transiciones hacia
+`Sweep` revela cada capítulo con una máscara de 48 cerdas de curva suave y baja
+amplitud durante `motion.wipe` (22 fotogramas), usando `motion.wipeEase`. Las transiciones hacia
 las escenas claras añaden tres hojas. `Device` combina captura y carcasa; su
 entrada mezcla desplazamiento de 135px, escala 0.88→1 y giro ±3° mediante
 `motion.enter`. `Media` reproduce capturas silenciadas y mantiene su último

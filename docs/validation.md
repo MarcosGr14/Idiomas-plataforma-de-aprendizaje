@@ -29,4 +29,7 @@
 - KanjiVG preserva el orden original de los recorridos. La máscara sobre Yuji Boku termina asentando los contornos de la fuente, que no coinciden exactamente con los del dataset.
 - Sin cambios de lógica en XP, rachas, SRS, cuentas o preferencias de movimiento; no se añadieron suites de pruebas para esta fase estética.
 - Taste lint: 0 FAIL / 0 WARN tras documentar sombras y reflejos pedidos por Marcos. Impeccable: solo avisos de escalas de tipografía y radios del documento promocional anterior, actualizado al sistema actual.
-- Renders completos 480p y revisión visual final: en ejecución; no equivalen a verificación de despliegue o hardware físico.
+- Renders completos de 480p terminados: horizontal 854×480 y vertical 270×480. Ambos decodifican 1.200 fotogramas a 30 fps, duran 40,000 s y contienen solo video. Informe regenerable local: promo/out/render-verification.json.
+- Revisadas hojas de contacto de ambos montajes a un fotograma por segundo, los seis barridos horizontales y muestras de lección/diagnóstico; sin planos vacíos ni mezcla incorrecta de capas en esas muestras. Pósteres finales generados.
+- Revisor independiente: `ship` para el sistema visual compartido, las composiciones y las muestras de transición examinadas. No certifica reproducción temporal íntegra ni aprobación editorial de Marcos.
+- Esta entrega es la revisión completa de 480p. Los másteres HD/4K quedan para después de revisarla; el comando de render está documentado. No equivale a verificación de despliegue o hardware físico.

@@ -35,4 +35,12 @@ Marcos aprobó el moodboard: papel #FBF8F3, tinta #14110F, rojo #C8102E y mayor 
 - Barridos SVG de InkBrush entre los siete capítulos, hojas del hero, titulares por palabras y subrayados rojos de punta seca.
 - Mensaje unificado «Un mundo nuevo. Empieza en japonés.»; cierre con el mismo sello.
 - Dos composiciones independientes y tokens de movimiento importados de la app; sin grano ni viñeta.
-- Ajustes estéticos: sin nuevas pruebas de lógica ni cambios en la política de movimiento. Capturas y renders de revisión en curso.
+- Ajustes estéticos: sin nuevas pruebas de lógica ni cambios en la política de movimiento. Capturas actualizadas y renders completos de 480p terminados.
+
+### Revisión del barrido
+
+Borde refinado con 48 cerdas y puntas orgánicas para eliminar los grandes escalones del primer montaje. Revisión independiente: `ship` para sistema visual y composiciones examinadas; montajes completos verificados a 40 s/1.200 fotogramas y revisados mediante hojas de contacto. La exportación omite audio silencioso y fija la duración de cada clip para evitar pausas por relleno AAC al concatenar.
+
+### Entrega de previsualizaciones
+
+Completados ambos montajes de 480p, catorce clips por escena y pósteres horizontal/vertical. Código y documentación versionados; medios pesados ignorados. Sin música, sin URL inventada. Los másteres HD/4K permanecen como siguiente exportación tras revisar esta versión.

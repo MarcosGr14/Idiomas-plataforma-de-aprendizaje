@@ -52,6 +52,7 @@ async function video(id, file, frameRange, scale = 1) {
     ...common,
     composition,
     codec: "h264",
+    muted: true,
     outputLocation: file + ".part.mp4",
     frameRange,
     scale,
@@ -92,7 +93,12 @@ if (mode === "preview") {
     const list = resolve(base, ".cache", `${orientation}.txt`);
     await writeFile(
       list,
-      clips.map((p) => `file '${p.replaceAll("'", "'\\''")}'`).join("\n"),
+      clips
+        .map(
+          (p, i) =>
+            `file '${p.replaceAll("'", "'\\''")}'\nduration ${durations[i] / motion.fps}`,
+        )
+        .join("\n"),
     );
     execFileSync("ffmpeg", [
       "-v",
@@ -104,7 +110,8 @@ if (mode === "preview") {
       "0",
       "-i",
       list,
-      "-c",
+      "-an",
+      "-c:v",
       "copy",
       "-movflags",
       "+faststart",
