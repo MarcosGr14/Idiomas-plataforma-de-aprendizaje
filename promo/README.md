@@ -127,3 +127,8 @@ KanjiVG se conservan bajo CC BY-SA 3.0; las fuentes tienen sus licencias OFL.
 `promo/out/promo-16x9-1440p.mp4` a 2560×1440, 30 fps, 40 segundos y sin audio.
 Compone de nuevo desde las fuentes y capturas originales; no amplía el preview
 de 480p. Las capturas mantienen su resolución de origen.
+
+La exportación QHD guarda cada capítulo en `out/qhd-scenes/` y reutiliza los
+capítulos terminados al reanudar. Usa `PROMO_RERENDER=1` si cambias la composición.
+El navegador usa ANGLE; si un equipo no lo admite, configura `PROMO_GL=swangle`
+para renderizar por software. Los capítulos y el MP4 final permanecen fuera de Git.

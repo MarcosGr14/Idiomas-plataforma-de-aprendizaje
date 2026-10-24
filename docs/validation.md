@@ -33,3 +33,9 @@
 - Revisadas hojas de contacto de ambos montajes a un fotograma por segundo, los seis barridos horizontales y muestras de lección/diagnóstico; sin planos vacíos ni mezcla incorrecta de capas en esas muestras. Pósteres finales generados.
 - Revisor independiente: `ship` para el sistema visual compartido, las composiciones y las muestras de transición examinadas. No certifica reproducción temporal íntegra ni aprobación editorial de Marcos.
 - Esta entrega es la revisión completa de 480p. Los másteres HD/4K quedan para después de revisarla; el comando de render está documentado. No equivale a verificación de despliegue o hardware físico.
+
+## Exportación QHD — 2026-10-24
+
+Terminado `promo/out/promo-16x9-1440p.mp4`: 2560×1440, H.264, 30 fps, 40 segundos exactos, 1.200 fotogramas decodificados y sin audio (18.603.650 bytes). Revisada hoja de contacto a 1 fps. Exportación directa desde Remotion, sin ampliar el preview de 480p. Diseño conservado; capturas interiores mantienen su resolución original.
+
+El comando `node promo/scripts/render.mjs qhd` guarda capítulos reanudables en `out/qhd-scenes/`. ANGLE acelerado por defecto, `PROMO_GL=swangle` como alternativa por software. Se observaron mensajes de cierre de navegador al finalizar algunos capítulos; los siete terminaron y el archivo unido pasó la decodificación completa. MP4 y cachés ignorados por Git.

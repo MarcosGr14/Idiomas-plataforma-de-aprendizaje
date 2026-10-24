@@ -25,7 +25,7 @@ const common = {
   serveUrl,
   browserExecutable,
   inputProps,
-  chromiumOptions: { gl: "swangle" },
+  chromiumOptions: { gl: process.env.PROMO_GL || "angle" },
   timeoutInMilliseconds: 120000,
   onBrowserLog: (log) => {
     if (log.type === "error") console.error(log.text);
@@ -122,12 +122,37 @@ if (mode === "preview") {
     ]);
   }
 } else if (mode === "qhd") {
-  await video(
-    "PromoLandscape",
+  const dir = resolve(out, "qhd-scenes");
+  await mkdir(dir, { recursive: true });
+  let from = 0;
+  const clips = [];
+  for (let i = 0; i < durations.length; i++) {
+    const file = resolve(dir, `scene-${i + 1}.mp4`);
+    await video("PromoLandscape", file, [from, from + durations[i] - 1], 4 / 3);
+    clips.push(
+      `file '${file.replaceAll("'", "'\\''")}'\nduration ${durations[i] / motion.fps}`,
+    );
+    from += durations[i];
+  }
+  const list = resolve(dir, "concat.txt");
+  await writeFile(list, clips.join("\n"));
+  execFileSync("ffmpeg", [
+    "-v",
+    "error",
+    "-y",
+    "-f",
+    "concat",
+    "-safe",
+    "0",
+    "-i",
+    list,
+    "-an",
+    "-c:v",
+    "copy",
+    "-movflags",
+    "+faststart",
     resolve(out, "promo-16x9-1440p.mp4"),
-    undefined,
-    4 / 3,
-  );
+  ]);
 } else if (mode === "final") {
   await video("PromoLandscape", resolve(out, "promo-16x9-1080p.mp4"));
   await video("PromoVertical", resolve(out, "promo-9x16.mp4"));
