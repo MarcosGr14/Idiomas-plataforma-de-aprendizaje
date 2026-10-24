@@ -29,7 +29,7 @@ Abre la URL que imprime Vite. `npm run build` crea `dist/`; `npm run preview` pe
 ## Conectar Supabase
 
 La guía paso a paso está en [docs/11-cuentas-supabase.md](docs/11-cuentas-supabase.md).
-Incluye creación del proyecto Free, variables públicas, las **dos migraciones**,
+Incluye creación del proyecto Free, variables públicas, las **tres migraciones**,
 URL de confirmación/recuperación, configuración de correo y pruebas de aislamiento.
 
 Registro, acceso, reenvío, recuperación y cambio de contraseña están implementados.
@@ -39,8 +39,9 @@ las demás esperan para proteger la copia local. Invitados y cuentas están sepa
 
 **Estado al 2026-10-24:** proyecto Supabase creado y registro confirmado por Marcos.
 Auth responde con registro y confirmación de correo habilitados; la API rechaza
-lecturas anónimas del progreso. Falta verificar políticas con sesiones de dos
-usuarios, recuperación por correo y sincronización real. Ver `docs/validation.md`.
+lecturas anónimas del progreso. Políticas y permisos inspeccionados en el panel; prueba RLS con sujetos simulados
+aprobada. Pendientes: sesiones reales de dos usuarios, recuperación por correo y
+sincronización entre dispositivos. Ver `docs/validation.md`.
 
 ## Despliegue Cloudflare
 

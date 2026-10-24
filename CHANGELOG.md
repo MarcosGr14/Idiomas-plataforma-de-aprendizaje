@@ -77,3 +77,9 @@ El comando `node promo/scripts/render.mjs qhd` guarda capítulos reanudables en 
 - Verificados formularios, aula, lección y callback vencido en la web; Auth exige confirmación y la API rechaza lectura anónima del progreso.
 - 30 pruebas, formato y compilación aprobados. Completadas bitácora y validación pendientes, sin modificar el diseño ni los datos del usuario.
 - Documentadas comprobaciones aún pendientes: migraciones/RLS autenticado, correo y sincronización real entre dispositivos; acceso al panel requiere sesión del propietario.
+
+## 2026-10-24 — Permisos mínimos del progreso en producción
+
+- Inspeccionados esquema, función y políticas reales de Supabase; callbacks de producción correctos.
+- Retirados permisos TRUNCATE/REFERENCES/TRIGGER heredados del rol authenticated. Solo lectura por RLS y guardado por RPC; sin cambios en filas.
+- Nueva migración idempotente y script SQL de comprobación de permisos/aislamiento. Verificación real de lectura por propietario y sujeto ajeno aprobada.

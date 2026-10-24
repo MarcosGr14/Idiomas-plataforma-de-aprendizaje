@@ -54,3 +54,14 @@ El comando `node promo/scripts/render.mjs qhd` guarda capítulos reanudables en 
 - El panel Supabase redirige a inicio de sesión en el navegador disponible. Pendientes: inspeccionar ambas migraciones, RLS y RPC con usuarios autenticados, correos de confirmación/recuperación, sincronización real y conflictos entre dispositivos.
 - Hosting observado: dominio `workers.dev`, distinto de la propuesta original Pages. No se han cambiado infraestructura, permisos ni plan; gratuidad/facturación no verificadas.
 - El acceso HTTP automatizado al dominio devolvió 403; la navegación interactiva sí funcionó. No se atribuye ese 403 a un fallo de la aplicación.
+
+### Inspección autenticada de Supabase — 2026-10-24
+
+- Sesión abierta por Marcos. Organización en plan Free, proyecto Idiomas Healthy.
+- Tabla `learning_progress`: RLS activo, `revision bigint default 1`, cuatro políticas por `auth.uid() = user_id`. Función `save_learning_progress` presente, SECURITY DEFINER, search_path vacío, propietario derivado de auth.uid y control de revisión/validación del payload conforme a la migración.
+- Un usuario y un registro de progreso; no se imprimieron identidades ni contenido del aprendizaje. Las estructuras de las dos primeras migraciones están instaladas; “No migrations” en dashboard refleja ausencia de historial, no ausencia del esquema.
+- Hallazgo: los grants predeterminados conservaban TRUNCATE/REFERENCES/TRIGGER para authenticated. Aplicada migración `202610240002_progress_least_privilege.sql`: revocar todos los privilegios de tabla a public/anon/authenticated y conceder solo SELECT a authenticated. No se modificaron filas.
+- Verificación real de privilegios: authenticated SELECT y EXECUTE RPC true; INSERT/UPDATE/DELETE/TRUNCATE false; anon SELECT y EXECUTE RPC false. Registro de progreso conservado (1).
+- Transacción de solo lectura: sujeto del propietario + rol authenticated ve una fila; otro sujeto simulado ve cero filas. Ambas aserciones aprobadas, ROLLBACK. No es una prueba con dos cuentas reales ni de sincronización en dispositivos.
+- Site URL y los dos callbacks exactos `?auth=confirm` / `?auth=recovery` apuntan al dominio publicado. No se alteró su configuración.
+- Pendientes acotados: SMTP/entrega de correos, recuperación completa por email y sincronización real entre dispositivos. Estado general de Supabase mostraba aviso de incidencia, pero las consultas anteriores terminaron correctamente.

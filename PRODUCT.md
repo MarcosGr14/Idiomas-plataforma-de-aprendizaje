@@ -9,7 +9,8 @@ explícita de conflictos con respaldo. Una pestaña editora por cuenta.
 **Despliegue activo:** Marcos creó Supabase y publicó la web en Cloudflare Workers.
 Reporta un registro correcto desde la web. Verificación independiente: interfaz
 pública accesible, Auth habilitado con confirmación y lectura anónima del progreso
-rechazada. Pendientes: inspección de migraciones/RLS autenticado, recuperación
+rechazada. Inspección de esquema/RPC/RLS y prueba de lectura con sujetos simulados aprobadas.
+Corregidos permisos sobrantes del rol authenticated. Pendientes: recuperación
 por correo y sincronización entre dos cuentas/dispositivos reales.
 Guía: `docs/11-cuentas-supabase.md`. Japonés sigue siendo el único idioma habilitado.
 

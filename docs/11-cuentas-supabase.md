@@ -3,8 +3,9 @@
 Estado al 2026-10-24: proyecto `btlazjgmtwmikgeqniqw` creado por Marcos, quien
 reporta registro correcto desde la web desplegada. El agente comprobó Auth
 habilitado con confirmación y rechazo de lecturas anónimas (401/42501).
-Aún no verificó las migraciones, políticas con sesiones autenticadas, entrega
-de correos ni sincronización entre dispositivos. No se han contratado servicios
+Se verificaron tabla, revisión, función, políticas y permisos efectivos en el panel.
+Prueba RLS de solo lectura con rol authenticated y sujetos simulados aprobada.
+Pendientes: entrega de correos y sincronización entre dispositivos reales. No se han contratado servicios
 durante este trabajo; el plan de Cloudflare no se ha inspeccionado.
 
 URL publicada: https://idiomas-plataforma-de-aprendizaje.marcos-gaitan.workers.dev/
@@ -38,6 +39,11 @@ En SQL Editor ejecuta, **en este orden**, el contenido de:
 
 1. `supabase/migrations/202610220001_progress.sql` (solo una vez; crea las políticas).
 2. `supabase/migrations/202610240001_progress_revision.sql`.
+3. `supabase/migrations/202610240002_progress_least_privilege.sql`.
+
+La tercera retira también TRUNCATE, REFERENCES y TRIGGER heredados de los grants
+iniciales de Supabase. TRUNCATE no está limitado por RLS. Fue aplicada y verificada
+en producción el 2026-10-24, sin modificar filas.
 
 La segunda migración es obligatoria para esta versión: agrega `revision`,
 revoca escrituras directas y habilita `save_learning_progress`. La función toma
@@ -118,3 +124,7 @@ Con correos autorizados por tu SMTP y dos sesiones independientes:
 Solo después de estas comprobaciones se marcará la integración como operativa.
 Las pruebas locales con respuestas simuladas no sustituyen la validación de RLS,
 configuración de correo ni ejecución de las migraciones reales.
+
+Verificación reproducible de lectura y permisos: `supabase/tests/progress_rls_readonly.sql`.
+Requiere al menos un progreso existente. No sustituye pruebas con sesiones HTTP
+de dos cuentas ni comprueba el envío de correos.
