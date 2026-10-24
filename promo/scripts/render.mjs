@@ -121,6 +121,13 @@ if (mode === "preview") {
       ),
     ]);
   }
+} else if (mode === "qhd") {
+  await video(
+    "PromoLandscape",
+    resolve(out, "promo-16x9-1440p.mp4"),
+    undefined,
+    4 / 3,
+  );
 } else if (mode === "final") {
   await video("PromoLandscape", resolve(out, "promo-16x9-1080p.mp4"));
   await video("PromoVertical", resolve(out, "promo-9x16.mp4"));
@@ -132,9 +139,9 @@ if (mode === "preview") {
       2,
     );
 } else if (mode !== "stills") {
-  throw new Error("Use preview, final or stills");
+  throw new Error("Use preview, qhd, final or stills");
 }
-if (!selected)
+if (!selected && mode !== "qhd")
   for (const orientation of ["Landscape", "Vertical"]) {
     const composition = await selectComposition({
       ...common,

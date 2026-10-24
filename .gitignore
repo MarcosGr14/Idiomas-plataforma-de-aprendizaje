@@ -16,3 +16,5 @@ promo/public/fonts/
 promo/public/audio/
 promo/.cache/
 promo/.bundle/
+.codex-project-reporter-state.json
+.codex-project-reporter.log

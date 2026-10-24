@@ -120,3 +120,10 @@ de titulares están en los tokens compartidos.
 
 Distribuye `promo/ATTRIBUTION.txt` junto a los videos. Los datos derivados de
 KanjiVG se conservan bajo CC BY-SA 3.0; las fuentes tienen sus licencias OFL.
+
+## Exportar 1440p (QHD / 2K habitual)
+
+`node promo/scripts/render.mjs qhd` genera únicamente
+`promo/out/promo-16x9-1440p.mp4` a 2560×1440, 30 fps, 40 segundos y sin audio.
+Compone de nuevo desde las fuentes y capturas originales; no amplía el preview
+de 480p. Las capturas mantienen su resolución de origen.
