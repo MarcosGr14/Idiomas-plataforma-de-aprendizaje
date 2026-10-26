@@ -78,3 +78,17 @@ conservados; no se añadieron animaciones. Cuenta muestra salida explícita y Aj
 incluye acceso a su gestión. Revisado en navegador a 360 px y escritorio, sin
 desbordamiento móvil. Revisión/documentación realizadas en el agente principal
 para limitar coste tras la indisponibilidad previa del documentador.
+
+## 2026-10-26 · cierre de fase 3
+
+Escritura conserva Manrope, papel, tinta y rojo. La geometría KanjiVG sustituye la
+silueta tipográfica libre: guía numerada, inicio destacado y tinta compartida en
+trazos aceptados/demostrados. Controles breves «Ver trazos»/«Repetir»; explicaciones
+de alcance bajo el lienzo para priorizar la práctica en móvil. El recorrido agrupa
+las dos unidades disponibles y la biblioteca informa entradas por descubrir.
+
+Revisión CUA escritorio/768/360, sin overflow; contraste reforzado en el trazo
+activo, notas y números legibles. Se conserva estilo editorial-greeting existente;
+no se sortea identidad nueva. Taste lint0/0, revisión independiente `ship`, sistema
+preservado según documentador. No se generaron rasters de producción ni fuentes
+nuevas: solo subconjuntos adicionales de la misma Noto Serif JP ya licenciada.

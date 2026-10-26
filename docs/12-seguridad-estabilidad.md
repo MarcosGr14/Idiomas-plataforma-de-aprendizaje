@@ -45,7 +45,7 @@ escribir pruebas nuevas; CI ejecuta las existentes.
 
 ## Pendientes y límites
 
-- Confirmar cabeceras en producción después del despliegue y resultados de CI.
+- Cabeceras CSP, marcos, referencias y permisos confirmadas por HTTP 200 en el dominio publicado el 2026-10-26. Mantener verificación de CI y futuros despliegues.
 - Verificar recuperación por correo y sincronización real entre dispositivos;
   Marcos confirma acceso desde web y teléfono. El aislamiento RLS ya se probó con
   sujetos simulados: ver `validation.md` y `supabase/tests/progress_rls_readonly.sql`.
@@ -55,5 +55,6 @@ escribir pruebas nuevas; CI ejecuta las existentes.
   como clasificación competitiva ni certificación: eso exigiría validación del servidor.
 - Mantener vigilado el bundle de Three.js (520,82 kB, 132,43 kB gzip), ya diferido.
   No se aumentó la carga 3D ni se midieron Core Web Vitals reales en esta entrega.
-- Continuar revisión editorial del piloto, ampliar hiragana y escritura guiada con
-  datos validados. La fase 3 sigue en curso; no se publica material nuevo sin revisión.
+- Fase 3 técnica cerrada: hiragana y guía de trazos implementados. Continúa pendiente
+  revisión lingüística/auditiva externa; los borradores se identifican como no revisados.
+  Ver `13-fase-3-japones.md`.

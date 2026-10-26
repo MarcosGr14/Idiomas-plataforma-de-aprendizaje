@@ -34,3 +34,21 @@ contenido lingüístico revisado ni disponibilidad del curso de mandarín.
 - Yuji Boku: copyright 2021 The Yuji Project Authors, SIL OFL 1.1. Origen https://github.com/google/fonts/tree/main/ofl/yujiboku. Subconjunto WOFF2 de 日本語 para la apertura; licencia en `public/fonts/OFL-Yuji-Boku.txt`. La fuente no se usa como guía de orden de trazos.
 - Contornos de presión, cola seca, salpicaduras y máscaras: código procedural original; no texturas de stock. El contorno de arce comparte los puntos de la escena Three original.
 - Sin SFX o música de terceros. Atribución de los datos KanjiVG también debe acompañar los videos al redistribuirlos; véase `promo/ATTRIBUTION.txt`.
+
+## Fase 3 — hiragana y escritura guiada, 2026-10-26
+
+- `content/japanese-hiragana.json`: 11 lecciones y 67 entradas originales nuevas,
+  todas `reviewed: false`. Referencia de objetivos iniciales: The Japan Foundation,
+  Irodori Starter, https://www.irodori.jpf.go.jp/en/starter/pdf.html. No se copiaron
+  ejercicios, ilustraciones ni grabaciones. No hay revisión lingüística externa.
+- 67 MP3 adicionales (92 en total), misma voz Mei/Open JTalk y licencia CC BY 3.0
+  indicada arriba. Generación local desde los JSON; la pausa/velocidad lenta se
+  controla en el reproductor. Audios sintéticos pendientes de revisión auditiva.
+- 46 hiragana básicos: SVG de KanjiVG conservados con copyright y CC BY-SA 3.0 en
+  `content/kanjivg/`. Procedencia fijada en `hiragana-source.json` (commit
+  `70a0b7ae0c18ceb5cb358274b029cce0234a43bc`); い conserva el original previo.
+  Coordenadas remuestreadas cada ~2 unidades en `src/data/hiragana-strokes.json`,
+  bajo CC BY-SA 3.0, sin cambiar orden ni dirección. Regeneración independiente del
+  video: `node scripts/prepare-hiragana.mjs`. Atribución en Escritura y Créditos.
+- `svg-path-properties`: herramienta de preparación, MIT; no se incluye en el
+  runtime. Solo se distribuyen geometría estática y código de la app.

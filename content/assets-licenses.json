@@ -10,6 +10,17 @@
       "origin": "Geometría y texturas procedurales propias; pósteres capturados de la escena Three.js mediante navegador integrado.",
       "license": "Obra del proyecto; sin recursos visuales de terceros.",
       "referenceImagesUsedInProduction": false
+    },
+    {
+      "paths": [
+        "content/kanjivg/*.svg",
+        "src/data/hiragana-strokes.json"
+      ],
+      "creator": "Ulrich Apel y colaboradores / KanjiVG",
+      "origin": "https://github.com/KanjiVG/kanjivg/tree/70a0b7ae0c18ceb5cb358274b029cce0234a43bc/kanji",
+      "license": "CC BY-SA 3.0",
+      "modifications": "Muestras de recorrido cada ~2 unidades; se conservan orden y dirección.",
+      "referenceImagesUsedInProduction": false
     }
   ]
 }

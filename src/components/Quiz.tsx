@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useReducer, useRef } from "react";
+import { advanceQuiz, initialQuiz } from "../lib/quiz";
+import AudioButton from "./AudioButton";
 import { ArrowRight, Check, RotateCcw } from "lucide-react";
 import type { Question } from "../data/course";
 export default function Quiz({
@@ -12,24 +14,30 @@ export default function Quiz({
   title?: string;
   onExit: () => void;
 }) {
-  const [index, setIndex] = useState(0);
-  const [choice, setChoice] = useState<number | null>(null);
-  const [checked, setChecked] = useState(false);
-  const [score, setScore] = useState(0);
-  const [done, setDone] = useState(false);
-  const q = questions[index];
-  const finish = () => {
-    const nextScore = score + (choice === q.correct ? 1 : 0);
-    setScore(nextScore);
-    if (index + 1 === questions.length) {
-      setDone(true);
-      onComplete(Math.round((nextScore / questions.length) * 100));
-    } else {
-      setIndex(index + 1);
-      setChoice(null);
-      setChecked(false);
+  const [state, dispatch] = useReducer(
+    (state: typeof initialQuiz, action: Parameters<typeof advanceQuiz>[1]) =>
+      advanceQuiz(state, action, questions),
+    initialQuiz,
+  );
+  const { index, choice, checked, score, done, attempt } = state;
+  const delivered = useRef(-1);
+  useEffect(() => {
+    if (done && delivered.current !== attempt) {
+      delivered.current = attempt;
+      onComplete(Math.round((score / questions.length) * 100));
     }
-  };
+  }, [done, attempt, score, questions.length, onComplete]);
+  const q = questions[index];
+  if (!q)
+    return (
+      <section className="empty-state">
+        <h2>Práctica no disponible</h2>
+        <p>Vuelve al recorrido y elige otra lección.</p>
+        <button className="secondary" onClick={onExit}>
+          Volver al recorrido
+        </button>
+      </section>
+    );
   if (done)
     return (
       <div className="quiz-result">
@@ -48,13 +56,7 @@ export default function Quiz({
         </button>
         <button
           className="text-button"
-          onClick={() => {
-            setIndex(0);
-            setScore(0);
-            setChoice(null);
-            setChecked(false);
-            setDone(false);
-          }}
+          onClick={() => dispatch({ type: "restart" })}
         >
           <RotateCcw size={16} /> Practicar otra vez
         </button>
@@ -78,6 +80,15 @@ export default function Quiz({
           {q.jp}
         </p>
       )}
+      {q.listening && (
+        <div className="listening-question">
+          <AudioButton text={q.listening} />
+          <details>
+            <summary>Ver el carácter</summary>
+            <p lang="ja">{q.listening}</p>
+          </details>
+        </div>
+      )}
       <fieldset>
         <legend>{q.prompt}</legend>
         <div className="answer-grid">
@@ -88,7 +99,7 @@ export default function Quiz({
               disabled={checked}
               className={`answer ${choice === i ? "selected" : ""} ${checked && i === q.correct ? "correct" : ""} ${checked && choice === i && choice !== q.correct ? "incorrect" : ""}`}
               aria-pressed={choice === i}
-              onClick={() => setChoice(i)}
+              onClick={() => dispatch({ type: "select", choice: i, index })}
             >
               <span>{option}</span>
               {checked && i === q.correct && <Check size={20} />}
@@ -114,7 +125,7 @@ export default function Quiz({
         <button
           className="primary"
           disabled={choice === null}
-          onClick={() => (checked ? finish() : setChecked(true))}
+          onClick={() => dispatch({ type: checked ? "next" : "check", index })}
         >
           {checked
             ? index + 1 === questions.length

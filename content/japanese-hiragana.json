@@ -1,0 +1,1510 @@
+{
+  "reviewed": false,
+  "language": "ja",
+  "lessons": [
+    {
+      "id": "hiragana-s",
+      "unit": 1,
+      "title": "La familia S",
+      "subtitle": "さ・し・す・せ・そ",
+      "symbol": "さ",
+      "minutes": 10,
+      "objective": "Reconocer さ・し・す・せ・そ y leer dos palabras en contexto.",
+      "paragraphs": [
+        "Observa esta familia: さ・し・す・せ・そ. Sus lecturas son sa, shi, su, se, so. Escucha, identifica la forma y oculta el rōmaji cuando puedas reconocerla.",
+        "し se transcribe shi, no si. Escucha la diferencia entre し y す.",
+        "En Escritura puedes observar el orden de los trazos y practicar con una guía. Vuelve a escuchar las palabras antes de empezar las cinco preguntas."
+      ],
+      "questions": [
+        {
+          "prompt": "Escucha el audio. ¿Qué sonido reconoces?",
+          "options": [
+            "sa",
+            "ka",
+            "e",
+            "o"
+          ],
+          "correct": 0,
+          "explanation": "さ se lee sa. し se transcribe shi, no si. Escucha la diferencia entre し y す.",
+          "listening": "さ"
+        },
+        {
+          "prompt": "¿Cómo se lee し?",
+          "jp": "し",
+          "options": [
+            "ka",
+            "e",
+            "o",
+            "shi"
+          ],
+          "correct": 3,
+          "explanation": "し se lee shi. し se transcribe shi, no si. Escucha la diferencia entre し y す."
+        },
+        {
+          "prompt": "¿Cómo se lee す?",
+          "jp": "す",
+          "options": [
+            "e",
+            "o",
+            "su",
+            "ka"
+          ],
+          "correct": 2,
+          "explanation": "す se lee su. し se transcribe shi, no si. Escucha la diferencia entre し y す."
+        },
+        {
+          "prompt": "¿Qué significa すし?",
+          "jp": "すし",
+          "options": [
+            "Casa",
+            "Azul",
+            "Amor",
+            "Sushi"
+          ],
+          "correct": 3,
+          "explanation": "すし se lee sushi y significa sushi."
+        },
+        {
+          "prompt": "¿Qué significa そこ?",
+          "jp": "そこ",
+          "options": [
+            "Azul",
+            "Amor",
+            "Ahí",
+            "Casa"
+          ],
+          "correct": 2,
+          "explanation": "そこ se lee soko y significa ahí."
+        }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "hiragana-t",
+      "unit": 1,
+      "title": "La familia T",
+      "subtitle": "た・ち・つ・て・と",
+      "symbol": "た",
+      "minutes": 10,
+      "objective": "Reconocer た・ち・つ・て・と y leer dos palabras en contexto.",
+      "paragraphs": [
+        "Observa esta familia: た・ち・つ・て・と. Sus lecturas son ta, chi, tsu, te, to. Escucha, identifica la forma y oculta el rōmaji cuando puedas reconocerla.",
+        "ち se transcribe chi y つ se transcribe tsu. No leas esta fila como ta, ti, tu.",
+        "En Escritura puedes observar el orden de los trazos y practicar con una guía. Vuelve a escuchar las palabras antes de empezar las cinco preguntas."
+      ],
+      "questions": [
+        {
+          "prompt": "Escucha el audio. ¿Qué sonido reconoces?",
+          "options": [
+            "ta",
+            "ka",
+            "e",
+            "o"
+          ],
+          "correct": 0,
+          "explanation": "た se lee ta. ち se transcribe chi y つ se transcribe tsu. No leas esta fila como ta, ti, tu.",
+          "listening": "た"
+        },
+        {
+          "prompt": "¿Cómo se lee ち?",
+          "jp": "ち",
+          "options": [
+            "ka",
+            "e",
+            "o",
+            "chi"
+          ],
+          "correct": 3,
+          "explanation": "ち se lee chi. ち se transcribe chi y つ se transcribe tsu. No leas esta fila como ta, ti, tu."
+        },
+        {
+          "prompt": "¿Cómo se lee つ?",
+          "jp": "つ",
+          "options": [
+            "e",
+            "o",
+            "tsu",
+            "ka"
+          ],
+          "correct": 2,
+          "explanation": "つ se lee tsu. ち se transcribe chi y つ se transcribe tsu. No leas esta fila como ta, ti, tu."
+        },
+        {
+          "prompt": "¿Qué significa くち?",
+          "jp": "くち",
+          "options": [
+            "Casa",
+            "Azul",
+            "Amor",
+            "Boca"
+          ],
+          "correct": 3,
+          "explanation": "くち se lee kuchi y significa boca."
+        },
+        {
+          "prompt": "¿Qué significa した?",
+          "jp": "した",
+          "options": [
+            "Azul",
+            "Amor",
+            "Debajo",
+            "Casa"
+          ],
+          "correct": 2,
+          "explanation": "した se lee shita y significa debajo."
+        }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "hiragana-n",
+      "unit": 1,
+      "title": "La familia N",
+      "subtitle": "な・に・ぬ・ね・の",
+      "symbol": "な",
+      "minutes": 10,
+      "objective": "Reconocer な・に・ぬ・ね・の y leer dos palabras en contexto.",
+      "paragraphs": [
+        "Observa esta familia: な・に・ぬ・ね・の. Sus lecturas son na, ni, nu, ne, no. Escucha, identifica la forma y oculta el rōmaji cuando puedas reconocerla.",
+        "Distingue ぬ de ね: el pequeño lazo de ぬ ayuda a reconocerlo. Observa la guía de escritura.",
+        "En Escritura puedes observar el orden de los trazos y practicar con una guía. Vuelve a escuchar las palabras antes de empezar las cinco preguntas."
+      ],
+      "questions": [
+        {
+          "prompt": "Escucha el audio. ¿Qué sonido reconoces?",
+          "options": [
+            "na",
+            "ka",
+            "e",
+            "o"
+          ],
+          "correct": 0,
+          "explanation": "な se lee na. Distingue ぬ de ね: el pequeño lazo de ぬ ayuda a reconocerlo. Observa la guía de escritura.",
+          "listening": "な"
+        },
+        {
+          "prompt": "¿Cómo se lee に?",
+          "jp": "に",
+          "options": [
+            "ka",
+            "e",
+            "o",
+            "ni"
+          ],
+          "correct": 3,
+          "explanation": "に se lee ni. Distingue ぬ de ね: el pequeño lazo de ぬ ayuda a reconocerlo. Observa la guía de escritura."
+        },
+        {
+          "prompt": "¿Cómo se lee ぬ?",
+          "jp": "ぬ",
+          "options": [
+            "e",
+            "o",
+            "nu",
+            "ka"
+          ],
+          "correct": 2,
+          "explanation": "ぬ se lee nu. Distingue ぬ de ね: el pequeño lazo de ぬ ayuda a reconocerlo. Observa la guía de escritura."
+        },
+        {
+          "prompt": "¿Qué significa ねこ?",
+          "jp": "ねこ",
+          "options": [
+            "Casa",
+            "Azul",
+            "Amor",
+            "Gato"
+          ],
+          "correct": 3,
+          "explanation": "ねこ se lee neko y significa gato."
+        },
+        {
+          "prompt": "¿Qué significa いぬ?",
+          "jp": "いぬ",
+          "options": [
+            "Azul",
+            "Amor",
+            "Perro",
+            "Casa"
+          ],
+          "correct": 2,
+          "explanation": "いぬ se lee inu y significa perro."
+        }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "hiragana-h",
+      "unit": 1,
+      "title": "La familia H",
+      "subtitle": "は・ひ・ふ・へ・ほ",
+      "symbol": "は",
+      "minutes": 10,
+      "objective": "Reconocer は・ひ・ふ・へ・ほ y leer dos palabras en contexto.",
+      "paragraphs": [
+        "Observa esta familia: は・ひ・ふ・へ・ほ. Sus lecturas son ha, hi, fu, he, ho. Escucha, identifica la forma y oculta el rōmaji cuando puedas reconocerla.",
+        "ふ se transcribe fu; no fuerces la f española. Escucha el modelo. は se lee ha en estas palabras; como partícula puede leerse wa.",
+        "En Escritura puedes observar el orden de los trazos y practicar con una guía. Vuelve a escuchar las palabras antes de empezar las cinco preguntas."
+      ],
+      "questions": [
+        {
+          "prompt": "Escucha el audio. ¿Qué sonido reconoces?",
+          "options": [
+            "ha",
+            "ka",
+            "e",
+            "o"
+          ],
+          "correct": 0,
+          "explanation": "は se lee ha. ふ se transcribe fu; no fuerces la f española. Escucha el modelo. は se lee ha en estas palabras; como partícula puede leerse wa.",
+          "listening": "は"
+        },
+        {
+          "prompt": "¿Cómo se lee ひ?",
+          "jp": "ひ",
+          "options": [
+            "ka",
+            "e",
+            "o",
+            "hi"
+          ],
+          "correct": 3,
+          "explanation": "ひ se lee hi. ふ se transcribe fu; no fuerces la f española. Escucha el modelo. は se lee ha en estas palabras; como partícula puede leerse wa."
+        },
+        {
+          "prompt": "¿Cómo se lee ふ?",
+          "jp": "ふ",
+          "options": [
+            "e",
+            "o",
+            "fu",
+            "ka"
+          ],
+          "correct": 2,
+          "explanation": "ふ se lee fu. ふ se transcribe fu; no fuerces la f española. Escucha el modelo. は se lee ha en estas palabras; como partícula puede leerse wa."
+        },
+        {
+          "prompt": "¿Qué significa はな?",
+          "jp": "はな",
+          "options": [
+            "Casa",
+            "Azul",
+            "Amor",
+            "Flor"
+          ],
+          "correct": 3,
+          "explanation": "はな se lee hana y significa flor."
+        },
+        {
+          "prompt": "¿Qué significa ほし?",
+          "jp": "ほし",
+          "options": [
+            "Azul",
+            "Amor",
+            "Estrella",
+            "Casa"
+          ],
+          "correct": 2,
+          "explanation": "ほし se lee hoshi y significa estrella."
+        }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "hiragana-m",
+      "unit": 1,
+      "title": "La familia M",
+      "subtitle": "ま・み・む・め・も",
+      "symbol": "ま",
+      "minutes": 10,
+      "objective": "Reconocer ま・み・む・め・も y leer dos palabras en contexto.",
+      "paragraphs": [
+        "Observa esta familia: ま・み・む・め・も. Sus lecturas son ma, mi, mu, me, mo. Escucha, identifica la forma y oculta el rōmaji cuando puedas reconocerla.",
+        "Mantén una duración regular. En みみ se repite el mismo carácter: mi · mi. や se introduce en la siguiente familia.",
+        "En Escritura puedes observar el orden de los trazos y practicar con una guía. Vuelve a escuchar las palabras antes de empezar las cinco preguntas."
+      ],
+      "questions": [
+        {
+          "prompt": "Escucha el audio. ¿Qué sonido reconoces?",
+          "options": [
+            "ma",
+            "ka",
+            "e",
+            "o"
+          ],
+          "correct": 0,
+          "explanation": "ま se lee ma. Mantén una duración regular. En みみ se repite el mismo carácter: mi · mi. や se introduce en la siguiente familia.",
+          "listening": "ま"
+        },
+        {
+          "prompt": "¿Cómo se lee み?",
+          "jp": "み",
+          "options": [
+            "ka",
+            "e",
+            "o",
+            "mi"
+          ],
+          "correct": 3,
+          "explanation": "み se lee mi. Mantén una duración regular. En みみ se repite el mismo carácter: mi · mi. や se introduce en la siguiente familia."
+        },
+        {
+          "prompt": "¿Cómo se lee む?",
+          "jp": "む",
+          "options": [
+            "e",
+            "o",
+            "mu",
+            "ka"
+          ],
+          "correct": 2,
+          "explanation": "む se lee mu. Mantén una duración regular. En みみ se repite el mismo carácter: mi · mi. や se introduce en la siguiente familia."
+        },
+        {
+          "prompt": "¿Qué significa みみ?",
+          "jp": "みみ",
+          "options": [
+            "Casa",
+            "Azul",
+            "Amor",
+            "Oreja"
+          ],
+          "correct": 3,
+          "explanation": "みみ se lee mimi y significa oreja."
+        },
+        {
+          "prompt": "¿Qué significa やま?",
+          "jp": "やま",
+          "options": [
+            "Azul",
+            "Amor",
+            "Montaña",
+            "Casa"
+          ],
+          "correct": 2,
+          "explanation": "やま se lee yama y significa montaña."
+        }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "hiragana-y",
+      "unit": 1,
+      "title": "La familia Y",
+      "subtitle": "や・ゆ・よ",
+      "symbol": "や",
+      "minutes": 10,
+      "objective": "Reconocer や・ゆ・よ y leer dos palabras en contexto.",
+      "paragraphs": [
+        "Observa esta familia: や・ゆ・よ. Sus lecturas son ya, yu, yo. Escucha, identifica la forma y oculta el rōmaji cuando puedas reconocerla.",
+        "Esta fila tiene tres caracteres básicos: や・ゆ・よ. Aquí son de tamaño normal y ocupan un tiempo cada uno. る se estudia en la siguiente familia.",
+        "En Escritura puedes observar el orden de los trazos y practicar con una guía. Vuelve a escuchar las palabras antes de empezar las cinco preguntas."
+      ],
+      "questions": [
+        {
+          "prompt": "Escucha el audio. ¿Qué sonido reconoces?",
+          "options": [
+            "ya",
+            "ka",
+            "e",
+            "o"
+          ],
+          "correct": 0,
+          "explanation": "や se lee ya. Esta fila tiene tres caracteres básicos: や・ゆ・よ. Aquí son de tamaño normal y ocupan un tiempo cada uno. る se estudia en la siguiente familia.",
+          "listening": "や"
+        },
+        {
+          "prompt": "¿Cómo se lee ゆ?",
+          "jp": "ゆ",
+          "options": [
+            "ka",
+            "e",
+            "o",
+            "yu"
+          ],
+          "correct": 3,
+          "explanation": "ゆ se lee yu. Esta fila tiene tres caracteres básicos: や・ゆ・よ. Aquí son de tamaño normal y ocupan un tiempo cada uno. る se estudia en la siguiente familia."
+        },
+        {
+          "prompt": "¿Cómo se lee よ?",
+          "jp": "よ",
+          "options": [
+            "e",
+            "o",
+            "yo",
+            "ka"
+          ],
+          "correct": 2,
+          "explanation": "よ se lee yo. Esta fila tiene tres caracteres básicos: や・ゆ・よ. Aquí son de tamaño normal y ocupan un tiempo cada uno. る se estudia en la siguiente familia."
+        },
+        {
+          "prompt": "¿Qué significa ゆき?",
+          "jp": "ゆき",
+          "options": [
+            "Casa",
+            "Azul",
+            "Amor",
+            "Nieve"
+          ],
+          "correct": 3,
+          "explanation": "ゆき se lee yuki y significa nieve."
+        },
+        {
+          "prompt": "¿Qué significa よる?",
+          "jp": "よる",
+          "options": [
+            "Azul",
+            "Amor",
+            "Noche",
+            "Casa"
+          ],
+          "correct": 2,
+          "explanation": "よる se lee yoru y significa noche."
+        }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "hiragana-r",
+      "unit": 1,
+      "title": "La familia R",
+      "subtitle": "ら・り・る・れ・ろ",
+      "symbol": "ら",
+      "minutes": 10,
+      "objective": "Reconocer ら・り・る・れ・ろ y leer dos palabras en contexto.",
+      "paragraphs": [
+        "Observa esta familia: ら・り・る・れ・ろ. Sus lecturas son ra, ri, ru, re, ro. Escucha, identifica la forma y oculta el rōmaji cuando puedas reconocerla.",
+        "La r del japonés no es una erre múltiple española. Escucha cada ejemplo con una articulación breve.",
+        "En Escritura puedes observar el orden de los trazos y practicar con una guía. Vuelve a escuchar las palabras antes de empezar las cinco preguntas."
+      ],
+      "questions": [
+        {
+          "prompt": "Escucha el audio. ¿Qué sonido reconoces?",
+          "options": [
+            "ra",
+            "ka",
+            "e",
+            "o"
+          ],
+          "correct": 0,
+          "explanation": "ら se lee ra. La r del japonés no es una erre múltiple española. Escucha cada ejemplo con una articulación breve.",
+          "listening": "ら"
+        },
+        {
+          "prompt": "¿Cómo se lee り?",
+          "jp": "り",
+          "options": [
+            "ka",
+            "e",
+            "o",
+            "ri"
+          ],
+          "correct": 3,
+          "explanation": "り se lee ri. La r del japonés no es una erre múltiple española. Escucha cada ejemplo con una articulación breve."
+        },
+        {
+          "prompt": "¿Cómo se lee る?",
+          "jp": "る",
+          "options": [
+            "e",
+            "o",
+            "ru",
+            "ka"
+          ],
+          "correct": 2,
+          "explanation": "る se lee ru. La r del japonés no es una erre múltiple española. Escucha cada ejemplo con una articulación breve."
+        },
+        {
+          "prompt": "¿Qué significa そら?",
+          "jp": "そら",
+          "options": [
+            "Casa",
+            "Azul",
+            "Amor",
+            "Cielo"
+          ],
+          "correct": 3,
+          "explanation": "そら se lee sora y significa cielo."
+        },
+        {
+          "prompt": "¿Qué significa とり?",
+          "jp": "とり",
+          "options": [
+            "Azul",
+            "Amor",
+            "Pájaro",
+            "Casa"
+          ],
+          "correct": 2,
+          "explanation": "とり se lee tori y significa pájaro."
+        }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "hiragana-wn",
+      "unit": 1,
+      "title": "わ・を・ん",
+      "subtitle": "わ・を・ん",
+      "symbol": "わ",
+      "minutes": 10,
+      "objective": "Reconocer わ・を・ん y leer dos palabras en contexto.",
+      "paragraphs": [
+        "Observa esta familia: わ・を・ん. Sus lecturas son wa, o, n. Escucha, identifica la forma y oculta el rōmaji cuando puedas reconocerla.",
+        "を se pronuncia o en el japonés estándar actual y suele marcar el objeto. ん es una unidad nasal con un tiempo propio; no añadas una vocal después.",
+        "En Escritura puedes observar el orden de los trazos y practicar con una guía. Vuelve a escuchar las palabras antes de empezar las cinco preguntas."
+      ],
+      "questions": [
+        {
+          "prompt": "Escucha el audio. ¿Qué sonido reconoces?",
+          "options": [
+            "wa",
+            "ka",
+            "e",
+            "o"
+          ],
+          "correct": 0,
+          "explanation": "わ se lee wa. を se pronuncia o en el japonés estándar actual y suele marcar el objeto. ん es una unidad nasal con un tiempo propio; no añadas una vocal después.",
+          "listening": "わ"
+        },
+        {
+          "prompt": "¿Cómo se lee を?",
+          "jp": "を",
+          "options": [
+            "ka",
+            "e",
+            "u",
+            "o"
+          ],
+          "correct": 3,
+          "explanation": "を se lee o. を se pronuncia o en el japonés estándar actual y suele marcar el objeto. ん es una unidad nasal con un tiempo propio; no añadas una vocal después."
+        },
+        {
+          "prompt": "¿Cómo se lee ん?",
+          "jp": "ん",
+          "options": [
+            "e",
+            "o",
+            "n",
+            "ka"
+          ],
+          "correct": 2,
+          "explanation": "ん se lee n. を se pronuncia o en el japonés estándar actual y suele marcar el objeto. ん es una unidad nasal con un tiempo propio; no añadas una vocal después."
+        },
+        {
+          "prompt": "¿Qué significa かわ?",
+          "jp": "かわ",
+          "options": [
+            "Casa",
+            "Azul",
+            "Amor",
+            "Río"
+          ],
+          "correct": 3,
+          "explanation": "かわ se lee kawa y significa río."
+        },
+        {
+          "prompt": "¿Qué significa ほん?",
+          "jp": "ほん",
+          "options": [
+            "Azul",
+            "Amor",
+            "Libro",
+            "Casa"
+          ],
+          "correct": 2,
+          "explanation": "ほん se lee hon y significa libro."
+        }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "hiragana-voiced",
+      "unit": 1,
+      "title": "Dos marcas, otro sonido",
+      "subtitle": "Dakuten y handakuten",
+      "symbol": "か",
+      "minutes": 12,
+      "objective": "Reconocer cómo ゛ y ゜ modifican el sonido de un hiragana.",
+      "paragraphs": [
+        "Reconocer cómo ゛ y ゜ modifican el sonido de un hiragana.",
+        "El dakuten ゛ transforma las familias K→G, S→Z, T→D y H→B. Por ejemplo: か→が, し→じ y は→ば. じ suele transcribirse ji; ぢ y づ suelen sonar como じ y ず en el japonés estándar.",
+        "El círculo ゜, llamado handakuten, aparece en la familia H para formar P: は→ぱ, ひ→ぴ, ふ→ぷ, へ→ぺ, ほ→ぽ. Las marcas se escriben después del carácter base."
+      ],
+      "questions": [
+        {
+          "prompt": "¿Cómo cambia か con dakuten?",
+          "options": [
+            "が",
+            "ぱ",
+            "や",
+            "な"
+          ],
+          "correct": 0,
+          "explanation": "か con ゛ forma が, ga."
+        },
+        {
+          "prompt": "¿Qué marca forma la familia P?",
+          "options": [
+            "゛",
+            "゜",
+            "っ",
+            "ー"
+          ],
+          "correct": 1,
+          "explanation": "El círculo ゜ se llama handakuten."
+        },
+        {
+          "prompt": "¿Cómo se lee じ?",
+          "options": [
+            "shi",
+            "chi",
+            "ji",
+            "ni"
+          ],
+          "correct": 2,
+          "explanation": "じ se transcribe ji."
+        },
+        {
+          "prompt": "¿Qué significa みず?",
+          "options": [
+            "Libro",
+            "Flor",
+            "Agua",
+            "Gato"
+          ],
+          "correct": 2,
+          "explanation": "みず, mizu, significa agua."
+        },
+        {
+          "prompt": "¿Qué carácter lleva handakuten?",
+          "options": [
+            "ば",
+            "は",
+            "が",
+            "ぱ"
+          ],
+          "correct": 3,
+          "explanation": "ぱ lleva el círculo ゜ y se lee pa."
+        }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "hiragana-combinations",
+      "unit": 1,
+      "title": "Un sonido compartido",
+      "subtitle": "ゃ・ゅ・ょ pequeños",
+      "symbol": "き",
+      "minutes": 12,
+      "objective": "Distinguir や・ゆ・よ grandes de las combinaciones con ゃ・ゅ・ょ pequeños.",
+      "paragraphs": [
+        "Distinguir や・ゆ・よ grandes de las combinaciones con ゃ・ゅ・ょ pequeños.",
+        "Un kana de la columna i seguido de ゃ, ゅ o ょ pequeño forma una combinación que ocupa un tiempo: きゃ, きゅ, きょ. きや, con や grande, tiene dos tiempos: ki · ya.",
+        "Otras combinaciones son しゃ・しゅ・しょ y ちゃ・ちゅ・ちょ. En きょう hay dos tiempos: kyo · u. La última う alarga la vocal en esta palabra."
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué escritura ocupa un solo tiempo?",
+          "options": [
+            "きや",
+            "きゃ",
+            "きゆ",
+            "きよ"
+          ],
+          "correct": 1,
+          "explanation": "きゃ combina き con ゃ pequeño en un tiempo."
+        },
+        {
+          "prompt": "¿Cómo se lee しゃ?",
+          "options": [
+            "sha",
+            "shiya",
+            "sa",
+            "ya"
+          ],
+          "correct": 0,
+          "explanation": "し + ゃ pequeño forma sha."
+        },
+        {
+          "prompt": "¿Qué significa おちゃ?",
+          "options": [
+            "Agua",
+            "Flor",
+            "Té",
+            "Cielo"
+          ],
+          "correct": 2,
+          "explanation": "おちゃ, ocha, significa té."
+        },
+        {
+          "prompt": "¿Cuántos tiempos tiene きょう?",
+          "options": [
+            "Uno",
+            "Dos",
+            "Tres",
+            "Cuatro"
+          ],
+          "correct": 1,
+          "explanation": "kyo · u: dos tiempos, con vocal larga."
+        },
+        {
+          "prompt": "¿Qué significa しゃしん?",
+          "options": [
+            "Libro",
+            "Fotografía",
+            "Gato",
+            "Nieve"
+          ],
+          "correct": 1,
+          "explanation": "しゃしん, shashin, significa fotografía."
+        }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "hiragana-rhythm",
+      "unit": 1,
+      "title": "El ritmo también cuenta",
+      "subtitle": "っ pequeño y vocales largas",
+      "symbol": "き",
+      "minutes": 12,
+      "objective": "Reconocer la pausa de っ y la duración de las vocales en palabras breves.",
+      "paragraphs": [
+        "Reconocer la pausa de っ y la duración de las vocales en palabras breves.",
+        "El っ pequeño ocupa un tiempo de preparación o cierre antes de la siguiente consonante: en きって, ki · (cierre) · te. No se lee como el つ grande.",
+        "Una vocal larga ocupa dos tiempos. En おばさん y おばあさん la duración cambia el significado. Escucha ambas palabras varias veces: el audio sintetizado es una referencia provisional."
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué indica el っ pequeño en きって?",
+          "options": [
+            "Una vocal i",
+            "Un tiempo de cierre",
+            "Un saludo",
+            "Una nasal"
+          ],
+          "correct": 1,
+          "explanation": "っ ocupa un tiempo de preparación antes de la consonante siguiente."
+        },
+        {
+          "prompt": "¿Cuántos tiempos tiene きって?",
+          "options": [
+            "Uno",
+            "Dos",
+            "Tres",
+            "Cuatro"
+          ],
+          "correct": 2,
+          "explanation": "ki · cierre · te: tres tiempos."
+        },
+        {
+          "prompt": "¿Qué significa がっこう?",
+          "options": [
+            "Escuela",
+            "Fotografía",
+            "Agua",
+            "Flor"
+          ],
+          "correct": 0,
+          "explanation": "がっこう, gakkou, significa escuela."
+        },
+        {
+          "prompt": "¿Cuál significa abuela?",
+          "options": [
+            "おばさん",
+            "おばあさん",
+            "おおきい",
+            "きって"
+          ],
+          "correct": 1,
+          "explanation": "おばあさん tiene una vocal a larga y significa abuela."
+        },
+        {
+          "prompt": "¿Qué diferencia つ de っ?",
+          "options": [
+            "Ninguna",
+            "El color",
+            "El tamaño y su función",
+            "La dirección del texto"
+          ],
+          "correct": 2,
+          "explanation": "つ se lee tsu; っ pequeño marca un tiempo de cierre en los ejemplos."
+        }
+      ],
+      "reviewed": false
+    }
+  ],
+  "words": [
+    {
+      "id": "kana-3055",
+      "jp": "さ",
+      "reading": "sa",
+      "es": "Sonido sa",
+      "note": "し se transcribe shi, no si. Escucha la diferencia entre し y す.",
+      "lesson": 5,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3057",
+      "jp": "し",
+      "reading": "shi",
+      "es": "Sonido shi",
+      "note": "し se transcribe shi, no si. Escucha la diferencia entre し y す.",
+      "lesson": 5,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3059",
+      "jp": "す",
+      "reading": "su",
+      "es": "Sonido su",
+      "note": "し se transcribe shi, no si. Escucha la diferencia entre し y す.",
+      "lesson": 5,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-305b",
+      "jp": "せ",
+      "reading": "se",
+      "es": "Sonido se",
+      "note": "し se transcribe shi, no si. Escucha la diferencia entre し y す.",
+      "lesson": 5,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-305d",
+      "jp": "そ",
+      "reading": "so",
+      "es": "Sonido so",
+      "note": "し se transcribe shi, no si. Escucha la diferencia entre し y す.",
+      "lesson": 5,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-sushi",
+      "jp": "すし",
+      "reading": "sushi",
+      "es": "Sushi",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 5,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-soko",
+      "jp": "そこ",
+      "reading": "soko",
+      "es": "Ahí",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 5,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-305f",
+      "jp": "た",
+      "reading": "ta",
+      "es": "Sonido ta",
+      "note": "ち se transcribe chi y つ se transcribe tsu. No leas esta fila como ta, ti, tu.",
+      "lesson": 6,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3061",
+      "jp": "ち",
+      "reading": "chi",
+      "es": "Sonido chi",
+      "note": "ち se transcribe chi y つ se transcribe tsu. No leas esta fila como ta, ti, tu.",
+      "lesson": 6,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3064",
+      "jp": "つ",
+      "reading": "tsu",
+      "es": "Sonido tsu",
+      "note": "ち se transcribe chi y つ se transcribe tsu. No leas esta fila como ta, ti, tu.",
+      "lesson": 6,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3066",
+      "jp": "て",
+      "reading": "te",
+      "es": "Sonido te",
+      "note": "ち se transcribe chi y つ se transcribe tsu. No leas esta fila como ta, ti, tu.",
+      "lesson": 6,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3068",
+      "jp": "と",
+      "reading": "to",
+      "es": "Sonido to",
+      "note": "ち se transcribe chi y つ se transcribe tsu. No leas esta fila como ta, ti, tu.",
+      "lesson": 6,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-kuchi",
+      "jp": "くち",
+      "reading": "kuchi",
+      "es": "Boca",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 6,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-shita",
+      "jp": "した",
+      "reading": "shita",
+      "es": "Debajo",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 6,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-306a",
+      "jp": "な",
+      "reading": "na",
+      "es": "Sonido na",
+      "note": "Distingue ぬ de ね: el pequeño lazo de ぬ ayuda a reconocerlo. Observa la guía de escritura.",
+      "lesson": 7,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-306b",
+      "jp": "に",
+      "reading": "ni",
+      "es": "Sonido ni",
+      "note": "Distingue ぬ de ね: el pequeño lazo de ぬ ayuda a reconocerlo. Observa la guía de escritura.",
+      "lesson": 7,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-306c",
+      "jp": "ぬ",
+      "reading": "nu",
+      "es": "Sonido nu",
+      "note": "Distingue ぬ de ね: el pequeño lazo de ぬ ayuda a reconocerlo. Observa la guía de escritura.",
+      "lesson": 7,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-306d",
+      "jp": "ね",
+      "reading": "ne",
+      "es": "Sonido ne",
+      "note": "Distingue ぬ de ね: el pequeño lazo de ぬ ayuda a reconocerlo. Observa la guía de escritura.",
+      "lesson": 7,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-306e",
+      "jp": "の",
+      "reading": "no",
+      "es": "Sonido no",
+      "note": "Distingue ぬ de ね: el pequeño lazo de ぬ ayuda a reconocerlo. Observa la guía de escritura.",
+      "lesson": 7,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-neko",
+      "jp": "ねこ",
+      "reading": "neko",
+      "es": "Gato",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 7,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-inu",
+      "jp": "いぬ",
+      "reading": "inu",
+      "es": "Perro",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 7,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-306f",
+      "jp": "は",
+      "reading": "ha",
+      "es": "Sonido ha",
+      "note": "ふ se transcribe fu; no fuerces la f española. Escucha el modelo. は se lee ha en estas palabras; como partícula puede leerse wa.",
+      "lesson": 8,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3072",
+      "jp": "ひ",
+      "reading": "hi",
+      "es": "Sonido hi",
+      "note": "ふ se transcribe fu; no fuerces la f española. Escucha el modelo. は se lee ha en estas palabras; como partícula puede leerse wa.",
+      "lesson": 8,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3075",
+      "jp": "ふ",
+      "reading": "fu",
+      "es": "Sonido fu",
+      "note": "ふ se transcribe fu; no fuerces la f española. Escucha el modelo. は se lee ha en estas palabras; como partícula puede leerse wa.",
+      "lesson": 8,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3078",
+      "jp": "へ",
+      "reading": "he",
+      "es": "Sonido he",
+      "note": "ふ se transcribe fu; no fuerces la f española. Escucha el modelo. は se lee ha en estas palabras; como partícula puede leerse wa.",
+      "lesson": 8,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-307b",
+      "jp": "ほ",
+      "reading": "ho",
+      "es": "Sonido ho",
+      "note": "ふ se transcribe fu; no fuerces la f española. Escucha el modelo. は se lee ha en estas palabras; como partícula puede leerse wa.",
+      "lesson": 8,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-hana",
+      "jp": "はな",
+      "reading": "hana",
+      "es": "Flor",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 8,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-hoshi",
+      "jp": "ほし",
+      "reading": "hoshi",
+      "es": "Estrella",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 8,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-307e",
+      "jp": "ま",
+      "reading": "ma",
+      "es": "Sonido ma",
+      "note": "Mantén una duración regular. En みみ se repite el mismo carácter: mi · mi. や se introduce en la siguiente familia.",
+      "lesson": 9,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-307f",
+      "jp": "み",
+      "reading": "mi",
+      "es": "Sonido mi",
+      "note": "Mantén una duración regular. En みみ se repite el mismo carácter: mi · mi. や se introduce en la siguiente familia.",
+      "lesson": 9,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3080",
+      "jp": "む",
+      "reading": "mu",
+      "es": "Sonido mu",
+      "note": "Mantén una duración regular. En みみ se repite el mismo carácter: mi · mi. や se introduce en la siguiente familia.",
+      "lesson": 9,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3081",
+      "jp": "め",
+      "reading": "me",
+      "es": "Sonido me",
+      "note": "Mantén una duración regular. En みみ se repite el mismo carácter: mi · mi. や se introduce en la siguiente familia.",
+      "lesson": 9,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3082",
+      "jp": "も",
+      "reading": "mo",
+      "es": "Sonido mo",
+      "note": "Mantén una duración regular. En みみ se repite el mismo carácter: mi · mi. や se introduce en la siguiente familia.",
+      "lesson": 9,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-mimi",
+      "jp": "みみ",
+      "reading": "mimi",
+      "es": "Oreja",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 9,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-yama",
+      "jp": "やま",
+      "reading": "yama",
+      "es": "Montaña",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 9,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3084",
+      "jp": "や",
+      "reading": "ya",
+      "es": "Sonido ya",
+      "note": "Esta fila tiene tres caracteres básicos: や・ゆ・よ. Aquí son de tamaño normal y ocupan un tiempo cada uno. る se estudia en la siguiente familia.",
+      "lesson": 10,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3086",
+      "jp": "ゆ",
+      "reading": "yu",
+      "es": "Sonido yu",
+      "note": "Esta fila tiene tres caracteres básicos: や・ゆ・よ. Aquí son de tamaño normal y ocupan un tiempo cada uno. る se estudia en la siguiente familia.",
+      "lesson": 10,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3088",
+      "jp": "よ",
+      "reading": "yo",
+      "es": "Sonido yo",
+      "note": "Esta fila tiene tres caracteres básicos: や・ゆ・よ. Aquí son de tamaño normal y ocupan un tiempo cada uno. る se estudia en la siguiente familia.",
+      "lesson": 10,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-yuki",
+      "jp": "ゆき",
+      "reading": "yuki",
+      "es": "Nieve",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 10,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-yoru",
+      "jp": "よる",
+      "reading": "yoru",
+      "es": "Noche",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 10,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3089",
+      "jp": "ら",
+      "reading": "ra",
+      "es": "Sonido ra",
+      "note": "La r del japonés no es una erre múltiple española. Escucha cada ejemplo con una articulación breve.",
+      "lesson": 11,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-308a",
+      "jp": "り",
+      "reading": "ri",
+      "es": "Sonido ri",
+      "note": "La r del japonés no es una erre múltiple española. Escucha cada ejemplo con una articulación breve.",
+      "lesson": 11,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-308b",
+      "jp": "る",
+      "reading": "ru",
+      "es": "Sonido ru",
+      "note": "La r del japonés no es una erre múltiple española. Escucha cada ejemplo con una articulación breve.",
+      "lesson": 11,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-308c",
+      "jp": "れ",
+      "reading": "re",
+      "es": "Sonido re",
+      "note": "La r del japonés no es una erre múltiple española. Escucha cada ejemplo con una articulación breve.",
+      "lesson": 11,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-308d",
+      "jp": "ろ",
+      "reading": "ro",
+      "es": "Sonido ro",
+      "note": "La r del japonés no es una erre múltiple española. Escucha cada ejemplo con una articulación breve.",
+      "lesson": 11,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-sora",
+      "jp": "そら",
+      "reading": "sora",
+      "es": "Cielo",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 11,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-tori",
+      "jp": "とり",
+      "reading": "tori",
+      "es": "Pájaro",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 11,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-308f",
+      "jp": "わ",
+      "reading": "wa",
+      "es": "Sonido wa",
+      "note": "を se pronuncia o en el japonés estándar actual y suele marcar el objeto. ん es una unidad nasal con un tiempo propio; no añadas una vocal después.",
+      "lesson": 12,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3092",
+      "jp": "を",
+      "reading": "o",
+      "es": "Sonido o",
+      "note": "を se pronuncia o en el japonés estándar actual y suele marcar el objeto. ん es una unidad nasal con un tiempo propio; no añadas una vocal después.",
+      "lesson": 12,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "kana-3093",
+      "jp": "ん",
+      "reading": "n",
+      "es": "Sonido n",
+      "note": "を se pronuncia o en el japonés estándar actual y suele marcar el objeto. ん es una unidad nasal con un tiempo propio; no añadas una vocal después.",
+      "lesson": 12,
+      "category": "Hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-kawa",
+      "jp": "かわ",
+      "reading": "kawa",
+      "es": "Río",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 12,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-hon",
+      "jp": "ほん",
+      "reading": "hon",
+      "es": "Libro",
+      "note": "Lee por tiempos y escucha antes de consultar el rōmaji.",
+      "lesson": 12,
+      "category": "Palabras en hiragana",
+      "reviewed": false
+    },
+    {
+      "id": "hira-kagi",
+      "jp": "かぎ",
+      "reading": "kagi",
+      "es": "Llave",
+      "note": "か sin marca y ぎ con dakuten.",
+      "lesson": 13,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    },
+    {
+      "id": "hira-mizu",
+      "jp": "みず",
+      "reading": "mizu",
+      "es": "Agua",
+      "note": "ず pertenece a la familia con dakuten.",
+      "lesson": 13,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    },
+    {
+      "id": "hira-kaze",
+      "jp": "かぜ",
+      "reading": "kaze",
+      "es": "Viento",
+      "note": "ぜ es la forma sonora de せ.",
+      "lesson": 13,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    },
+    {
+      "id": "hira-hanabi",
+      "jp": "はなび",
+      "reading": "hanabi",
+      "es": "Fuegos artificiales",
+      "note": "び deriva de ひ.",
+      "lesson": 13,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    },
+    {
+      "id": "hira-pan",
+      "jp": "ぱん",
+      "reading": "pan",
+      "es": "Pan",
+      "note": "ぱ lleva handakuten. La grafía habitual de esta palabra es パン; aquí se practica el sonido en hiragana.",
+      "lesson": 13,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    },
+    {
+      "id": "hira-kyaku",
+      "jp": "きゃく",
+      "reading": "kyaku",
+      "es": "Visitante",
+      "note": "Dos tiempos: kya · ku.",
+      "lesson": 14,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    },
+    {
+      "id": "hira-kyou",
+      "jp": "きょう",
+      "reading": "kyou",
+      "es": "Hoy",
+      "note": "Dos tiempos: kyo · u; la vocal es larga.",
+      "lesson": 14,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    },
+    {
+      "id": "hira-shashin",
+      "jp": "しゃしん",
+      "reading": "shashin",
+      "es": "Fotografía",
+      "note": "Tres tiempos: sha · shi · n.",
+      "lesson": 14,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    },
+    {
+      "id": "hira-ocha",
+      "jp": "おちゃ",
+      "reading": "ocha",
+      "es": "Té",
+      "note": "Dos tiempos: o · cha.",
+      "lesson": 14,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    },
+    {
+      "id": "hira-jisho",
+      "jp": "じしょ",
+      "reading": "jisho",
+      "es": "Diccionario",
+      "note": "Dos tiempos: ji · sho.",
+      "lesson": 14,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    },
+    {
+      "id": "hira-kitte",
+      "jp": "きって",
+      "reading": "kitte",
+      "es": "Sello postal",
+      "note": "Tres tiempos: ki · cierre · te.",
+      "lesson": 15,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    },
+    {
+      "id": "hira-gakkou",
+      "jp": "がっこう",
+      "reading": "gakkou",
+      "es": "Escuela",
+      "note": "Cuatro tiempos: ga · cierre · ko · u.",
+      "lesson": 15,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    },
+    {
+      "id": "hira-obasan",
+      "jp": "おばさん",
+      "reading": "obasan",
+      "es": "Tía",
+      "note": "Cuatro tiempos: o · ba · sa · n.",
+      "lesson": 15,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    },
+    {
+      "id": "hira-obaasan",
+      "jp": "おばあさん",
+      "reading": "obaasan",
+      "es": "Abuela",
+      "note": "Cinco tiempos: o · ba · a · sa · n.",
+      "lesson": 15,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    },
+    {
+      "id": "hira-ookii",
+      "jp": "おおきい",
+      "reading": "ookii",
+      "es": "Grande",
+      "note": "Cuatro tiempos: o · o · ki · i.",
+      "lesson": 15,
+      "category": "Combinaciones y ritmo",
+      "reviewed": false
+    }
+  ]
+}

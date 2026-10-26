@@ -1,12 +1,20 @@
 # Producto: plataforma de aprendizaje de idiomas
 
-## Fase 3 en curso — 2026-10-26
+## Fase 3 implementada — 2026-10-26
 
-Primer incremento: validación defensiva del progreso, integridad estructural del
-curso, CSP y comprobaciones continuas. Seguridad, estabilidad y rendimiento son
-prioridades permanentes. No se amplió aún el currículo ni se certificó el contenido.
-Siguiente entrega: revisión del piloto, hiragana y escritura guiada.
-Detalle: `docs/12-seguridad-estabilidad.md`. Marcos confirma acceso desde web y móvil.
+Cierre técnico del japonés inicial: 16 lecciones en dos unidades, 92 entradas y
+92 audios estáticos; biblioteca que se abre por lecciones y ejemplos por diagnóstico,
+repaso, prácticas de escucha y escritura guiada de los 46 hiragana básicos.
+La unidad nueva cubre familias restantes, marcas sonoras, combinaciones y ritmo.
+El diagnóstico sigue limitado al piloto. Todos los borradores conservan
+`reviewed: false`: revisión lingüística y auditiva externa pendiente antes de
+presentarlos como material validado. No equivale a terminar las doce unidades.
+
+Validación defensiva del progreso y prácticas, integridad del curso, CSP y CI.
+Seguridad, estabilidad y rendimiento son prioridades permanentes. Marcos confirma
+acceso desde web y móvil; recuperación completa por correo y sincronización real
+siguen como comprobaciones operativas pendientes.
+Detalle: `docs/13-fase-3-japones.md` y `docs/12-seguridad-estabilidad.md`.
 
 ## Estado actual de cuentas — 2026-10-24
 

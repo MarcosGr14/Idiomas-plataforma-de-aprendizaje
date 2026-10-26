@@ -2,7 +2,7 @@ import { Account } from "./components/Account";
 import { BrandSeal } from "./components/brand/BrandStyles";
 import { appNow } from "./lib/capture";
 import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -33,11 +33,12 @@ import {
   xp,
   type Progress,
 } from "./lib/progress";
+import { availableVocabulary, recommendedLesson } from "./lib/learning";
 import { useProgress } from "./lib/useProgress";
 import { supabase } from "./lib/supabase";
 import AudioButton from "./components/AudioButton";
 import Quiz from "./components/Quiz";
-import WritingPad from "./components/WritingPad";
+const WritingPad = lazy(() => import("./components/WritingPad"));
 import KyotoHero from "./components/KyotoHero";
 import MotionSelect from "./components/MotionSelect";
 import { resolveMotion, type MotionMode } from "./lib/motion";
@@ -156,12 +157,7 @@ function App() {
   const isHome = route === "/";
   const known = words.filter((w) => progress.reviews[w.id]);
   const due = known.filter((w) => progress.reviews[w.id].due <= dayKey());
-  const suggestedIndex =
-    progress.placement !== null && progress.placement >= 80
-      ? 3
-      : progress.placement !== null && progress.placement >= 50
-        ? 1
-        : 0;
+  const suggestedIndex = recommendedLesson(progress.placement);
   const nextIndex = !progress.completed[lessons[suggestedIndex].id]
     ? suggestedIndex
     : lessons.findIndex((l) => !progress.completed[l.id]);
@@ -300,7 +296,7 @@ function App() {
             <section className="preview-section">
               <div className="section-title">
                 <h2>Tu primera parada</h2>
-                <span>Unidad piloto · 5 lecciones</span>
+                <span>Japonés inicial · {lessons.length} lecciones</span>
               </div>
               {lessons.slice(0, 3).map((l, i) => (
                 <button
@@ -320,8 +316,8 @@ function App() {
                 </button>
               ))}
               <p className="small">
-                La primera unidad ya se puede explorar. El resto del recorrido
-                está en preparación.
+                Las dos primeras unidades ya se pueden explorar. El resto del
+                recorrido está en preparación.
               </p>
             </section>
             <section className="closing">
@@ -461,51 +457,58 @@ function App() {
                 </button>
               </section>
             )}
-            <section className="course-section">
-              <div className="section-title">
-                <h2>Primeros encuentros</h2>
-                <span>
-                  {Object.keys(progress.completed).length} de {lessons.length}{" "}
-                  lecciones
-                </span>
-              </div>
-              <div className="lesson-list">
-                {lessons.map((l, i) => (
-                  <button
-                    className="lesson-row"
-                    key={l.id}
-                    onClick={() => go(`/leccion/${l.id}`)}
-                  >
-                    <span
-                      className={`lesson-state ${progress.completed[l.id] ? "completed" : ""}`}
-                    >
-                      {progress.completed[l.id] ? (
-                        <Check size={18} />
-                      ) : (
-                        <BookOpen size={18} />
-                      )}
-                    </span>
+            {units.slice(0, 2).map((unit, unitIndex) => {
+              const unitLessons = lessons.filter((l) => l.unit === unitIndex);
+              const completedCount = unitLessons.filter(
+                (l) => progress.completed[l.id],
+              ).length;
+              return (
+                <section className="course-section" key={unit.title}>
+                  <div className="section-title">
+                    <h2>{unit.title}</h2>
                     <span>
-                      <strong>{l.title}</strong>
-                      <small>{l.subtitle}</small>
+                      {completedCount} de {unitLessons.length} lecciones
                     </span>
-                    <span className="lesson-duration">
-                      {progress.completed[l.id]
-                        ? `${progress.completed[l.id].score}%`
-                        : `${l.minutes} min`}
-                    </span>
-                    <ChevronRight size={18} />
-                  </button>
-                ))}
-              </div>
-            </section>
+                  </div>
+                  <div className="lesson-list">
+                    {unitLessons.map((l) => (
+                      <button
+                        className="lesson-row"
+                        key={l.id}
+                        onClick={() => go(`/leccion/${l.id}`)}
+                      >
+                        <span
+                          className={`lesson-state ${progress.completed[l.id] ? "completed" : ""}`}
+                        >
+                          {progress.completed[l.id] ? (
+                            <Check size={18} />
+                          ) : (
+                            <BookOpen size={18} />
+                          )}
+                        </span>
+                        <span>
+                          <strong>{l.title}</strong>
+                          <small>{l.subtitle}</small>
+                        </span>
+                        <span className="lesson-duration">
+                          {progress.completed[l.id]
+                            ? `${progress.completed[l.id].score}%`
+                            : `${l.minutes} min`}
+                        </span>
+                        <ChevronRight size={18} />
+                      </button>
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
             <section className="planned-course">
               <h2>Un camino por descubrir</h2>
               <p>
                 Estas unidades forman el plan del curso. Aún no contienen
                 lecciones disponibles.
               </p>
-              {units.slice(1).map((u) => (
+              {units.slice(2).map((u) => (
                 <div className="planned-row" key={u.title}>
                   <span lang="ja">{u.symbol}</span>
                   <strong>{u.title}</strong>
@@ -554,7 +557,11 @@ function App() {
               title="Haz tuyo cada carácter"
               description="Observa su forma, dibuja y vuelve a intentarlo sin prisa."
             />
-            <WritingPad />
+            <Suspense
+              fallback={<p role="status">Cargando guía de escritura…</p>}
+            >
+              <WritingPad motion={motion} />
+            </Suspense>
           </>
         ) : route === "/evaluaciones" ? (
           <Exams progress={progress} update={update} />
@@ -878,7 +885,8 @@ function LessonScreen({
         </div>
         <h2>Escucha y reconoce</h2>
         <p className="small">
-          Audio sintetizado para el piloto. Escucha a velocidad normal o lenta.
+          Contenido en revisión lingüística. Audio sintetizado: escucha a
+          velocidad normal o lenta.
         </p>
         <div className="word-examples">
           {vocab.map((w) => (
@@ -917,9 +925,7 @@ function LessonScreen({
 function Vocabulary({ progress }: { progress: Progress }) {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("Todas");
-  const available = words.filter(
-    (w) => progress.reviews[w.id] || w.lesson === 0,
-  );
+  const available = availableVocabulary(progress);
   const filtered = available.filter(
     (w) =>
       (filter === "Todas" || w.category === filter) &&
@@ -931,7 +937,7 @@ function Vocabulary({ progress }: { progress: Progress }) {
     <>
       <PageTitle
         title="Palabras que se quedan"
-        description="Tu biblioteca crece con cada lección. Las cinco vocales están abiertas desde el comienzo."
+        description="Tu biblioteca crece al completar lecciones. El diagnóstico abre ejemplos para explorar; el repaso se activa al estudiarlos."
       />
       <div className="library-toolbar">
         <label className="search-label">
@@ -955,9 +961,19 @@ function Vocabulary({ progress }: { progress: Progress }) {
         </label>
       </div>
       <p className="small">
-        {filtered.length} entradas · {Object.keys(progress.reviews).length}{" "}
-        incorporadas al repaso
+        {filtered.length} entradas ·{" "}
+        {words.filter((w) => progress.reviews[w.id]).length} incorporadas al
+        repaso
       </p>
+      {available.length < words.length && (
+        <p className="small">
+          {words.length - available.length} entradas por descubrir.{" "}
+          <a className="text-link" href="#/aula">
+            Continúa tu recorrido
+          </a>{" "}
+          para abrirlas.
+        </p>
+      )}
       <div className="vocabulary-list">
         {filtered.map((w) => (
           <div className="vocabulary-row" key={w.id}>
@@ -1260,8 +1276,8 @@ function InfoPage({
               <a href="https://creativecommons.org/licenses/by-sa/3.0/">
                 CC BY-SA 3.0
               </a>
-              . Datos de trazos y muestras geométricas adaptadas bajo la misma
-              licencia.{" "}
+              . Datos de trazos de los 46 hiragana básicos y muestras
+              geométricas adaptadas bajo la misma licencia.{" "}
               <a href="/licenses/KanjiVG-CC-BY-SA-3.0.txt">Licencia</a>. Fuente
               de apertura Yuji Boku, Yuji Project Authors,{" "}
               <a href="/fonts/OFL-Yuji-Boku.txt">SIL OFL 1.1</a>. Tinta y hojas

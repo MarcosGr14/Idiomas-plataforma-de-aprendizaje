@@ -92,3 +92,36 @@ corregido para apuntar a Cuenta; salida existente ahora claramente identificada.
 - Añadido workflow de calidad; su resultado remoto y la aplicación de cabeceras
   en el despliegue permanecen pendientes hasta ejecutarse/publicarse.
 - Alcance pedagógico sin cambios: fase 3 iniciada, no terminada.
+
+## Fase 3 · cierre técnico — 2026-10-26
+
+- 49 pruebas Vitest aprobadas en 11 archivos; build, typecheck y formato aprobados.
+  Nuevos casos: geometría de los 46 kana, remuestreo, dirección incorrecta, garabatos,
+  entradas no finitas/excesivas, quiz vacío/eventos repetidos y bibliotecas por progreso.
+- Curso: 16 lecciones, 80 preguntas de práctica, 92 entradas y MP3, seis preguntas de
+  diagnóstico. Integridad comprobada; 67 audios nuevos decodificados con ffmpeg sin
+  errores. No se realizó revisión auditiva experta ni aprobación lingüística externa.
+- `npm audit`: 0 avisos conocidos, incluyendo herramientas de desarrollo.
+- Navegador CUA sobre build con CSP: lección S 5/5 → aviso +30XP, siete palabras
+  programadas; biblioteca muestra12 entradas y conserva estado tras recargar. Prueba
+  en invitado de origen localhost separado, sin escribir datos de cuentas reales.
+- Escritura: trazo incorrecto rechazado, trazo válido de ま avanza al segundo;
+  demostración completa y versiones estáticas en reducido/apagado verificadas.
+  Sin errores de consola registrados en la ronda.
+- Revisión visual: escritorio habitual1280,768 y viewport360. En360 el navegador
+  reporta innerWidth360/clientWidth350/scrollWidth350, lienzo310: sin overflow. La
+  captura excluye la barra de10px; evidencia conservada en .impeccable/review/phase3.
+- Taste lint de WritingPad/Quiz: 0 FAIL/0 WARN. Inspector de navegador sustituido
+  por CUA por política de control del navegador. Detector Impeccable: avisos
+  orientativos mayormente históricos; sin rediseño de tokens. Revisor independiente:
+  `ship`, sin hallazgos materiales dentro del alcance; documentador confirma sistema
+  preservado. El numeral SVG4 unidades escala a12–15px, no es texto de4px CSS.
+- Escritura diferida:94,19kB (37,24kB gzip). Three sigue diferido520,82kB, aviso
+  conocido. Precache PWA160 recursos/~2,83MiB; MP3 totales868KiB en disco. No se
+  midió rendimiento en un teléfono físico ni se afirmaron Core Web Vitals reales.
+- Dominio publicado consultado antes de este cierre:HTTP200 y CSP, DENY,
+  nosniff, no-referrer y Permissions-Policy correctas. Esta comprobación confirma el
+  refuerzo anterior, no el despliegue de las nuevas lecciones todavía no publicadas.
+- Pendientes editoriales/operativos: revisión de borradores/audio y comprobaciones
+  de correo/sincronización reales previamente documentadas; no bloquean declarar
+  implementado este alcance técnico, sí presentar el curso como contenido validado.

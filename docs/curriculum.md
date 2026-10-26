@@ -12,7 +12,24 @@ La meta editorial propuesta es un recorrido de doce unidades y aproximadamente s
 
 Cada lección contiene objetivo, explicaciones, vocabulario, audio, cinco ejercicios con feedback y repaso. Las expresiones largas se trabajan como bloques comunicativos; no se supone dominio de todos sus kana. Diagnóstico: 0–49% recomienda vocales; 50–79% combinaciones; 80–100% saludos. No salta contenido ni otorga XP o certificación.
 
-## Unidades aún por producir
+## Segunda unidad disponible como borrador — fase 3
+
+Once lecciones: familias S, T, N, H, M, Y, R y W/ん; dakuten/handakuten;
+combinaciones con ゃゅょ; cierre っ y duración vocálica. Se cubren los 46 hiragana
+básicos con lectura, escucha, ejemplos y cinco preguntas por lección. Total del
+curso inicial: 16 lecciones, 80 preguntas de práctica, 92 entradas y 92 audios.
+El diagnóstico conserva sus seis preguntas del piloto; no mide el nuevo temario
+ni niveles avanzados. Los ejemplos que contienen un kana posterior lo explicitan.
+
+La escritura guía los 46 caracteres básicos con KanjiVG, no las variantes con
+dakuten ni las combinaciones. Comprueba aproximación al inicio/final, dirección y
+recorrido; no reconoce escritura libre ni certifica caligrafía, y no otorga XP.
+
+Todo el contenido nuevo tiene `reviewed: false`; la comprobación estructural y la
+revisión de coherencia interna no sustituyen una revisión lingüística competente.
+La siguiente tabla conserva el plan completo; la fila de hiragana ya tiene borrador.
+
+## Plan editorial restante
 
 | Unidad | Objetivo y contenido | Salida observable |
 | --- | --- | --- |

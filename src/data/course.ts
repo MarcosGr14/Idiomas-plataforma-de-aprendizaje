@@ -1,4 +1,5 @@
 import course from "../../content/japanese-pilot.json";
+import hiragana from "../../content/japanese-hiragana.json";
 export type Word = {
   id: string;
   jp: string;
@@ -18,6 +19,7 @@ export type Question = {
 };
 export type Lesson = {
   id: string;
+  unit: number;
   title: string;
   subtitle: string;
   symbol: string;
@@ -26,7 +28,10 @@ export type Lesson = {
   paragraphs: string[];
   questions: Question[];
 };
-export const words: Word[] = course.words;
-export const lessons: Lesson[] = course.lessons;
+export const words: Word[] = [...course.words, ...hiragana.words];
+export const lessons: Lesson[] = [
+  ...course.lessons.map((lesson) => ({ ...lesson, unit: 0 })),
+  ...hiragana.lessons,
+];
 export const units = course.units;
 export const placement: Question[] = course.placement;

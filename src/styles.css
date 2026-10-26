@@ -2542,3 +2542,93 @@ body:has(.kyoto-hero[data-capture]) .kyoto-hero {
 .auth-secondary p > .auth-link {
   margin-inline-start: 6px;
 }
+
+/* Guided writing: the practice grid is functional, with a single active stroke. */
+.writing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+.writing-panel .writing-note,
+.writing-panel .writing-credit {
+  font-size: 13px;
+  max-width: 46ch;
+}
+.writing-credit a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.guided-writing {
+  width: 100%;
+  margin-inline: auto;
+}
+.guided-writing svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.guided-writing canvas {
+  color: var(--red);
+}
+.stroke-guide {
+  fill: none;
+  stroke: var(--muted);
+  stroke-opacity: 0.55;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.current-stroke {
+  stroke: var(--red);
+  stroke-opacity: 0.75;
+}
+.writing-grid {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 0.3;
+  stroke-dasharray: 2 2;
+}
+.stroke-start {
+  fill: var(--red);
+}
+.stroke-number {
+  font-family: "Manrope Variable", sans-serif;
+  font-size: 4px;
+  fill: var(--ink);
+}
+.writing-status {
+  font-size: 14px;
+  min-height: 3.5em;
+  max-width: 400px;
+  margin: 14px auto 0;
+}
+.listening-question {
+  margin: 24px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: 20px;
+}
+.listening-question summary {
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px 0;
+}
+.listening-question p {
+  font-size: 30px;
+  margin: 8px 0;
+}
+
+.writing-help {
+  grid-column: 1 / -1;
+}
+.writing-panel {
+  row-gap: 24px;
+}
+.writing-panel .writing-help p {
+  max-width: 72ch;
+}

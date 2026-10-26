@@ -1,5 +1,15 @@
 # Cambios
 
+## 2026-10-26 — Fase 3: japonés inicial y escritura guiada
+
+- Segunda unidad con 11 lecciones: hiragana, marcas sonoras, combinaciones y ritmo.
+- 67 entradas/audios adicionales: total16 lecciones,92 entradas y92 MP3.
+- 46 hiragana guiados con KanjiVG, asistencia al trazado y demostración configurable.
+- Ocho ejercicios de escucha con alternativa visual y bibliotecas según progreso/diagnóstico.
+- Estado de prácticas protegido ante vacío/clics repetidos; puntuación sin duplicación.
+- Fuentes CJK regeneradas, escritura diferida, licencias y regeneración documentadas.
+- 49 tests, tipos, formato y build aprobados; audit0. Borradores reviewed:false.
+
 ## 2026-10-26 — Fase 3: refuerzo inicial
 
 - Validación defensiva del progreso local/remoto y normalización en sincronización.

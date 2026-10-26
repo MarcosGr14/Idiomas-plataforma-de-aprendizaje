@@ -3,6 +3,7 @@ import { existsSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { lessons, words, placement, type Question } from "./course";
 import course from "../../content/japanese-pilot.json";
+import hiragana from "../../content/japanese-hiragana.json";
 function checkQuestion(question: Question) {
   expect(question.prompt.trim().length).toBeGreaterThan(0);
   expect(question.explanation.trim().length).toBeGreaterThan(0);
@@ -20,6 +21,8 @@ describe("course publishing integrity", () => {
     expect(new Set(lessons.map((l) => l.id)).size).toBe(lessons.length);
     expect(new Set(words.map((w) => w.id)).size).toBe(words.length);
     for (const lesson of lessons) {
+      expect([0, 1]).toContain(lesson.unit);
+      expect(lesson.questions).toHaveLength(5);
       expect(lesson.id).toMatch(/^[a-z0-9-]+$/);
       expect(lesson.questions.length).toBeGreaterThan(0);
       expect(lesson.paragraphs.length).toBeGreaterThan(0);
@@ -28,6 +31,13 @@ describe("course publishing integrity", () => {
     }
     expect(placement.length).toBeGreaterThan(0);
     placement.forEach(checkQuestion);
+    for (const question of [
+      ...placement,
+      ...lessons.flatMap((l) => l.questions),
+    ]) {
+      if (question.listening)
+        expect(words.some((w) => w.jp === question.listening)).toBe(true);
+    }
   });
   it("links vocabulary to existing lessons and nonempty static audio", () => {
     for (const word of words) {
@@ -46,7 +56,13 @@ describe("course publishing integrity", () => {
   });
   it("retains explicit editorial review metadata", () => {
     expect(typeof course.reviewed).toBe("boolean");
-    for (const item of [...course.words, ...course.lessons])
+    expect(hiragana.reviewed).toBe(false);
+    for (const item of [
+      ...course.words,
+      ...course.lessons,
+      ...hiragana.words,
+      ...hiragana.lessons,
+    ])
       expect(typeof item.reviewed).toBe("boolean");
   });
 });
