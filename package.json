@@ -10,7 +10,8 @@
     "test": "vitest run",
     "fonts": "node scripts/prepare-fonts.mjs",
     "typecheck": "tsc --noEmit",
-    "lint": "prettier --check \"src/**/*.{ts,tsx}\" src/styles.css vite.config.ts"
+    "lint": "prettier --check \"src/**/*.{ts,tsx}\" src/styles.css vite.config.ts",
+    "check:release": "node scripts/check-publication.mjs"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.0.0",

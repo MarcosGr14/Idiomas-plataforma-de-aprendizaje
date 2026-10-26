@@ -18,7 +18,6 @@ import {
   Settings,
   X,
   Download,
-  Lock,
   PenLine,
   Printer,
   RefreshCw,
@@ -316,8 +315,7 @@ function App() {
                 </button>
               ))}
               <p className="small">
-                Las dos primeras unidades ya se pueden explorar. El resto del
-                recorrido está en preparación.
+                Explora las lecciones y encuentra tu siguiente paso en japonés.
               </p>
             </section>
             <section className="closing">
@@ -447,7 +445,9 @@ function App() {
               <section className="diagnostic-callout">
                 <div>
                   <h2>¿No empiezas desde cero?</h2>
-                  <p>Comprueba qué partes de la unidad piloto ya reconoces.</p>
+                  <p>
+                    Comprueba qué partes del recorrido inicial ya reconoces.
+                  </p>
                 </div>
                 <button
                   className="secondary"
@@ -502,21 +502,6 @@ function App() {
                 </section>
               );
             })}
-            <section className="planned-course">
-              <h2>Un camino por descubrir</h2>
-              <p>
-                Estas unidades forman el plan del curso. Aún no contienen
-                lecciones disponibles.
-              </p>
-              {units.slice(2).map((u) => (
-                <div className="planned-row" key={u.title}>
-                  <span lang="ja">{u.symbol}</span>
-                  <strong>{u.title}</strong>
-                  <small>En preparación</small>
-                  <Lock size={14} />
-                </div>
-              ))}
-            </section>
           </>
         ) : lessonIndex >= 0 ? (
           <LessonScreen
@@ -530,7 +515,7 @@ function App() {
           <>
             <PageTitle
               title="Encuentra tu comienzo"
-              description="Seis preguntas sobre la unidad piloto. No es una certificación ni mide niveles avanzados."
+              description="Seis preguntas sobre el recorrido inicial. No es una certificación ni mide niveles avanzados."
             />
             <Quiz
               key="placement"
@@ -541,7 +526,7 @@ function App() {
                 update((p) => ({ ...p, placement: score }));
                 setNotice(
                   score >= 80
-                    ? "Reconoces gran parte del piloto. Puedes repasar sus lecciones y comprobar tu dominio."
+                    ? "Reconoces gran parte del recorrido inicial. Puedes repasar sus lecciones y comprobar tu dominio."
                     : "Empieza por las vocales y avanza a tu ritmo. El recorrido está abierto para explorar.",
                 );
               }}
@@ -808,9 +793,7 @@ function Footer({
         onChange={onMotion}
         systemReduced={systemReduced}
       />
-      <small>
-        © {appNow().getFullYear()} Marcos · Idiomas. Versión piloto.
-      </small>
+      <small>© {appNow().getFullYear()} Marcos · Idiomas.</small>
     </footer>
   );
 }
@@ -1251,7 +1234,7 @@ function InfoPage({
         title={credits ? "Hecho con cuidado" : "Tus datos, con claridad"}
         description={
           credits
-            ? "Créditos y alcance de la versión piloto."
+            ? "Créditos y fuentes de Idiomas."
             : "Información de funcionamiento de esta instalación de desarrollo."
         }
       />

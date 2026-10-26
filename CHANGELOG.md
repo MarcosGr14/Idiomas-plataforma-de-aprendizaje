@@ -1,111 +1,21 @@
-# Cambios
+# Actualizaciones de Idiomas
 
-## 2026-10-26 — Fase 3: japonés inicial y escritura guiada
+## 26 de octubre de 2026
 
-- Segunda unidad con 11 lecciones: hiragana, marcas sonoras, combinaciones y ritmo.
-- 67 entradas/audios adicionales: total16 lecciones,92 entradas y92 MP3.
-- 46 hiragana guiados con KanjiVG, asistencia al trazado y demostración configurable.
-- Ocho ejercicios de escucha con alternativa visual y bibliotecas según progreso/diagnóstico.
-- Estado de prácticas protegido ante vacío/clics repetidos; puntuación sin duplicación.
-- Fuentes CJK regeneradas, escritura diferida, licencias y regeneración documentadas.
-- 49 tests, tipos, formato y build aprobados; audit0. Borradores reviewed:false.
+- Recorrido de japonés inicial con 16 lecciones y 92 entradas con audio.
+- Escritura guiada de los 46 hiragana básicos y ejercicios de escucha.
+- Biblioteca ampliada por progreso y ejemplos según el diagnóstico.
+- Mejoras de estabilidad, validación de datos y protección del sitio.
+- Presentación y documentación simplificadas; archivos internos fuera de la distribución.
 
-## 2026-10-26 — Fase 3: refuerzo inicial
+## 24 de octubre de 2026
 
-- Validación defensiva del progreso local/remoto y normalización en sincronización.
-- Pruebas de datos dañados, revisiones inválidas e integridad de contenido/audio.
-- CSP, protección frente a marcos y política de referencias restrictiva.
-- Dependencia de compilación vulnerable actualizada; tipos Node para tests.
-- CI de tests/formato/build/auditoría y prioridad permanente documentada en AGENTS.
-- Sin ampliación curricular ni cambios de diseño o datos reales.
+- Cuentas personales, acceso, cierre de sesión y recuperación de contraseña.
+- Guardado de progreso y resolución de diferencias entre dispositivos.
+- Formularios de cuenta con una distribución más clara en móvil y escritorio.
 
+## 22 de octubre de 2026
 
-## 2026-10-24 — Fase 1: cuentas preparadas
-
-- Registro, inicio/cierre de sesión, reenvío de confirmación y recuperación/cambio de contraseña con errores en español.
-- Callback PKCE antes del router, limpieza de URL y manejo de enlaces vencidos.
-- Progreso por cuenta con pendientes persistentes, peticiones serializadas, revisión atómica en Supabase y resolución explícita de conflictos con respaldo.
-- Coordinación entre pestañas para proteger el almacenamiento pendiente; invitado y captura permanecen separados.
-- Formularios revisados a 360, 768 y 1440 px conservando identidad, con estados de espera, error y confirmación.
-- Guía de creación/configuración Supabase. Integración real pendiente: el proyecto aún no existe.
-
-
-## 0.2.0 — 2026-10-22
-
-- Hero Kioto nocturno: calle en perspectiva, pagoda, farolillos, arces, niebla, reflejos simulados y partículas GPU.
-- Composición desktop/móvil conservando la identidad y el aula existentes.
-- Modos completo/reducido/apagado, pausa, adaptación al rendimiento y pósteres WebP propios; compatibilidad con preferencias anteriores.
-- Letreros seleccionables con lecturas y traducciones, acceso por teclado y CTA al diagnóstico.
-- AGENTS.md conciliado con archivos reales y el alcance aprobado; cuatro pruebas nuevas de movimiento.
-
-## 0.1.0 — 2026-10-22
-
-- Fundación React/TypeScript/Vite y PWA instalable; Supabase Auth y migración RLS preparadas.
-- Bienvenida Three.js, sistema tipográfico local, neones rojos y modo de movimiento reducido.
-- Aula adaptable, unidad piloto de cinco lecciones, diagnóstico y práctica con feedback.
-- Biblioteca, rōmaji opcional, escritura libre, repaso espaciado, XP y rachas.
-- Evaluaciones por periodo y exportación PDF mediante impresión; exportación JSON del progreso.
-- Comprobaciones unitarias de lógica y recorrido funcional en navegador.
-- Plan curricular ampliable para japonés; mandarín permanece para una fase posterior.
-- Cierre del piloto: 25 audios estáticos Open JTalk/Mei con atribución, contenido JSON marcado no revisado, React Router, comandos de formato y tipos, documentación del sistema visual y corrección de revisión independiente.
-
-## Promo — captura determinista
-
-- Modo opt-in `?capture=1` con reloj de escena controlado por fotograma, sin bucle RAF libre ni degradación dependiente del tiempo de render.
-- Semilla demo reproducible en memoria: 7 días, 200 XP, 3 lecciones y vocabulario aprendido; Supabase y persistencia desactivados solo en captura.
-- Pipeline local de Playwright en `promo/`; medios regenerables excluidos de Git.
-
-## 2026-10-23 — Composición de la promo
-
-- Siete escenas Remotion, 40 segundos a 30 fps; horizontal y vertical con layouts independientes.
-- Captura con Playwright, fuentes locales, dispositivos genéricos y texto español.
-- Scripts para previsualizar cada escena a 480p, generar másteres/pósteres y regenerar con un comando.
-- Música opcional documentada; sin pistas de terceros incluidas.
-
-## 2026-10-23 — Firma de tinta, sistema compartido
-
-- Tokens de marca y movimiento compartidos desde `src/design`; papel #FBF8F3, tinta #14110F y rojo #C8102E aprobados por Marcos.
-- Sello 文 y carga de fuentes compartidos entre la web y la promo; Yuji Boku limitado a un subconjunto de 2 KiB para la apertura.
-- InkBrush SVG determinista con presión, contorno irregular, cola seca, gotas y chorreones acotados; InkCharacter conserva orden y dirección KanjiVG.
-- Fuentes/datos con licencias locales y atribución en Créditos. Sin cambios en la política de modos ni en el aprendizaje.
-
-## 2026-10-23 — Intro y continuidad de tinta
-
-- Intro de 3,5 s sobre papel plano: 日本語 con recorridos KanjiVG, Yuji Boku y sello 文 compartido.
-- Barridos SVG de InkBrush entre los siete capítulos, hojas del hero, titulares por palabras y subrayados rojos de punta seca.
-- Mensaje unificado «Un mundo nuevo. Empieza en japonés.»; cierre con el mismo sello.
-- Dos composiciones independientes y tokens de movimiento importados de la app; sin grano ni viñeta.
-- Ajustes estéticos: sin nuevas pruebas de lógica ni cambios en la política de movimiento. Capturas actualizadas y renders completos de 480p terminados.
-
-### Revisión del barrido
-
-Borde refinado con 48 cerdas y puntas orgánicas para eliminar los grandes escalones del primer montaje. Revisión independiente: `ship` para sistema visual y composiciones examinadas; montajes completos verificados a 40 s/1.200 fotogramas y revisados mediante hojas de contacto. La exportación omite audio silencioso y fija la duración de cada clip para evitar pausas por relleno AAC al concatenar.
-
-### Entrega de previsualizaciones
-
-Completados ambos montajes de 480p, catorce clips por escena y pósteres horizontal/vertical. Código y documentación versionados; medios pesados ignorados. Sin música, sin URL inventada. Los másteres HD/4K permanecen como siguiente exportación tras revisar esta versión.
-
-## Exportación QHD — 2026-10-24
-
-Terminado `promo/out/promo-16x9-1440p.mp4`: 2560×1440, H.264, 30 fps, 40 segundos exactos, 1.200 fotogramas decodificados y sin audio (18.603.650 bytes). Revisada hoja de contacto a 1 fps. Exportación directa desde Remotion, sin ampliar el preview de 480p. Diseño conservado; capturas interiores mantienen su resolución original.
-
-El comando `node promo/scripts/render.mjs qhd` guarda capítulos reanudables en `out/qhd-scenes/`. ANGLE acelerado por defecto, `PROMO_GL=swangle` como alternativa por software. Se observaron mensajes de cierre de navegador al finalizar algunos capítulos; los siete terminaron y el archivo unido pasó la decodificación completa. MP4 y cachés ignorados por Git.
-
-## 2026-10-24 — Verificación del despliegue y cierre documental de cuentas
-
-- Actualizado el estado: Supabase creado y registro reportado por Marcos; web publicada y comprobada en Cloudflare Workers.
-- Verificados formularios, aula, lección y callback vencido en la web; Auth exige confirmación y la API rechaza lectura anónima del progreso.
-- 30 pruebas, formato y compilación aprobados. Completadas bitácora y validación pendientes, sin modificar el diseño ni los datos del usuario.
-- Documentadas comprobaciones aún pendientes: migraciones/RLS autenticado, correo y sincronización real entre dispositivos; acceso al panel requiere sesión del propietario.
-
-## 2026-10-24 — Permisos mínimos del progreso en producción
-
-- Inspeccionados esquema, función y políticas reales de Supabase; callbacks de producción correctos.
-- Retirados permisos TRUNCATE/REFERENCES/TRIGGER heredados del rol authenticated. Solo lectura por RLS y guardado por RPC; sin cambios en filas.
-- Nueva migración idempotente y script SQL de comprobación de permisos/aislamiento. Verificación real de lectura por propietario y sujeto ajeno aprobada.
-
-## 2026-10-24 — Acceso más claro y cierre de sesión visible
-
-- Formularios de acceso/registro más compactos, centrados y con espaciado consistente; control de contraseña integrado y ayudas secundarias agrupadas.
-- Corregido «Mi cuenta» de la portada, que llevaba a Ajustes. Acceso a cuenta desde Ajustes y botón «Cerrar sesión» destacado dentro de Cuenta.
-- Conservados los flujos de autenticación existentes; build y 30 pruebas aprobados, revisión móvil a 360 px sin desbordamiento.
+- Primer recorrido de japonés, repasos, prácticas y biblioteca.
+- Bienvenida interactiva inspirada en Kioto y tres modos de movimiento.
+- Instalación como PWA y recursos de pronunciación alojados con la aplicación.

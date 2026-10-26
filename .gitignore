@@ -1,21 +1,70 @@
+# Dependencies and generated builds
 node_modules/
+.venv/
+__pycache__/
+*.pyc
 dist/
+*.tsbuildinfo
+coverage/
+.vite/
+.wrangler/
+
+# Local environment and credentials (only the blank template is public)
 .env
 .env.*
 !.env.example
-.impeccable/review/
-.impeccable/mocks/
-.taste-skill/
-*.tsbuildinfo
-.AGENTS.md
-.CHANGELOG.md
-# Regenerable promo media and render caches
+*.local
+*.pem
+*.key
+*.p12
+*.pfx
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.dump
+*.sql.gz
+
+# Local tools, agent context, working notes and design references
+/.codex/
+/.codex-project-reporter*
+/.impeccable/
+/.taste-skill/
+/.agents/
+/AGENTS.md
+/.AGENTS.md
+/PRODUCT.md
+/DESIGN.md
+/.CHANGELOG.md
+/docs/*
+!/docs/README.md
+!/docs/DEVELOPMENT.md
+!/docs/THIRD_PARTY_NOTICES.md
+/promo/DESIGN.md
+/promo/STORYBOARD.md
+/public/images/*.webp.json
+
+# Supabase local state; migrations and security tests remain versioned
+.supabase/
+supabase/.temp/
+supabase/.branches/
+
+# Reproducible promo assets and render caches; preserve local masters
 promo/out/
 promo/public/captures/
 promo/public/fonts/
 promo/public/audio/
 promo/.cache/
 promo/.bundle/
-.codex-project-reporter-state.json
-.codex-project-reporter.log
-.supabase/
+
+# Editor, OS, logs and temporary copies
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+*.tmp
+*.bak
+*.orig
+*.swp
+*~

@@ -733,38 +733,6 @@ main:focus {
   font-size: 11px;
   color: var(--muted);
 }
-.planned-course {
-  margin-top: 56px;
-}
-.planned-course h2 {
-  font-size: 23px;
-}
-.planned-course > p {
-  font-size: 12px;
-  color: var(--muted);
-}
-.planned-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--line);
-}
-.planned-row > span {
-  font-size: 25px;
-  width: 38px;
-  color: #777c70;
-}
-.planned-row strong {
-  font-size: 12px;
-  flex: 1;
-}
-.planned-row small {
-  font-size: 11px;
-}
-.planned-row svg {
-  color: var(--muted);
-}
 .back-link {
   font-size: 11px;
   margin-bottom: 28px;
@@ -1740,21 +1708,6 @@ input::placeholder {
   .lesson-duration {
     font-size: 11px;
     white-space: nowrap;
-  }
-  .planned-row {
-    gap: 10px;
-  }
-  .planned-row strong {
-    font-size: 11px;
-  }
-  .planned-row small {
-    font-size: 11px;
-  }
-  .planned-row > span {
-    width: 28px;
-  }
-  .planned-course h2 {
-    font-size: 22px;
   }
   .lesson-introduction {
     padding: 22px;
