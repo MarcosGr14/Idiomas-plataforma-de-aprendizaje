@@ -56,7 +56,7 @@ verificada. Las instrucciones de Pages anteriores se conservan como alternativa.
 
 ## Contenido y siguientes fases
 
-Las doce unidades del plan aparecen en el aula; **solo la primera está desarrollada**. Ver `docs/curriculum.md`. Antes de una apertura pública: revisión lingüística de lecciones/audio, contenido restante, trazos guiados validados, política legal final, eliminación de cuenta y verificación de recuperación, pruebas de RLS y sincronización con cuentas reales, y validación en teléfonos físicos.
+Las doce unidades del plan aparecen en el aula; **las dos primeras tienen implementación**. Los textos y audios siguen pendientes de revisión lingüística externa. Ver `docs/curriculum.md`. Pendientes de apertura pública: validación editorial, contenido restante, política legal final, eliminación de cuenta, recuperación por correo, sincronización con cuentas reales y validación en teléfonos físicos. La guía de trazos de los 46 hiragana básicos ya usa geometría KanjiVG; no certifica caligrafía.
 
 La interfaz muestra las limitaciones reales. No hay alumnos ficticios, testimonios, estadísticas de demostración ni botones de acceso a contenido inexistente.
 
