@@ -44,7 +44,10 @@ export class ProgressSync {
     }
     this.value = {
       payload,
-      revision: Number.isSafeInteger(raw?.revision) ? raw!.revision! : 0,
+      revision:
+        Number.isSafeInteger(raw?.revision) && raw!.revision! >= 0
+          ? raw!.revision!
+          : 0,
       pending: raw?.pending === true || (!raw && !!legacy),
     };
   }
@@ -94,7 +97,9 @@ export class ProgressSync {
         // An edit made while loading is based on the old revision; never replace it.
         if (this.sequence === sequence) {
           this.value = {
-            payload: server?.payload ?? this.value.payload,
+            payload: server
+              ? normalizeProgress(server.payload)
+              : this.value.payload,
             revision: server?.revision ?? 0,
             pending: false,
           };
@@ -154,7 +159,7 @@ export class ProgressSync {
       this.value = {
         payload:
           choice === "remote"
-            ? (server?.payload ?? freshProgress())
+            ? normalizeProgress(server?.payload ?? freshProgress())
             : this.value.payload,
         revision: server?.revision ?? 0,
         pending: choice === "local",

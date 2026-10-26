@@ -35,3 +35,9 @@ Un revisor competente debe comprobar naturalidad, lecturas y acento, adecuación
 Referencia pedagógica consultada: recursos introductorios de Irodori, The Japan Foundation, https://www.irodori.jpf.go.jp/en/resources.html. No se han copiado sus lecciones ni redistribuido sus grabaciones. Contenido del piloto original; no hay afiliación.
 
 Mandarín reutilizará el motor de lecciones, prácticas, progreso y biblioteca. Tendrá currículo, pronunciación, caracteres y reglas específicos, no una traducción literal del curso de japonés.
+
+## Control estructural — 2026-10-26
+
+`src/data/course.test.ts` valida referencias, preguntas, IDs y existencia de audios
+antes de compilar/publicar. No sustituye revisión pedagógica: se conservan los
+indicadores `reviewed: false` del piloto.

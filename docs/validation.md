@@ -73,3 +73,22 @@ y registro en viewport 360 px (documento 350 px, sin overflow). Registro/acceso,
 ayuda de contraseña y reenvío siguen usando los manejadores existentes. No se
 modificaron cuentas reales ni se cerró la sesión de Marcos. Enlace de portada
 corregido para apuntar a Cuenta; salida existente ahora claramente identificada.
+
+## Fase 3 · primer refuerzo — 2026-10-26
+
+- 39 pruebas Vitest aprobadas en 8 archivos: nuevos casos de progreso corrupto,
+  claves peligrosas, campos remotos inválidos, revisión local negativa e integridad
+  del curso/audio. Conservados los casos de concurrencia/conflictos existentes.
+- Build TypeScript/Vite/PWA y formato aprobados. Añadidos tipos Node requeridos por
+  los tests de archivos. Aviso conocido Three.js >500 kB; sigue diferido.
+- `npm audit` completo: 0 avisos tras actualizar serialize-javascript a 7.1.4.
+  Antes: un aviso bajo en compilación; dependencias de producción sin avisos.
+- Servidor local temporal sirvió el build con las cabeceras de `public/_headers`;
+  HTTP 200 y CSP/X-Frame-Options verificadas. Navegador integrado: portada, lección
+  de vocales y formulario de cuenta cargan sin errores de consola. Botón de audio
+  cambia a «Reproduciendo…» sin bloqueo CSP. No es revisión auditiva ni login real.
+- No se tocaron filas de Supabase, cuentas ni credenciales. No se prueba en esta
+  ronda recuperación por correo ni sincronización real entre dispositivos.
+- Añadido workflow de calidad; su resultado remoto y la aplicación de cabeceras
+  en el despliegue permanecen pendientes hasta ejecutarse/publicarse.
+- Alcance pedagógico sin cambios: fase 3 iniciada, no terminada.

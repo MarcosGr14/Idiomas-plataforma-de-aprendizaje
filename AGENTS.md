@@ -57,3 +57,14 @@ Marcos tiene instaladas las skills **`impeccable`** y **`taste skill`**.
 
 `lint` comprueba formato con Prettier; `typecheck` comprueba tipos con TypeScript.
 Supabase está preparado; verificar la conexión real y el despliegue Cloudflare antes de declararlos operativos. GitHub ya tiene remoto configurado.
+
+## Prioridad permanente — decisión de Marcos, 2026-10-26
+
+Estabilidad, seguridad y rendimiento preceden a nuevas funciones. Antes de ampliar
+cada fase, corregir fallos comprobables y cubrir cambios de lógica con pruebas.
+Validar JSON de almacenamiento local y remoto; no asumir que TypeScript valida datos
+externos. Mantener mínimo privilegio y aislamiento RLS; ninguna autorización debe
+depender solo de la interfaz. Revisar dependencias y cabeceras al incorporar servicios.
+Evitar cargas y trabajo sin límites, conservar la carga diferida del 3D y los modos
+de movimiento. No declarar el sitio invulnerable ni confundir pruebas locales con
+validación del despliegue. Referencia: `docs/12-seguridad-estabilidad.md`.

@@ -39,6 +39,57 @@ function setup() {
   };
 }
 describe("account progress synchronization", () => {
+  it("normalizes malformed cloud fields before exposing progress", async () => {
+    let state: SyncState | undefined;
+    const sync = new ProgressSync(
+      "alice",
+      store(),
+      {
+        read: async () => ({
+          payload: {
+            ...freshProgress(),
+            reviews: { bad: null },
+            activity: { "2026-10-26": "oops" },
+          } as unknown as RemoteProgress["payload"],
+          revision: 1,
+        }),
+        write: async () => 2,
+      },
+      (s) => {
+        state = s;
+      },
+    );
+    await sync.sync();
+    expect(state?.progress.reviews).toEqual({});
+    expect(xp(state!.progress)).toBe(0);
+  });
+  it("does not send a corrupt negative revision to the server", async () => {
+    const storage = store();
+    storage.setItem(
+      accountKey("alice"),
+      JSON.stringify({
+        payload: freshProgress(),
+        revision: -10,
+        pending: true,
+      }),
+    );
+    let sent: number | undefined;
+    const sync = new ProgressSync(
+      "alice",
+      storage,
+      {
+        read: async () => null,
+        write: async (_, revision) => {
+          sent = revision;
+          return 1;
+        },
+      },
+      () => {},
+    );
+    await sync.sync();
+    expect(sent).toBe(0);
+  });
+
   it("keeps guest and different accounts isolated", async () => {
     const storage = store();
     const { remote } = setup();

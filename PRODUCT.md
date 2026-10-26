@@ -1,5 +1,13 @@
 # Producto: plataforma de aprendizaje de idiomas
 
+## Fase 3 en curso — 2026-10-26
+
+Primer incremento: validación defensiva del progreso, integridad estructural del
+curso, CSP y comprobaciones continuas. Seguridad, estabilidad y rendimiento son
+prioridades permanentes. No se amplió aún el currículo ni se certificó el contenido.
+Siguiente entrega: revisión del piloto, hiragana y escritura guiada.
+Detalle: `docs/12-seguridad-estabilidad.md`. Marcos confirma acceso desde web y móvil.
+
 ## Estado actual de cuentas — 2026-10-24
 
 Fase 1 implementada en código: registro, acceso, reenvío de confirmación,
@@ -24,9 +32,9 @@ web
 ## Stack
 
 - Confirmado por Marcos: Supabase y Cloudflare. Existe una suscripción Railway Hobby disponible si resulta necesaria.
-- Propuesta pendiente de ratificar: React + Vite para el frontend y Cloudflare Pages para alojamiento; Supabase Auth y Postgres para cuentas y progreso.
+- Implementado: React + Vite + TypeScript, Supabase Auth/Postgres y PWA. Despliegue actual de Marcos en Cloudflare Workers; Pages fue la propuesta inicial.
 - Objetivo: evitar nuevos costos recurrentes. Los límites, precios y condiciones de los proveedores deben verificarse antes de implementar o desplegar; no se promete gratuidad ilimitada.
-- Se desea instalación con icono en escritorio y móvil. Se propone una PWA; no está confirmada la necesidad de una extensión real del navegador.
+- PWA instalable implementada. No se necesita una extensión del navegador para este alcance.
 
 ## Users
 

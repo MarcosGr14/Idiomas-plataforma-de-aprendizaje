@@ -1,5 +1,15 @@
 # Cambios
 
+## 2026-10-26 — Fase 3: refuerzo inicial
+
+- Validación defensiva del progreso local/remoto y normalización en sincronización.
+- Pruebas de datos dañados, revisiones inválidas e integridad de contenido/audio.
+- CSP, protección frente a marcos y política de referencias restrictiva.
+- Dependencia de compilación vulnerable actualizada; tipos Node para tests.
+- CI de tests/formato/build/auditoría y prioridad permanente documentada en AGENTS.
+- Sin ampliación curricular ni cambios de diseño o datos reales.
+
+
 ## 2026-10-24 — Fase 1: cuentas preparadas
 
 - Registro, inicio/cierre de sesión, reenvío de confirmación y recuperación/cambio de contraseña con errores en español.

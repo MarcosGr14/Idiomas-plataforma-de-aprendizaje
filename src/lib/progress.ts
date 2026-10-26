@@ -30,24 +30,94 @@ export function freshProgress(): Progress {
     exams: {},
   };
 }
+const MAX_RECORDS = 20000;
+const forbiddenKeys = new Set(["__proto__", "constructor", "prototype"]);
+function record(value: unknown): Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : {};
+}
+function integer(value: unknown, min: number, max: number): value is number {
+  return (
+    typeof value === "number" &&
+    Number.isSafeInteger(value) &&
+    value >= min &&
+    value <= max
+  );
+}
+function dateKey(value: unknown): value is string {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value))
+    return false;
+  const date = new Date(`${value}T00:00:00Z`);
+  return (
+    Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value
+  );
+}
+function cleanMap<T>(
+  value: unknown,
+  parse: (entry: unknown, key: string) => T | undefined,
+): Record<string, T> {
+  const result: Record<string, T> = {};
+  let count = 0;
+  for (const [key, entry] of Object.entries(record(value))) {
+    if (++count > MAX_RECORDS) break;
+    if (
+      forbiddenKeys.has(key) ||
+      !/^[a-zA-Z0-9_-][a-zA-Z0-9_:-]{0,119}$/.test(key)
+    )
+      continue;
+    const parsed = parse(entry, key);
+    if (parsed !== undefined) result[key] = parsed;
+  }
+  return result;
+}
+/** Treat browser storage and cloud JSON as untrusted input, keeping valid siblings. */
 export function normalizeProgress(raw: unknown): Progress {
   const base = freshProgress();
-  if (!raw || typeof raw !== "object") return base;
-  const p = raw as Partial<Progress>;
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return base;
+  const p = record(raw);
+  const activity = cleanMap(p.activity, (value, key) =>
+    dateKey(key) && integer(value, 0, 1000000) ? value : undefined,
+  );
+  const reducedMotion = p.reducedMotion === true;
   return {
-    ...base,
-    ...p,
     version: 1,
-    motion: normalizeMotion(p.motion, p.reducedMotion),
-    studied: Array.isArray(p.studied)
-      ? p.studied.filter((d) => typeof d === "string")
-      : Object.keys(p.activity ?? {}),
-    completed:
-      p.completed && typeof p.completed === "object" ? p.completed : {},
-    reviews: p.reviews && typeof p.reviews === "object" ? p.reviews : {},
-    activity: p.activity && typeof p.activity === "object" ? p.activity : {},
-    exams: p.exams && typeof p.exams === "object" ? p.exams : {},
-    goal: [5, 10, 20].includes(Number(p.goal)) ? Number(p.goal) : 10,
+    goal: p.goal === 5 || p.goal === 10 || p.goal === 20 ? p.goal : base.goal,
+    placement: integer(p.placement, 0, 100) ? p.placement : null,
+    romanization:
+      typeof p.romanization === "boolean" ? p.romanization : base.romanization,
+    reducedMotion,
+    motion: normalizeMotion(p.motion, reducedMotion),
+    activity,
+    studied: [
+      ...new Set(
+        Array.isArray(p.studied)
+          ? p.studied.slice(0, MAX_RECORDS).filter(dateKey)
+          : Object.keys(activity),
+      ),
+    ],
+    completed: cleanMap(p.completed, (value) => {
+      const item = record(value);
+      return integer(item.score, 0, 100) && dateKey(item.date)
+        ? { score: item.score, date: item.date }
+        : undefined;
+    }),
+    reviews: cleanMap(p.reviews, (value) => {
+      const item = record(value);
+      return dateKey(item.due) &&
+        integer(item.interval, 0, 365) &&
+        integer(item.correct, 0, 1000000)
+        ? { due: item.due, interval: item.interval, correct: item.correct }
+        : undefined;
+    }),
+    exams: cleanMap(p.exams, (value) => {
+      const item = record(value);
+      return integer(item.score, 0, 100) &&
+        integer(item.total, 1, 10000) &&
+        dateKey(item.date)
+        ? { score: item.score, total: item.total, date: item.date }
+        : undefined;
+    }),
   };
 }
 export function completeLesson(
@@ -136,7 +206,9 @@ export function saveProgress(key: string, p: Progress) {
 }
 export function readProgress(key: string) {
   try {
-    return normalizeProgress(JSON.parse(localStorage.getItem(key) || "null"));
+    const raw = localStorage.getItem(key);
+    if (raw && raw.length > 1048576) return freshProgress();
+    return normalizeProgress(JSON.parse(raw || "null"));
   } catch {
     return freshProgress();
   }
