@@ -125,3 +125,11 @@ corregido para apuntar a Cuenta; salida existente ahora claramente identificada.
 - Pendientes editoriales/operativos: revisión de borradores/audio y comprobaciones
   de correo/sincronización reales previamente documentadas; no bloquean declarar
   implementado este alcance técnico, sí presentar el curso como contenido validado.
+
+### Publicación del cierre
+
+CI de GitHub aprobado para `8e95e0a` (implementación, run40404563437) y `f5e7879`
+(README, run40404654954). Cloudflare Workers Builds de `8e95e0a` terminó success.
+El dominio público sirvió `/assets/index-iMRpAma7.js` con los identificadores de las
+nuevas lecciones `hiragana-s` y `hiragana-rhythm`. Se confirma publicación de los
+archivos; no se ejecutó una nueva sesión autenticada de aprendizaje en producción.
