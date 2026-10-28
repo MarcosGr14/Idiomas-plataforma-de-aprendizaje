@@ -287,3 +287,100 @@ it("preserves assessment rewards and retry protection through account sync and r
   expect(xp(latest!.progress)).toBe(50);
   expect(latest?.progress.exams[attempt.period].attempts).toBe(1);
 });
+
+it("retains local progress when remote revisions are malformed", async () => {
+  for (const revision of [-1, 0, NaN, 1.5, Number.MAX_SAFE_INTEGER + 1, "1"]) {
+    const storage = store();
+    storage.setItem(
+      accountKey("alice"),
+      JSON.stringify({
+        payload: { ...freshProgress(), goal: 20 },
+        revision: 1,
+        pending: false,
+      }),
+    );
+    let state: SyncState | undefined;
+    const write = async () => {
+      throw Error("must not write");
+    };
+    const sync = new ProgressSync(
+      "alice",
+      storage,
+      {
+        read: async () =>
+          ({ payload: freshProgress(), revision }) as RemoteProgress,
+        write,
+      },
+      (s) => {
+        state = s;
+      },
+    );
+    await sync.sync();
+    expect(state?.progress.goal).toBe(20);
+    expect(state?.status).toContain("No se pudo cargar");
+  }
+});
+it("does not acknowledge invalid write revisions and protects unsaved changes from reload", async () => {
+  for (const revision of [-1, 0, NaN, 1.5, Number.MAX_SAFE_INTEGER + 1]) {
+    let state: SyncState | undefined;
+    const sync = new ProgressSync(
+      "alice",
+      {
+        getItem: () => null,
+        setItem: () => {
+          throw Error("full");
+        },
+      },
+      { read: async () => null, write: async () => revision },
+      (s) => {
+        state = s;
+      },
+    );
+    await sync.sync();
+    sync.update((p) => ({ ...p, goal: 20 }));
+    expect(state?.reloadSafe).toBe(false);
+    await sync.sync();
+    expect(state?.progress.goal).toBe(20);
+    expect(state?.reloadSafe).toBe(false);
+    expect(state?.status).toContain("pendientes");
+  }
+});
+it("permits reload once progress has reached the cloud even with blocked local storage", async () => {
+  let state: SyncState | undefined;
+  const server = setup();
+  const sync = new ProgressSync(
+    "alice",
+    {
+      getItem: () => null,
+      setItem: () => {
+        throw Error("blocked");
+      },
+    },
+    server.remote,
+    (s) => {
+      state = s;
+    },
+  );
+  await sync.sync();
+  sync.update((p) => ({ ...p, goal: 20 }));
+  expect(state?.reloadSafe).toBe(false);
+  await sync.sync();
+  expect(state?.reloadSafe).toBe(true);
+});
+
+it("ignores delayed edits after the account controller has been disposed", async () => {
+  const storage = store(),
+    server = setup();
+  const sync = new ProgressSync("alice", storage, server.remote, () => {});
+  await sync.sync();
+  const before = storage.getItem(accountKey("alice"));
+  sync.dispose();
+  let called = false;
+  sync.update((p) => {
+    called = true;
+    return { ...p, goal: 20 };
+  });
+  expect(called).toBe(false);
+  expect(storage.getItem(accountKey("alice"))).toBe(before);
+  expect(server.row()).toBeNull();
+});

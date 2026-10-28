@@ -1,3 +1,4 @@
+import AppUpdateNotice from "./components/AppUpdateNotice";
 import Assessments from "./components/Assessments";
 import ProgressScreen from "./components/ProgressScreen";
 import { Account } from "./components/Account";
@@ -73,6 +74,7 @@ function App() {
     status,
     retry,
     conflict,
+    reloadSafe,
     resolveSync,
   } = useProgress();
   const [menu, setMenu] = useState(false);
@@ -261,6 +263,7 @@ function App() {
         tabIndex={-1}
         className={isHome ? "landing" : "workspace"}
       >
+        <AppUpdateNotice safe={reloadSafe} />
         {!online && (
           <div className="connection-notice" role="status">
             Estás sin conexión. Puedes usar el contenido y los audios ya
@@ -650,6 +653,7 @@ function App() {
                 {user ? "Reintentar sincronización" : "Conectar una cuenta"}
               </button>
             </section>
+            <AppUpdateNotice safe={reloadSafe} settings />
             {conflict && (
               <section
                 className="settings-section"
@@ -1113,9 +1117,9 @@ function InfoPage({
             </p>
             <h2>Herramientas y tipografía</h2>
             <p>
-              React, Vite, Three.js, Lucide y Supabase. Manrope y Noto Serif JP
-              se distribuyen bajo SIL Open Font License; sus licencias acompañan
-              los paquetes del proyecto.
+              React, Vite, Three.js, Lucide, Supabase y Workbox. Manrope y Noto
+              Serif JP se distribuyen bajo SIL Open Font License; sus licencias
+              acompañan los paquetes del proyecto.
             </p>
             <h2>Tinta y orden de trazos</h2>
             <p>

@@ -9,6 +9,14 @@
 - Períodos de calendario corregidos y resultados anteriores conservados.
 - Prácticas imprimibles con selección semanal o mensual y soluciones opcionales.
 
+### Mantenimiento de estabilidad
+
+- Aviso para aplicar nuevas versiones de la aplicación, con búsqueda manual en Ajustes.
+- Protección frente a recargas cuando el progreso no tiene una copia segura.
+- Comprobaciones de actualización con límite de espera y recuperación de errores.
+- Validación reforzada de revisiones remotas sin reemplazar progreso válido.
+- Dependencias y herramientas de compilación actualizadas; controles ampliados al video promocional.
+
 ## 26 de octubre de 2026
 
 - Recorrido de japonés inicial con 16 lecciones y 92 entradas con audio.

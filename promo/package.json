@@ -1,5 +1,29 @@
 {
- "name":"idiomas-promo","private":true,"type":"module",
- "scripts":{"capture":"node scripts/capture.mjs","preview":"node scripts/render.mjs preview","render":"node scripts/render.mjs final","all":"node scripts/pipeline.mjs","studio":"remotion studio src/index.tsx"},
- "dependencies":{"@remotion/bundler":"4.0.404","@remotion/cli":"4.0.404","@remotion/renderer":"4.0.404","remotion":"4.0.404","react":"19.0.0","react-dom":"19.0.0","playwright":"1.56.1","typescript":"5.9.3"}
+  "name": "idiomas-promo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "capture": "node scripts/capture.mjs",
+    "preview": "node scripts/render.mjs preview",
+    "render": "node scripts/render.mjs final",
+    "all": "node scripts/pipeline.mjs",
+    "studio": "remotion studio src/index.tsx",
+    "check:bundle": "node scripts/check-bundle.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.539",
+    "@remotion/cli": "4.0.539",
+    "@remotion/renderer": "4.0.539",
+    "playwright": "^1.64.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "4.0.539",
+    "typescript": "^7.0.2"
+  },
+  "overrides": {
+    "zod": "^4.6.6"
+  },
+  "engines": {
+    "node": ">=24 <25"
+  }
 }

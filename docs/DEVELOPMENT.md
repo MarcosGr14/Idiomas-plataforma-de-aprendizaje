@@ -2,7 +2,7 @@
 
 ## Requisitos y arranque
 
-Node.js 24 y npm. Desde la raíz:
+Node.js 24 y npm (`nvm use` lee `.nvmrc`). Desde la raíz:
 
 ```sh
 npm ci
@@ -151,3 +151,26 @@ propone degradar el plugin PWA a una versión incompatible. Conserva la versión
 actual y revisa el aviso cuando se publique una corrección. La auditoría de
 producción (`npm audit --omit=dev`) no registra vulnerabilidades; esto no sustituye
 una revisión de seguridad de la aplicación.
+
+
+## Actualizaciones de la aplicación
+
+El registro de la PWA muestra un aviso cuando hay una versión lista. Puedes
+posponerla y aplicarla desde Ajustes → Actualizaciones. Primero termina la práctica:
+una evaluación o ejercicio sin terminar no se reanuda después de recargar.
+La aplicación impide aplicar la actualización si los cambios de progreso no están
+guardados ni en el navegador ni en la cuenta. Las comprobaciones y la activación
+recuperan el control tras 15 segundos si no responden, sin borrar el progreso.
+La comprobación también se realiza al recuperar conexión y al volver a la pestaña
+(con un intervalo mínimo de 30 minutos para las comprobaciones por foco).
+
+Vite 8 utiliza Rolldown; `codeSplitting.groups` conserva separados el motor 3D,
+React y Supabase. TypeScript 7 y el plugin React 6 se comprueban con Node 24.
+No cambies los tipos de Node a una versión de otro runtime solo para eliminar un
+aviso de versión disponible.
+
+La carpeta `promo` mantiene las dependencias Remotion en una misma versión y usa
+un override compatible de Zod ≥4.6.6 para corregir GHSA-mrhx-c7xc-m3w5. CI comprueba
+su auditoría y `npm run check:bundle --prefix promo`, que compila las composiciones
+sin abrir un navegador ni renderizar videos. Los MP4 existentes no se regeneran
+por un cambio de mantenimiento.

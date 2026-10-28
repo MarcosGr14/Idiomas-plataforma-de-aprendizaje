@@ -5,6 +5,7 @@ export type SyncState = {
   progress: Progress;
   status: string;
   conflict: boolean;
+  reloadSafe: boolean;
 };
 export type ProgressRemote = {
   read: () => Promise<RemoteProgress | null>;
@@ -59,6 +60,7 @@ export class ProgressSync {
           ? `${status} No se pudo guardar la copia en este navegador.`
           : status,
         conflict: this.conflict,
+        reloadSafe: !this.value.pending || !this.storageFailed,
       });
   }
   private persist() {
@@ -70,6 +72,7 @@ export class ProgressSync {
     }
   }
   update(fn: (p: Progress) => Progress) {
+    if (!this.active) return;
     this.value = {
       ...this.value,
       payload: fn(this.value.payload),
@@ -86,13 +89,22 @@ export class ProgressSync {
   dispose() {
     this.active = false;
   }
+  private async readRemote() {
+    const row = await this.remote.read();
+    if (
+      row !== null &&
+      (!row || !Number.isSafeInteger(row.revision) || row.revision < 1)
+    )
+      throw new Error("Invalid remote revision");
+    return row;
+  }
   async sync() {
     if (!this.active || this.running || this.conflict) return;
     this.running = true;
     try {
       if (!this.value.pending) {
         const sequence = this.sequence;
-        const server = await this.remote.read();
+        const server = await this.readRemote();
         if (!this.active) return;
         // An edit made while loading is based on the old revision; never replace it.
         if (this.sequence === sequence) {
@@ -120,6 +132,8 @@ export class ProgressSync {
           );
           return;
         }
+        if (!Number.isSafeInteger(revision) || revision <= this.value.revision)
+          throw new Error("Invalid saved revision");
         this.value = {
           ...this.value,
           revision,
@@ -143,7 +157,7 @@ export class ProgressSync {
     this.running = true;
     const sequence = this.sequence;
     try {
-      const server = await this.remote.read();
+      const server = await this.readRemote();
       if (!this.active) return;
       if (sequence !== this.sequence) {
         this.publish(

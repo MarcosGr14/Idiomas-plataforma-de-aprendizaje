@@ -75,3 +75,11 @@ regenera capturas y render.
 Sin música por defecto. Créditos y condiciones de fuentes, KanjiVG, Remotion y
 herramientas: [avisos de terceros](../docs/THIRD_PARTY_NOTICES.md).
 Distribuye [ATTRIBUTION.txt](ATTRIBUTION.txt) junto a los videos.
+
+
+### Comprobación de mantenimiento
+
+Usa Node 24 y ejecuta `npm ci --prefix promo`. `npm run check:bundle --prefix promo`
+comprueba la composición sin capturas ni renderizado de MP4. La auditoría se ejecuta
+con `npm audit --prefix promo`; conserva alineadas las versiones de todos los
+paquetes Remotion y el override de Zod mientras la dependencia no lo incorpore.

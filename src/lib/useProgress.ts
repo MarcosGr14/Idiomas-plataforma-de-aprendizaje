@@ -38,6 +38,7 @@ export function useProgress() {
         ? "Cargando cuenta…"
         : "Guardado en este dispositivo",
   );
+  const [reloadSafe, setReloadSafe] = useState(true);
   const [conflict, setConflict] = useState(false);
   const controller = useRef<ProgressSync | null>(null);
   const activeId = useRef<string | null>(null);
@@ -65,6 +66,7 @@ export function useProgress() {
       const local = readProgress("idiomas:guest");
       progressRef.current = local;
       setProgress(local);
+      setReloadSafe(true);
       setReady(true);
       setStatus("Guardado en este dispositivo");
       return;
@@ -127,6 +129,7 @@ export function useProgress() {
               setProgress(state.progress);
               setStatus(state.status);
               setConflict(state.conflict);
+              setReloadSafe(state.reloadSafe);
             }
           },
         );
@@ -181,8 +184,10 @@ export function useProgress() {
         const next = fn(progressRef.current);
         progressRef.current = next;
         setProgress(next);
+        const saved = saveProgress("idiomas:guest", next);
+        setReloadSafe(saved);
         setStatus(
-          saveProgress("idiomas:guest", next)
+          saved
             ? "Guardado en este dispositivo"
             : "No se pudo guardar. El almacenamiento está lleno o bloqueado.",
         );
@@ -197,6 +202,7 @@ export function useProgress() {
     ready,
     status,
     conflict,
+    reloadSafe,
     retry: () => void controller.current?.sync(),
     resolveSync: (choice: "local" | "remote") =>
       void controller.current?.resolve(choice),

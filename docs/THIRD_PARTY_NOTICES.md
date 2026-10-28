@@ -52,6 +52,7 @@ Las imágenes de referencia del proceso de diseño no se distribuyen con el siti
 ## Bibliotecas y herramientas
 
 - React, Vite, Three.js y Supabase: MIT. Lucide: ISC.
+- Workbox: MIT; registro y actualización de la aplicación instalable.
 - `svg-path-properties`: MIT; solo se utiliza para preparar geometría.
 - Playwright: Apache-2.0; herramienta de captura del video.
 - Remotion: [Remotion License](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).

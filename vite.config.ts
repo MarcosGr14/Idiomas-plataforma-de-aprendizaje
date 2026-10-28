@@ -33,6 +33,7 @@ export default defineConfig({
         ],
       },
       workbox: {
+        clientsClaim: true,
         globPatterns: ["**/*.{js,css,html,svg,png,webp,woff2,mp3}"],
         maximumFileSizeToCacheInBytes: 4000000,
         navigateFallback: "/index.html",
@@ -42,12 +43,17 @@ export default defineConfig({
     }),
   ],
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       output: {
-        manualChunks: {
-          three: ["three"],
-          vendor: ["react", "react-dom"],
-          supabase: ["@supabase/supabase-js"],
+        codeSplitting: {
+          groups: [
+            { name: "three", test: /node_modules\/three\// },
+            {
+              name: "vendor",
+              test: /node_modules\/(react|react-dom|scheduler)\//,
+            },
+            { name: "supabase", test: /node_modules\/@supabase\// },
+          ],
         },
       },
     },
