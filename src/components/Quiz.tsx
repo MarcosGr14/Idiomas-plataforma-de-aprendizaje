@@ -1,6 +1,12 @@
-import { useEffect, useReducer, useRef } from "react";
-import { advanceQuiz, initialQuiz } from "../lib/quiz";
+import { useEffect, useReducer, useRef, useMemo, type ReactNode } from "react";
+import {
+  advanceQuiz,
+  initialQuiz,
+  quizReport,
+  type QuizReport,
+} from "../lib/quiz";
 import AudioButton from "./AudioButton";
+import JapaneseText from "./JapaneseText";
 import { ArrowRight, Check, RotateCcw } from "lucide-react";
 import type { Question } from "../data/course";
 export default function Quiz({
@@ -8,9 +14,15 @@ export default function Quiz({
   onComplete,
   title = "Ponte a prueba",
   onExit,
+  resultSummary,
+  exitLabel = "Volver al recorrido",
+  restartLabel = "Practicar otra vez",
 }: {
   questions: Question[];
-  onComplete: (score: number) => void;
+  onComplete: (score: number, report: QuizReport) => void;
+  resultSummary?: (report: QuizReport) => ReactNode;
+  exitLabel?: string;
+  restartLabel?: string;
   title?: string;
   onExit: () => void;
 }) {
@@ -21,14 +33,18 @@ export default function Quiz({
   );
   const { index, choice, checked, score, done, attempt } = state;
   const delivered = useRef(-1);
+  const report = useMemo(
+    () => quizReport(state, questions),
+    [state, questions],
+  );
   useEffect(() => {
-    if (done && delivered.current !== attempt) {
+    if (report && delivered.current !== attempt) {
       delivered.current = attempt;
-      onComplete(Math.round((score / questions.length) * 100));
+      onComplete(report.score, report);
     }
-  }, [done, attempt, score, questions.length, onComplete]);
+  }, [report, attempt, onComplete]);
   const q = questions[index];
-  if (!q)
+  if (!q || (done && !report))
     return (
       <section className="empty-state">
         <h2>Práctica no disponible</h2>
@@ -41,24 +57,30 @@ export default function Quiz({
   if (done)
     return (
       <div className="quiz-result">
-        <span className="result-symbol" lang="ja">
-          よくできました
-        </span>
-        <h2>Un paso más.</h2>
-        <p>
-          Acertaste {score} de {questions.length} preguntas.{" "}
-          {score === questions.length
-            ? "Has reconocido todos los conceptos de esta práctica."
-            : "Vuelve a los ejemplos y presta atención a las explicaciones de tus errores."}
-        </p>
+        {resultSummary && report ? (
+          resultSummary(report)
+        ) : (
+          <>
+            <span className="result-symbol" lang="ja">
+              よくできました
+            </span>
+            <h2>Un paso más.</h2>
+            <p>
+              Acertaste {score} de {questions.length} preguntas.{" "}
+              {score === questions.length
+                ? "Has reconocido todos los conceptos de esta práctica."
+                : "Vuelve a los ejemplos y presta atención a las explicaciones de tus errores."}
+            </p>
+          </>
+        )}
         <button className="primary" onClick={onExit}>
-          Volver al recorrido <ArrowRight size={18} />
+          {exitLabel} <ArrowRight size={18} />
         </button>
         <button
           className="text-button"
           onClick={() => dispatch({ type: "restart" })}
         >
-          <RotateCcw size={16} /> Practicar otra vez
+          <RotateCcw size={16} /> {restartLabel}
         </button>
       </div>
     );
@@ -90,7 +112,9 @@ export default function Quiz({
         </div>
       )}
       <fieldset>
-        <legend>{q.prompt}</legend>
+        <legend>
+          <JapaneseText text={q.prompt} />
+        </legend>
         <div className="answer-grid">
           {q.options.map((option, i) => (
             <button
@@ -101,7 +125,9 @@ export default function Quiz({
               aria-pressed={choice === i}
               onClick={() => dispatch({ type: "select", choice: i, index })}
             >
-              <span>{option}</span>
+              <span>
+                <JapaneseText text={option} />
+              </span>
               {checked && i === q.correct && <Check size={20} />}
             </button>
           ))}
@@ -115,7 +141,9 @@ export default function Quiz({
           <strong>
             {choice === q.correct ? "Correcto." : "Vamos a repasarlo."}
           </strong>
-          <p>{q.explanation}</p>
+          <p>
+            <JapaneseText text={q.explanation} />
+          </p>
         </div>
       )}
       <div className="quiz-bottom">

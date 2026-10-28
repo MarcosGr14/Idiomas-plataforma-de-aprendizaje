@@ -1,5 +1,14 @@
 # Actualizaciones de Idiomas
 
+## 27 de octubre de 2026
+
+- Nueva pantalla de progreso con niveles de experiencia, calendario de estudio e hitos.
+- Evaluaciones semanales y mensuales equilibradas entre las lecciones completadas.
+- Historial con mejor resultado, último intento y práctica de errores.
+- Bonificaciones por evaluaciones aprobadas y por cada siete días de racha, sin duplicados.
+- Períodos de calendario corregidos y resultados anteriores conservados.
+- Prácticas imprimibles con selección semanal o mensual y soluciones opcionales.
+
 ## 26 de octubre de 2026
 
 - Recorrido de japonés inicial con 16 lecciones y 92 entradas con audio.

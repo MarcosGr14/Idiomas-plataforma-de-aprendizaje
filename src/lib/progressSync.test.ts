@@ -255,3 +255,35 @@ describe("account progress synchronization", () => {
     expect(state?.status).toContain("No se pudo guardar la copia");
   });
 });
+
+it("preserves assessment rewards and retry protection through account sync and reload", async () => {
+  const { recordAssessment } = await import("./progress");
+  const storage = store(),
+    server = setup();
+  const attempt = {
+    mode: "semanal" as const,
+    period: "semanal:2026-W44",
+    score: 80,
+    total: 10,
+    attemptId: "saved-attempt",
+    mistakes: ["vocales:0"],
+  };
+  const first = new ProgressSync("alice", storage, server.remote, () => {});
+  await first.sync();
+  first.update((p) => recordAssessment(p, attempt, new Date(2026, 9, 27, 12)));
+  await first.sync();
+  let latest: SyncState | undefined;
+  const second = new ProgressSync("alice", storage, server.remote, (s) => {
+    latest = s;
+  });
+  await second.sync();
+  expect(latest?.progress.exams[attempt.period]).toMatchObject({
+    score: 80,
+    rewarded: true,
+    mistakes: ["vocales:0"],
+  });
+  second.update((p) => recordAssessment(p, attempt, new Date(2026, 9, 27, 12)));
+  await second.sync();
+  expect(xp(latest!.progress)).toBe(50);
+  expect(latest?.progress.exams[attempt.period].attempts).toBe(1);
+});

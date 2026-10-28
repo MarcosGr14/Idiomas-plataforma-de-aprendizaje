@@ -13,7 +13,8 @@ desde el navegador o desde una aplicación instalada en tu dispositivo.
 - **Escucha, lee y practica.** 16 lecciones, 92 entradas de vocabulario y audio normal o lento.
 - **Aprende a escribir.** Guía de los 46 hiragana básicos, con orden de trazos y práctica interactiva.
 - **Recuerda lo aprendido.** Repasos espaciados y una biblioteca que crece con tus lecciones.
-- **Retoma tu progreso.** Cuenta personal, racha de estudio y seguimiento de tus actividades.
+- **Comprueba lo aprendido.** Evaluaciones semanales y mensuales, repaso de errores y prácticas para imprimir.
+- **Retoma tu progreso.** Cuenta personal, niveles de experiencia, racha e hitos de estudio.
 - **Estudia donde estés.** Diseño adaptable a móvil, instalación como PWA y movimiento configurable.
 
 El recorrido disponible es de japonés inicial. El diagnóstico y las actividades no

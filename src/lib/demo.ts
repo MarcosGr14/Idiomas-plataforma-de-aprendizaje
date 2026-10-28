@@ -17,7 +17,7 @@ export function createDemoProgress(): Progress {
     d.setDate(d.getDate() - n);
     const key = dayKey(d);
     p.studied.push(key);
-    p.activity[key] = n === 0 ? 20 : 15;
+    p.activity[key] = n === 0 ? 0 : 10;
   }
   lessons.slice(0, 3).forEach((lesson, i) => {
     const d = new Date(CAPTURE_DATE);

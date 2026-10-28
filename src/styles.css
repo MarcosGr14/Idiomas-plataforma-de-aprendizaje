@@ -2585,3 +2585,266 @@ body:has(.kyoto-hero[data-capture]) .kyoto-hero {
 .writing-panel .writing-help p {
   max-width: 72ch;
 }
+
+/* Learning progress and periodic assessments share the classroom's quiet surfaces. */
+.progress-overview {
+  background: var(--surface);
+  padding: 32px;
+}
+.level-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.level-heading h2 {
+  margin: 0;
+}
+.level-heading strong {
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.progress-overview > progress {
+  width: 100%;
+  height: 7px;
+  accent-color: var(--red);
+}
+.progress-overview > p {
+  color: var(--muted);
+  margin-top: 12px;
+}
+.progress-counts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin: 32px 0 0;
+}
+.progress-counts dt {
+  color: var(--muted);
+  font-size: 12px;
+}
+.progress-counts dd {
+  font-size: 30px;
+  margin: 8px 0 0;
+  font-variant-numeric: tabular-nums;
+}
+.progress-counts small {
+  font-size: 13px;
+  color: var(--muted);
+}
+.study-calendar,
+.progress-milestones,
+.reward-history,
+.assessment-history {
+  margin-top: 40px;
+}
+.study-calendar > p {
+  color: var(--muted);
+  max-width: 65ch;
+}
+.study-calendar ol {
+  display: grid;
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+  margin: 24px 0 0;
+}
+.study-calendar li {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.calendar-day {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 4px;
+}
+.study-calendar .active .calendar-day {
+  background: var(--ink);
+  color: var(--paper);
+}
+.study-calendar small {
+  font-size: 11px;
+}
+.progress-milestones ul,
+.reward-history ul,
+.assessment-history ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+.progress-milestones li {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+.milestone-status {
+  flex: 0 0 26px;
+  color: var(--muted);
+}
+.earned .milestone-status {
+  color: var(--red);
+}
+.progress-milestones h3,
+.assessment-history h3 {
+  font-size: 15px;
+  margin: 0 0 4px;
+}
+.progress-milestones p,
+.assessment-history p {
+  color: var(--muted);
+  margin: 0;
+  font-size: 13px;
+}
+.milestone-label {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--muted);
+}
+.reward-history li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+.reward-history strong {
+  white-space: nowrap;
+}
+.progress-next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 40px;
+  background: var(--surface);
+  padding: 24px;
+}
+.progress-next h2 {
+  margin-top: 0;
+}
+.progress-next p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+.progress-next .primary {
+  flex-shrink: 0;
+}
+.assessment-rules {
+  margin-top: 32px;
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 75ch;
+}
+.assessment-rules summary,
+.mistake-details summary {
+  cursor: pointer;
+  color: var(--ink);
+  padding: 8px 0;
+}
+.assessment-context {
+  color: var(--muted);
+  margin: -12px 0 24px;
+}
+.quiz-result .assessment-score {
+  font-size: 48px;
+  line-height: 1.2;
+  margin: 16px 0;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.assessment-saved {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.assessment-history li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+.assessment-history button {
+  flex-shrink: 0;
+}
+.mistake-details {
+  text-align: left;
+  margin: 24px 0;
+}
+.mistake-details ol {
+  padding-left: 24px;
+}
+.mistake-details li {
+  padding: 12px 0;
+}
+.mistake-details p {
+  margin: 4px 0;
+}
+.print-mode {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.print-mode select {
+  max-width: 100%;
+  padding: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font: inherit;
+}
+@media (max-width: 1000px) {
+  .progress-counts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .study-calendar ol {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .calendar-day {
+    max-width: 52px;
+  }
+}
+@media (max-width: 600px) {
+  .progress-overview {
+    padding: 24px 20px;
+  }
+  .progress-next,
+  .assessment-history li {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .milestone-label {
+    display: none;
+  }
+  .print-mode {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .study-calendar ol {
+    gap: 8px;
+  }
+}
+@media print {
+  .assessment-history,
+  .assessment-rules,
+  .assessment-context {
+    display: none !important;
+  }
+}

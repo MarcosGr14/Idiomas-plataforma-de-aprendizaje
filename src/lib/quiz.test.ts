@@ -49,3 +49,26 @@ it("safely handles an empty practice", () => {
     initialQuiz,
   );
 });
+
+it("reports exact mistakes only after completion and resets them on retry", async () => {
+  const { quizReport } = await import("./quiz");
+  expect(quizReport(initialQuiz, questions)).toBeNull();
+  let state = initialQuiz;
+  for (let index = 0; index < 2; index++) {
+    state = advanceQuiz(state, { type: "select", choice: 0, index }, questions);
+    state = advanceQuiz(state, { type: "check", index }, questions);
+    state = advanceQuiz(state, { type: "next", index }, questions);
+  }
+  expect(quizReport(state, questions)).toMatchObject({
+    score: 50,
+    correct: 1,
+    total: 2,
+    answers: [
+      { index: 0, choice: 0, correct: false },
+      { index: 1, choice: 0, correct: true },
+    ],
+  });
+  expect(advanceQuiz(state, { type: "restart" }, questions).responses).toEqual(
+    [],
+  );
+});

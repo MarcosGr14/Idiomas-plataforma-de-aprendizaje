@@ -99,3 +99,55 @@ python3 -m venv .venv
 Se omiten MP3 existentes; `--force` los regenera. Revisa las grabaciones antes de
 presentarlas como material validado. No se solicita micrófono al estudiante.
 Licencias y atribuciones: [avisos de terceros](THIRD_PARTY_NOTICES.md).
+
+## Evaluaciones y experiencia
+
+Los períodos semanales siguen ISO (lunes a domingo, incluido el cambio de año);
+los mensuales siguen el calendario local del dispositivo. Cada evaluación fija al
+comenzar su período y una selección reproducible de las lecciones completadas:
+hasta 10 preguntas semanales o 20 mensuales, sin duplicados y equilibradas entre
+lecciones. Salir o recargar descarta el intento sin terminar; el resultado se guarda
+al finalizar. El historial muestra los 12 períodos más recientes y permite repasar
+los errores del último intento, sin cambiar la nota ni sumar XP adicionales.
+
+`XP_RULES` en `src/lib/progress.ts` centraliza las reglas:
+
+| Actividad | XP |
+| --- | ---: |
+| Primera aprobación de una lección (≥60%) | 30 |
+| Palabra recordada en su repaso programado | 5 |
+| Primera evaluación semanal aprobada (≥60%) en el período | 50 |
+| Primera evaluación mensual aprobada (≥60%) en el período | 100 |
+| Cada siete días consecutivos de estudio | 50 |
+
+Cada 100 XP se avanza un nivel de actividad personal. Una práctica completada cuenta
+para la racha aunque no otorgue XP. Repetir lecciones o evaluaciones no vuelve a
+conceder su bonificación; conserva el mejor porcentaje. Los hitos son reconocimientos
+visuales y no añaden XP. La recompensa de racha se concede al completar una actividad,
+con un registro por inicio de racha y bloque de siete días; no al abrir la página ni
+como pago retroactivo masivo por rachas antiguas.
+
+El normalizador incorpora los nuevos campos JSON sin una migración SQL: transforma
+las semanas antiguas usando la fecha del resultado y conserva sus XP ya concedidos,
+aunque la nota anterior no alcanzara 60%. No se recalculan ni restan XP históricos.
+Los registros que coinciden en una semana conservan la mejor nota y el estado pagado.
+
+El progreso se guarda por cuenta mediante las políticas RLS y el control de revisión
+existentes. Los resultados y la fecha se calculan en el cliente: son seguimiento
+personal, no un sistema antifraude, un ranking ni una certificación oficial. No
+utilices estos XP para asignar dinero, permisos o premios con valor económico.
+
+La exportación usa la impresión del navegador (Guardar como PDF), con soluciones
+opcionales; las preguntas de escucha se convierten en lectura para funcionar en papel.
+
+### Aviso de dependencias de desarrollo (27 de octubre de 2026)
+
+La auditoría completa registra un aviso bajo de `deepmerge@4.3.1`, dependencia
+transitiva de Workbox/Rollup en la generación de la PWA
+([GHSA-gcqx-w48m-w2h4](https://github.com/advisories/GHSA-gcqx-w48m-w2h4)).
+No forma parte del código servido al usuario y no procesa datos de estudiantes en
+este proyecto. No hay versión corregida publicada al verificarlo; `audit fix --force`
+propone degradar el plugin PWA a una versión incompatible. Conserva la versión
+actual y revisa el aviso cuando se publique una corrección. La auditoría de
+producción (`npm audit --omit=dev`) no registra vulnerabilidades; esto no sustituye
+una revisión de seguridad de la aplicación.

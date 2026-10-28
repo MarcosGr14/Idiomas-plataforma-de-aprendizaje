@@ -1,3 +1,5 @@
+import Assessments from "./components/Assessments";
+import ProgressScreen from "./components/ProgressScreen";
 import { Account } from "./components/Account";
 import { BrandSeal } from "./components/brand/BrandStyles";
 import { appNow } from "./lib/capture";
@@ -19,7 +21,7 @@ import {
   X,
   Download,
   PenLine,
-  Printer,
+  TrendingUp,
   RefreshCw,
   UserRound,
 } from "lucide-react";
@@ -30,6 +32,7 @@ import {
   reviewWord,
   streak,
   xp,
+  levelInfo,
   type Progress,
 } from "./lib/progress";
 import { availableVocabulary, recommendedLesson } from "./lib/learning";
@@ -100,6 +103,7 @@ function App() {
   }, []);
   useEffect(() => {
     setMenu(false);
+    window.scrollTo({ top: 0, behavior: "instant" });
     document.querySelector<HTMLElement>("main")?.focus({ preventScroll: true });
     window.speechSynthesis?.cancel();
   }, [route]);
@@ -166,6 +170,7 @@ function App() {
     { path: "/repaso", label: "Repasar", icon: RefreshCw },
     { path: "/escritura", label: "Escritura", icon: PenLine },
     { path: "/evaluaciones", label: "Evaluaciones", icon: GraduationCap },
+    { path: "/progreso", label: "Mi progreso", icon: TrendingUp },
   ];
   return (
     <>
@@ -399,9 +404,7 @@ function App() {
                   </strong>
                 </div>
                 <div className="metric-row">
-                  <span>
-                    Experiencia · nivel {Math.floor(xp(progress) / 100) + 1}
-                  </span>
+                  <span>Experiencia · nivel {levelInfo(progress).level}</span>
                   <strong>
                     {xp(progress)} <small>XP</small>
                   </strong>
@@ -436,9 +439,12 @@ function App() {
                 </div>
                 <p className="small">
                   {streak(progress) >= 7
-                    ? "Siete días de constancia. Has ganado el reconocimiento de esta semana."
+                    ? "Cada siete días seguidos de estudio recibes una bonificación de 50 XP."
                     : "Cada día que completas una lección o haces un repaso cuenta."}
                 </p>
+                <a className="text-link" href="#/progreso">
+                  Ver mi progreso <ArrowRight size={15} />
+                </a>
               </div>
             </section>
             {progress.placement === null && (
@@ -549,7 +555,9 @@ function App() {
             </Suspense>
           </>
         ) : route === "/evaluaciones" ? (
-          <Exams progress={progress} update={update} />
+          <Assessments progress={progress} update={update} />
+        ) : route === "/progreso" ? (
+          <ProgressScreen progress={progress} />
         ) : route === "/ajustes" ? (
           <>
             <PageTitle
@@ -1070,150 +1078,6 @@ function ReviewScreen({
           </button>
         </div>
       )}
-    </>
-  );
-}
-function Exams({
-  progress,
-  update,
-}: {
-  progress: Progress;
-  update: (fn: (p: Progress) => Progress) => void;
-}) {
-  const [mode, setMode] = useState<string | null>(null);
-  const [answers, setAnswers] = useState(false);
-  const completed = lessons.filter((l) => progress.completed[l.id]);
-  const questions = completed.flatMap((l) => l.questions);
-  const selected =
-    mode === "semanal" ? questions.filter((_, i) => i % 2 === 0) : questions;
-  const period =
-    mode === "semanal"
-      ? `${appNow().getFullYear()}-w${Math.floor((appNow().getTime() - new Date(appNow().getFullYear(), 0, 1).getTime()) / 604800000)}`
-      : dayKey().slice(0, 7);
-  return (
-    <>
-      <PageTitle
-        title="Mira cuánto has aprendido"
-        description="Evalúa únicamente el contenido que ya has completado. El resultado no equivale a un nivel oficial."
-      />
-      {mode && questions.length ? (
-        <Quiz
-          key={mode}
-          title={`Evaluación ${mode}`}
-          questions={selected}
-          onExit={() => setMode(null)}
-          onComplete={(score) =>
-            update((p) => {
-              const key = `${mode}:${period}`;
-              const reward = p.exams[key] ? 0 : 50;
-              return {
-                ...p,
-                studied: [...new Set([...p.studied, dayKey()])],
-                exams: {
-                  ...p.exams,
-                  [key]: { score, total: selected.length, date: dayKey() },
-                },
-                activity: {
-                  ...p.activity,
-                  [dayKey()]: (p.activity[dayKey()] ?? 0) + reward,
-                },
-              };
-            })
-          }
-        />
-      ) : (
-        <>
-          <div className="exam-options">
-            <section>
-              <h2>Revisión semanal</h2>
-              <p>
-                Una selección breve de los conceptos de tus lecciones
-                completadas.
-              </p>
-              <button
-                className="primary"
-                disabled={!questions.length}
-                onClick={() => setMode("semanal")}
-              >
-                Comenzar revisión <ArrowRight size={16} />
-              </button>
-            </section>
-            <section>
-              <h2>Balance mensual</h2>
-              <p>
-                Reúne todo lo que has estudiado hasta ahora en una evaluación
-                acumulativa.
-              </p>
-              <button
-                className="secondary"
-                disabled={!questions.length}
-                onClick={() => setMode("mensual")}
-              >
-                Comenzar evaluación <ArrowRight size={16} />
-              </button>
-            </section>
-          </div>
-          {!questions.length && (
-            <p className="feedback">
-              Completa tu primera lección para habilitar las evaluaciones.
-            </p>
-          )}
-          <section className="export-panel">
-            <h2>También en papel</h2>
-            <p>
-              Genera una hoja de práctica con las preguntas de tus lecciones
-              completadas. En la ventana de impresión, elige «Guardar como PDF».
-            </p>
-            <label className="checkbox-label">
-              <input
-                type="checkbox"
-                checked={answers}
-                onChange={(e) => setAnswers(e.target.checked)}
-              />{" "}
-              Incluir soluciones
-            </label>
-            <button
-              className="secondary"
-              disabled={!questions.length}
-              onClick={() => window.print()}
-            >
-              <Printer size={17} /> Imprimir o guardar PDF
-            </button>
-          </section>
-          {Object.entries(progress.exams).length > 0 && (
-            <section>
-              <h2>Tus resultados</h2>
-              {Object.entries(progress.exams).map(([k, v]) => (
-                <p key={k}>
-                  {k.startsWith("semanal")
-                    ? "Revisión semanal"
-                    : "Balance mensual"}{" "}
-                  · {v.date} · {v.score}%
-                </p>
-              ))}
-            </section>
-          )}
-        </>
-      )}
-      <div className="print-sheet">
-        <h1>Idiomas · Práctica de japonés</h1>
-        <p>Fecha: {dayKey()} · Nombre: ____________________</p>
-        {questions.map((q, i) => (
-          <section key={i}>
-            <h2>
-              {i + 1}. {q.prompt}
-            </h2>
-            {q.jp && <p lang="ja">{q.jp}</p>}
-            {q.options.map((o, j) => (
-              <p key={o}>
-                ○ {o}
-                {answers && j === q.correct ? " (correcta)" : ""}
-              </p>
-            ))}
-            {answers && <p>{q.explanation}</p>}
-          </section>
-        ))}
-      </div>
     </>
   );
 }
